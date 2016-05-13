@@ -29,14 +29,14 @@ Swift Network Images is a sample iOS app developed in Swift 2.2. While primarily
 * [DRY BDD tests using Quick's Shared Assertions](http://www.akpdev.com/articles/2016/05/12/Quick-Shared-Assertions.html)
 
 
-## TODO
+## TODOs
 * UICollectionView Custom Layout examples:
-  * [x] sticky headers 
-  * [ ] global sections 
-  * [ ] pinnable, stretchable sections
-  * [ ] collapsible / expandable sections
-  * [ ] Drag reodering
-  * [ ] Swipe to edit
+  [x] sticky headers 
+  [ ] global sections 
+  [ ] pinnable, stretchable sections
+  [ ] collapsible / expandable sections
+  [ ] Drag reodering
+  [ ] Swipe to edit
 * UICollectionView transitions / animations
 * UI Tests
 * Snapshot Tests
