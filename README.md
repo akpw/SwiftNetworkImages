@@ -24,7 +24,7 @@ Swift Network Images is a sample iOS app developed in Swift 2.2. While primarily
 
 * Protocol-Oriented and Value-Based Programming
  
-* Testable design with Dependency Injection
+* Testable design via Dependency Injections
 
 * [DRY BDD tests using Quick's Shared Assertions](http://www.akpdev.com/articles/2016/05/12/Quick-Shared-Assertions.html)
 
