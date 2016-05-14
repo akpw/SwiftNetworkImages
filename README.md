@@ -75,4 +75,4 @@ $ open "SwiftNetworkImages.xcworkspace"
 * iOS 9
 
 
-[docsLink](https://akpw.github.io//SwiftNetworkImages/index.html)
+[docsLink]:https://akpw.github.io//SwiftNetworkImages/index.html
