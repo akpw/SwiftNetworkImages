@@ -30,7 +30,7 @@ Swift Network Images is a sample iOS app developed in Swift 2.2. While primarily
 
 
 ## Docs
-[Initial docs][docsLink], generated with [jazzy](https://github.com/realm/jazzy) and hosted by [GitHub Pages](https://pages.github.com).
+[Initial docs](docsLink), generated with [jazzy](https://github.com/realm/jazzy) and hosted by [GitHub Pages](https://pages.github.com).
 
 ## TODOs
 * UICollectionView Custom Layout examples:
