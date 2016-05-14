@@ -9,14 +9,13 @@
 import Foundation
 
 extension Array {
-    /// Returns the element at the given `index` and a new array with that element removed.
+    /// Returns the element at the given `index` and a new array with that element removed
     private func arrayByRemovingElementAtIndex(index: Int) -> (Element, [Element]) {
         var newArray = self
         let removedElement = newArray.removeAtIndex(index)
         return (removedElement, newArray)
     }
-    /// Returns an array of arrays, where each array in the array
-    /// is one permutation of the elements in the receiver.
+    /// Returns an array of arrays, where each one is a permutation
     public var permutations: [[Element]] {
         switch self.count {
         case 0:
@@ -34,7 +33,8 @@ extension Array {
             return permutations
         }
     }
-    
+
+    /// Checks if array is sorted    
     func isSorted(isOrderedBefore: (Element, Element) -> Bool) -> Bool {
         for i in 0..<self.count - 1 {
             if !isOrderedBefore(self[i], self[i + 1]) {

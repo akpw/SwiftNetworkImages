@@ -37,10 +37,15 @@ enum NetworkError: Int, CustomErrorConvertible {
                                     comment: "Could not connect to the server")
         }
     }
+}
 
+extension NetworkError {
+    /// translates NSError into NetworkError
     init(error: NSError) {
-        guard error.domain == NSURLErrorDomain else { self = .NetworkRequestFailed; return }
-        
+        guard error.domain == NSURLErrorDomain else {
+            self = .NetworkRequestFailed
+            return
+        }
         switch error.code {
         case NSURLErrorUnknown:
             self = .Unknown
@@ -53,8 +58,6 @@ enum NetworkError: Int, CustomErrorConvertible {
         }
     }
 }
-
-
 
 
 

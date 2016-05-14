@@ -16,7 +16,7 @@ enum Result<T> {
     case Failure(ErrorType)
 }
 extension Result {
-    // conversion to Swift2 throw model
+    /// conversion to Swift2 throw model
     func resolve() throws -> T {
         switch self {
         case Result.Success(let value): return value
@@ -24,7 +24,7 @@ extension Result {
         }
     }
     
-    // conversion from Swift2 throw model
+    /// conversion from Swift2 throw model
     mutating func build(@noescape somethingThatThrows: () throws -> T) {
         do {
             let value = try somethingThatThrows()

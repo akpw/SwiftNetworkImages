@@ -16,12 +16,10 @@ struct AlamofireNetworkImageService: NetworkImageService  {
     func requestImage(urlString: String, completion: Result<UIImage> -> Void) {
         Alamofire.request(.GET, urlString).responseImage {            
             if let error = $0.result.error {
-                completion( Result.Failure( NetworkError(error: error) ) )
-                return
+                return completion( Result.Failure( NetworkError(error: error) ) )
             }
             guard let image: UIImage = $0.result.value else {
-                completion( Result.Failure( NetworkError.ContentValidationFailed ) )
-                return
+                return completion( Result.Failure( NetworkError.ContentValidationFailed ) )
             }
             completion(Result.Success(image))
         }
