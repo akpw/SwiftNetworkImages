@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		574E9D811CEB48C200F7FFCF /* AKPLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E9D801CEB48C200F7FFCF /* AKPLayoutAttributes.swift */; };
+		574E9D831CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E9D821CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift */; };
 		5780C73C1CE0841800607FB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5780C7141CE0841800607FB5 /* AppDelegate.swift */; };
 		5780C73D1CE0841800607FB5 /* Animals.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5780C7161CE0841800607FB5 /* Animals.plist */; };
 		5780C73E1CE0841800607FB5 /* NetworkImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5780C7181CE0841800607FB5 /* NetworkImageService.swift */; };
@@ -41,6 +43,7 @@
 		5780C76D1CE1D2FE00607FB5 /* Array+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5780C76C1CE1D2FE00607FB5 /* Array+Helpers.swift */; };
 		5780C76F1CE1D87600607FB5 /* NSURLSessionNetworkImageServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5780C76E1CE1D87600607FB5 /* NSURLSessionNetworkImageServiceSpec.swift */; };
 		5780C7711CE1D88200607FB5 /* AlamofireNetworkImageServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5780C7701CE1D88200607FB5 /* AlamofireNetworkImageServiceSpec.swift */; };
+		57AE48BD1CEC5B41007A538E /* AKPCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AE48BC1CEC5B41007A538E /* AKPCollectionViewFlowLayout.swift */; };
 		A92440BE2A161EE860EF11D9 /* Pods_SwiftNetworkImages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C27D590D1D8C4247A022E3B9 /* Pods_SwiftNetworkImages.framework */; };
 		BBA0DEF0D914D0AFC95F9825 /* Pods_SwiftNetworkImagesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDECDCE258BE428EC5463E21 /* Pods_SwiftNetworkImagesTests.framework */; };
 /* End PBXBuildFile section */
@@ -59,6 +62,8 @@
 		0348412150D1B292F9ED4373 /* Pods-SwiftNetworkImagesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNetworkImagesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNetworkImagesTests/Pods-SwiftNetworkImagesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		278D1F251BB5015386556F4B /* Pods-SwiftNetworkImages.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNetworkImages.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNetworkImages/Pods-SwiftNetworkImages.debug.xcconfig"; sourceTree = "<group>"; };
 		3DFBACEA12DF2F69DDD33E6E /* Pods-SwiftNetworkImages.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNetworkImages.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNetworkImages/Pods-SwiftNetworkImages.release.xcconfig"; sourceTree = "<group>"; };
+		574E9D801CEB48C200F7FFCF /* AKPLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPLayoutAttributes.swift; sourceTree = "<group>"; };
+		574E9D821CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewGlobalHeader.swift; sourceTree = "<group>"; };
 		5780C7141CE0841800607FB5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5780C7161CE0841800607FB5 /* Animals.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Animals.plist; sourceTree = "<group>"; };
 		5780C7181CE0841800607FB5 /* NetworkImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkImageService.swift; sourceTree = "<group>"; };
@@ -97,6 +102,7 @@
 		57AD50421CE0822C00EF9693 /* SwiftNetworkImages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftNetworkImages.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57AD505B1CE0835200EF9693 /* SwiftNetworkImagesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftNetworkImagesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57AD505F1CE0835200EF9693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57AE48BC1CEC5B41007A538E /* AKPCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		B55CE5C336134BBFDA1F9381 /* Pods-SwiftNetworkImagesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNetworkImagesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNetworkImagesTests/Pods-SwiftNetworkImagesTests.release.xcconfig"; sourceTree = "<group>"; };
 		C27D590D1D8C4247A022E3B9 /* Pods_SwiftNetworkImages.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftNetworkImages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDECDCE258BE428EC5463E21 /* Pods_SwiftNetworkImagesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftNetworkImagesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -227,6 +233,8 @@
 			isa = PBXGroup;
 			children = (
 				5780C7351CE0841800607FB5 /* AKPStickyHeadersLayout.swift */,
+				574E9D801CEB48C200F7FFCF /* AKPLayoutAttributes.swift */,
+				57AE48BC1CEC5B41007A538E /* AKPCollectionViewFlowLayout.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -236,6 +244,7 @@
 			children = (
 				5780C7381CE0841800607FB5 /* ImageCollectionViewCell.swift */,
 				5780C7391CE0841800607FB5 /* ImageCollectionViewHeader.swift */,
+				574E9D821CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -519,8 +528,10 @@
 				5780C74C1CE0841800607FB5 /* ImageInfo.swift in Sources */,
 				5780C76D1CE1D2FE00607FB5 /* Array+Helpers.swift in Sources */,
 				5780C7471CE0841800607FB5 /* Observable.swift in Sources */,
+				574E9D811CEB48C200F7FFCF /* AKPLayoutAttributes.swift in Sources */,
 				5780C7411CE0841800607FB5 /* ImageFetcher.swift in Sources */,
 				5780C73F1CE0841800607FB5 /* NetworkError.swift in Sources */,
+				57AE48BD1CEC5B41007A538E /* AKPCollectionViewFlowLayout.swift in Sources */,
 				5780C73C1CE0841800607FB5 /* AppDelegate.swift in Sources */,
 				5780C7461CE0841800607FB5 /* DependencyInjectable.swift in Sources */,
 				5780C7421CE0841800607FB5 /* ImageInfoLoader.swift in Sources */,
@@ -539,6 +550,7 @@
 				5780C7431CE0841800607FB5 /* CollectionType+BinarySearch.swift in Sources */,
 				5780C7451CE0841800607FB5 /* CustomErrorConvertible.swift in Sources */,
 				5780C73E1CE0841800607FB5 /* NetworkImageService.swift in Sources */,
+				574E9D831CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift in Sources */,
 				5780C74B1CE0841800607FB5 /* UICollectionReusableViews.swift in Sources */,
 				5780C7561CE0841800607FB5 /* ImageVewModel.swift in Sources */,
 				5780C7441CE0841800607FB5 /* UICollectionView+DefaultReuse.swift in Sources */,

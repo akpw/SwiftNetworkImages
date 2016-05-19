@@ -20,10 +20,10 @@ class SampleImagesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         _collectionView = {
-            let flowLayout = AKPStickyHeadersFlowLayout()
+            let flowLayout = AKPCollectionViewFlowLayout()
             flowLayout.minimumInteritemSpacing = 2
             let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-            collectionView.backgroundColor = UIColor.lightGrayColor()
+            collectionView.backgroundColor = UIColor.whiteColor()
             
             collectionView.dataSource = _dataSourceDelegate
             collectionView.delegate = _dataSourceDelegate
