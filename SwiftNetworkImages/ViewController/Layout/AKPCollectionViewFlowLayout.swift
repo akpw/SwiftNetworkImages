@@ -23,7 +23,7 @@ protocol AKPCollectionViewFlowLayoutDelegate: UICollectionViewDelegateFlowLayout
 
 class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
     var delegate: AKPCollectionViewFlowLayoutDelegate?
-    var firstSectionIsGlobalHeader = false
+    var firstSectionIsGlobalHeader = true
     var firstSectionIsStretchable = true
     
     // MARK: - 📐Custom Layout
@@ -159,51 +159,51 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
               let attributesForLastItemInSection = layoutAttributesForItemAtIndexPath(
                                         NSIndexPath(forItem: lastInSectionIdx, inSection: section))
                                                                             else {return (CGRect.zero, 0)}
-        var globalSectionHeight = headerReferenceSize.height
-        if let delegate = collectionView.delegate as? UICollectionViewDelegateFlowLayout {
-            globalSectionHeight = delegate.collectionView!(collectionView,
+        // height the first section
+        var firstSectionHeight = headerReferenceSize.height
+        if let delegate = collectionView.delegate as? UICollectionViewDelegateFlowLayout
+                                                            where firstSectionHeight == 0 {
+            firstSectionHeight = delegate.collectionView!(collectionView,
                                                      layout: self,
                                                      referenceSizeForHeaderInSection: 0).height
         }
+        
+        // the section insets
         var theSectionInset = sectionInset
-        if let delegate = collectionView.delegate as? UICollectionViewDelegateFlowLayout {
+        if let delegate = collectionView.delegate as? UICollectionViewDelegateFlowLayout
+                                                            where theSectionInset == UIEdgeInsetsZero {
             theSectionInset = delegate.collectionView!(collectionView,
                                                            layout: self,
                                                            insetForSectionAtIndex: section)
         }
         
-        // Now let's establish some rules of engagement...
-        // 1. First we need to establish the boundaries
-        // The section should not be higher than the top of the first cell in section
+        // 1. Let's first set the boundaries:
+        //   The section should not be higher than the top of the first cell in section
         let minY = attributesForFirstItemInSection.frame.minY - sectionFrame.height
-        // The section should not be lower than the bottom of the last cell
+        //   The section should not be lower than the bottom of the last cell
         let maxY = attributesForLastItemInSection.frame.maxY - sectionFrame.height
         
-        // 2. If within these boundaries, the section should follow the content offset
+        // 2. If within these boundaries, follow the content offset && adjust a few more things along the way
         var offset = collectionView.contentOffset.y + collectionView.contentInset.top + theSectionInset.top
-
         if (section > 0) {
+            // A global header adjustment
             if firstSectionIsGlobalHeader {
-                offset += globalSectionHeight
+                offset += firstSectionHeight
             }
             sectionFrame.origin.y = min(max(offset, minY), maxY)
         } else {
-            // Stretchy header adjustment
+            // A stretchy header adjustment
             if firstSectionIsStretchable && offset < 0 {
-                sectionFrame.size.height = globalSectionHeight - offset
-                if !firstSectionIsGlobalHeader {
-                    sectionFrame.origin.y += offset
-                }
-            }
-            if firstSectionIsGlobalHeader {
+                sectionFrame.size.height = firstSectionHeight - offset
+                sectionFrame.origin.y += offset
+            // A global header adjustment
+            } else if firstSectionIsGlobalHeader {
                 sectionFrame.origin.y += offset
             } else {
-                if !(firstSectionIsStretchable && offset < 0) {
-                    sectionFrame.origin.y = min(max(offset, minY), maxY)
-                }
+                sectionFrame.origin.y = min(max(offset, minY), maxY)
             }
         }
-       
+        
         return (sectionFrame, section > 0 ? _zIndexForSectionHeader : _zIndexForSectionHeader + 1)
     }
 }
