@@ -1,5 +1,5 @@
 //
-//  AKPLayoutAttributes.swift
+//  AKPGlobalHeaderLayoutAttributes.swift
 //  SwiftNetworkImages
 //
 //  Created by Arseniy on 17/5/16.
@@ -8,21 +8,21 @@
 
 import UIKit
 
-let AKPUICollectionElementKindGobalSectionHeader: String = "AKPUICollectionElementKindGobalSectionHeader"
-
-class AKPLayoutAttributes: UICollectionViewLayoutAttributes {
+class AKPGlobalHeaderLayoutAttributes: UICollectionViewLayoutAttributes {
     
     var pinnable: Bool = false
+    var height: CGFloat = 0
     
     override func copyWithZone(zone: NSZone) -> AnyObject {
-        let copy = super.copyWithZone(zone) as! AKPLayoutAttributes
+        let copy = super.copyWithZone(zone) as! AKPGlobalHeaderLayoutAttributes
         copy.pinnable = pinnable
+        copy.height = height
         return copy
     }
     
     override func isEqual(object: AnyObject?) -> Bool {
-        if let attributes = object as? AKPLayoutAttributes {
-            if attributes.pinnable == pinnable {
+        if let attributes = object as? AKPGlobalHeaderLayoutAttributes {
+            if attributes.pinnable == pinnable && attributes.height == height {
                 return super.isEqual(object)
             }
         }

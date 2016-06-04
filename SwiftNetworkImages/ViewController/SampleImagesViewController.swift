@@ -19,21 +19,26 @@ class SampleImagesViewController: UIViewController {
     // MARK: - ♻️Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let flowLayout: AKPCollectionViewFlowLayout = {
+            $0.minimumInteritemSpacing = 2
+            return $0
+        }( AKPCollectionViewFlowLayout() )
+        
         _collectionView = {
-            let flowLayout = AKPCollectionViewFlowLayout()
-            flowLayout.minimumInteritemSpacing = 2
-            let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-            collectionView.backgroundColor = UIColor.whiteColor()
+            $0.backgroundColor = UIColor.greenColor()
             
-            collectionView.dataSource = _dataSourceDelegate
-            collectionView.delegate = _dataSourceDelegate
+            $0.dataSource = _dataSourceDelegate
+            $0.delegate = _dataSourceDelegate
             
-            collectionView.registerClass(ImageCollectionViewCell.self)
-            collectionView.registerClass(ImageCollectionViewHeader.self,
+            $0.registerClass(ImageCollectionViewCell.self)
+            $0.registerClass(ImageCollectionViewHeader.self,
                                          forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
-            view.addSubview(collectionView)
-            return collectionView
-        }()
+            $0.registerClass(ImageCollectionViewGlobalHeader.self,
+                                        forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
+            view.addSubview($0)
+            return $0
+        }( UICollectionView(frame: .zero, collectionViewLayout: flowLayout) )
         setConstraints()
     }
 

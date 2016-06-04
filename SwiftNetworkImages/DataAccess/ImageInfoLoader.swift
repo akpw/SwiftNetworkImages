@@ -29,12 +29,13 @@ extension ImageInfoLoadable {
             // Using reduce for building a dectionary here is mostly for the purpose of having fun :)
             // The penalty is of course resulting O(n**2) compared to that of O(n) if just adding entries
             // to a mutable dict from a `for` loop
-            .reduce (SortedDictionary<String, [ImageInfo]>()) { (combiner: SortedImageInfo, sectionInfo: [String: AnyObject]) in
-                var sortedImageInfos = combiner
+            .reduce ( SortedImageInfo() ) { (accumulator: SortedImageInfo,
+                                             sectionInfo: [String: AnyObject]) in
+                var sortedImageInfos = accumulator
                 
                 guard let sectionName = sectionInfo["sectionName"] as? String,
-                            sectionImagesDesc = sectionInfo["sectionImages"] as? [[String: String]] else {return combiner}
-                
+                          sectionImagesDesc = sectionInfo["sectionImages"] as? [[String: String]]
+                                                                                else { return accumulator }
                 let imageInfoArray = sectionImagesDesc.flatMap { (imageDesc: [String: String]) -> ImageInfo? in
                     guard let imageCaption = imageDesc["imageCaption"],
                               imageURLString = imageDesc["imageURL"] else {return nil}

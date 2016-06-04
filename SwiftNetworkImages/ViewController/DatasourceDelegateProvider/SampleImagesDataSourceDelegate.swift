@@ -12,10 +12,7 @@ import UIKit
 /// Implements UICollectionViewDataSource and UICollectionViewDelegate methods 
 /// for `SampleImagesViewController`'s collectionView
 
-class SampleImagesDataSourceDelegate: NSObject, UICollectionViewDataSource,
-                                                UICollectionViewDelegate,
-                                                UICollectionViewDelegateFlowLayout {
-    // MARK: - 👀Public
+class SampleImagesDataSourceDelegate: NSObject, UICollectionViewDataSource {
     // MARK: - UICollectionViewDataSource
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return _imagesDataSource?.numberOfSections ?? 0
@@ -36,14 +33,27 @@ class SampleImagesDataSourceDelegate: NSObject, UICollectionViewDataSource,
     
     func collectionView(collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
-                                                          atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let header: ImageCollectionViewHeader =
-            collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,
+                                      atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        if indexPath.section == 0 {
+            let header: ImageCollectionViewGlobalHeader =
+                collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,
                                                                   forIndexPath: indexPath)
-        header.sectionHeaderText = _imagesDataSource?.headerInSection(indexPath.section)
-        return header
+            header.sectionHeaderText = _imagesDataSource?.headerInSection(indexPath.section)
+            return header
+        } else {
+            let header: ImageCollectionViewHeader =
+                collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,
+                                                                      forIndexPath: indexPath)
+            header.sectionHeaderText = _imagesDataSource?.headerInSection(indexPath.section)
+            return header
+        }
     }
     
+    // MARK: - 🕶Private
+    private var _imagesDataSource: ImagesDataSource?
+}
+
+extension SampleImagesDataSourceDelegate: UICollectionViewDelegateFlowLayout {
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -64,15 +74,39 @@ class SampleImagesDataSourceDelegate: NSObject, UICollectionViewDataSource,
     func collectionView(collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                                referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSizeMake(collectionView.frame.size.width, 35)
+        if section == 0 {
+            return CGSizeMake(collectionView.frame.size.width, 75)
+        }
+        else {
+            return CGSizeMake(collectionView.frame.size.width, 35)
+        }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 2
-    }    
+    }
+}
+
+/// AKPCollectionViewFlowLayoutDelegate
+extension SampleImagesDataSourceDelegate: AKPCollectionViewFlowLayoutDelegate {
+    func collectionView(collectionView: UICollectionView,
+                                    viewForGlobalSupplementaryElementOfKind kind: String,
+                                    atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let globalHeader: ImageCollectionViewGlobalHeader =
+            collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,
+                                                                  forIndexPath: indexPath)
+        globalHeader.sectionHeaderText = _imagesDataSource?.headerInSection(indexPath.section)
+        return globalHeader
+    }
     
-    // MARK: - 🕶Private
-    private var _imagesDataSource: ImagesDataSource?
+    func collectionView(collectionView: UICollectionView,
+                        heightForGlobalSupplementaryElementOfKind kind: String,
+                                                                atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let globalHeader: ImageCollectionViewGlobalHeader =
+            collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,
+                                                                  forIndexPath: indexPath)
+        return globalHeader
+    }
 }
 
 extension SampleImagesDataSourceDelegate: DependencyInjectable {

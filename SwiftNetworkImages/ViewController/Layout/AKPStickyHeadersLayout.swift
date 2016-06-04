@@ -99,8 +99,7 @@ class AKPStickyHeadersFlowLayout: UICollectionViewFlowLayout {
     
     // iOS9 supports sticky headers natively, so see if it should be used instead
     private var _shouldDoCustomLayout: Bool {
-        if #available(iOS 9.0, *) { return !sectionHeadersPinToVisibleBounds }
-        return true
+        return !sectionHeadersPinToVisibleBounds
     }
     
     /// Given a rect, calculates indexes of confined section headers

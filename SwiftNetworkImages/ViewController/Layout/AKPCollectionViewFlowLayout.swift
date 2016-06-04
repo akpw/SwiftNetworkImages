@@ -18,10 +18,13 @@ import UIKit
  */
 
 
+protocol AKPCollectionViewFlowLayoutDelegate: UICollectionViewDelegateFlowLayout {
+}
+
 class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
-    override class func layoutAttributesClass() -> AnyClass {
-        return AKPLayoutAttributes.self
-    }    
+    var delegate: AKPCollectionViewFlowLayoutDelegate?
+    var firstSectionIsGlobalHeader = false
+    var firstSectionIsStretchable = true
     
     // MARK: - 📐Custom Layout
     /// Adds custom sticky header to the  UICollectionViewFlowLayout attributes
@@ -30,13 +33,14 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
         
         guard var layoutAttributes = super.layoutAttributesForElementsInRect(rect),
             // calucalte custom headers that should be confined in the rect
-            let customSectionHeadersIdxs = customSectionHeadersIdxs(rect) else {return nil}
+              let customSectionHeadersIdxs = customSectionHeadersIdxs(rect) else { return nil }
         
         // now add our custom headers to the regular UICollectionViewFlowLayout layoutAttributes
         for idx in customSectionHeadersIdxs {
             let indexPath = NSIndexPath(forItem: 0, inSection: idx)
             if let attributes = super.layoutAttributesForSupplementaryViewOfKind(
-                UICollectionElementKindSectionHeader, atIndexPath: indexPath) {
+                                                            UICollectionElementKindSectionHeader,
+                                                            atIndexPath: indexPath) {
                 // add the custom headers to the layout attributes
                 layoutAttributes.append(attributes)
             }
@@ -50,36 +54,36 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
     
     /// Adjusts layout attributes for the custom sections
-    override func layoutAttributesForSupplementaryViewOfKind (
-        elementKind: String,
-        atIndexPath indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+    override func layoutAttributesForSupplementaryViewOfKind(elementKind: String,
+                                                             atIndexPath indexPath: NSIndexPath)
+                                                                    -> UICollectionViewLayoutAttributes? {
         guard _shouldDoCustomLayout else {
             return super.layoutAttributesForSupplementaryViewOfKind(elementKind, atIndexPath: indexPath)}
         
         guard let sectionHeaderAttributes = super.layoutAttributesForSupplementaryViewOfKind(
-            elementKind, atIndexPath: indexPath) else {return nil}
+                                                                elementKind,
+                                                                atIndexPath: indexPath) else { return nil }
         // For the purpose of invalidation, need to adjust section attributes
         (sectionHeaderAttributes.frame, sectionHeaderAttributes.zIndex) =
-            adjustLayoutAttributes(forSectionAttributes: sectionHeaderAttributes)
+                                        adjustLayoutAttributes(forSectionAttributes: sectionHeaderAttributes)
         return sectionHeaderAttributes
     }
-    
     
     // MARK: - 🎳Invalidation
     /// - returns: `true`, unless running on iOS9 with `sectionHeadersPinToVisibleBounds` set to `true`
     override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
-        guard _shouldDoCustomLayout else {return super.shouldInvalidateLayoutForBoundsChange(newBounds)}
+        guard _shouldDoCustomLayout else { return super.shouldInvalidateLayoutForBoundsChange(newBounds) }
         return true
     }
     
     /// Custom invalidation context
-    override func invalidationContextForBoundsChange(newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
-        guard _shouldDoCustomLayout else { return super.invalidationContextForBoundsChange(newBounds) }
-        
-        guard let invalidationContext = super.invalidationContextForBoundsChange(newBounds)
-            as? UICollectionViewFlowLayoutInvalidationContext,
-            let oldBounds = collectionView?.bounds else {return super.invalidationContextForBoundsChange(newBounds)}
-        
+    override func invalidationContextForBoundsChange(newBounds: CGRect)
+                                        -> UICollectionViewLayoutInvalidationContext {
+        guard _shouldDoCustomLayout,
+              let invalidationContext = super.invalidationContextForBoundsChange(newBounds)
+                                                as? UICollectionViewFlowLayoutInvalidationContext,
+              let oldBounds = collectionView?.bounds
+                                                else {return super.invalidationContextForBoundsChange(newBounds)}
         // Size changes?
         if oldBounds.size != newBounds.size {
             // re-query the collection view delegate for metrics such as size information etc.
@@ -90,6 +94,7 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
         if oldBounds.origin != newBounds.origin {
             // find and invalidate sections that would fall into the new bounds
             guard let sectionIdxPaths = sectionsHeadersIDxs(forRect: newBounds) else {return invalidationContext}
+            
             // then invalidate
             let invalidatedIdxPaths = sectionIdxPaths.map { NSIndexPath(forItem: 0, inSection: $0) }
             invalidationContext.invalidateSupplementaryElementsOfKind(
@@ -98,26 +103,27 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
         return invalidationContext
     }
     
-    
     // MARK: - 🕶Private Helpers
     private let _zIndexForSectionHeader = 1024
     
     // iOS9 supports sticky headers natively, so see if it should be used instead
     private var _shouldDoCustomLayout: Bool {
-        if #available(iOS 9.0, *) { return !sectionHeadersPinToVisibleBounds }
-        return true
+        return !sectionHeadersPinToVisibleBounds
     }
-    
+
     /// Given a rect, calculates indexes of confined section headers
     private func sectionsHeadersIDxs(forRect rect: CGRect) -> Set<Int>? {
         guard let layoutAttributes = super.layoutAttributesForElementsInRect(rect) else {return nil}
-        let headersIdxs = layoutAttributes
+        var headersIdxs = layoutAttributes
             .filter { $0.representedElementCategory == .Cell ||
                 $0.representedElementKind == UICollectionElementKindSectionHeader }
             .reduce(Set<Int>()) {
                 var m = $0
                 m.insert($1.indexPath.section)
                 return m
+        }
+        if firstSectionIsGlobalHeader {
+            headersIdxs.insert(0)
         }
         return headersIdxs
     }
@@ -128,14 +134,14 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
             sectionIdxs = sectionsHeadersIDxs(forRect: rect)  else {return nil}
         
         // remove the sections that should already be taken care of by UICollectionViewFlowLayout
-        let customeHeadersIdxs = layoutAttributes
+        let customHeadersIdxs = layoutAttributes
             .filter { $0.representedElementKind == UICollectionElementKindSectionHeader }
             .reduce(sectionIdxs) {
                 var m = $0
                 m.remove($1.indexPath.section)
                 return m
         }
-        return customeHeadersIdxs
+        return customHeadersIdxs
     }
     
     // Adjusts frames of section headers
@@ -153,32 +159,52 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
               let attributesForLastItemInSection = layoutAttributesForItemAtIndexPath(
                                         NSIndexPath(forItem: lastInSectionIdx, inSection: section))
                                                                             else {return (CGRect.zero, 0)}
-        // Let's set some rules of order...
-        // The section should not be higher than one header-height above the first cell
-        let minY = attributesForFirstItemInSection.frame.minY - sectionFrame.height
+        var globalSectionHeight = headerReferenceSize.height
+        if let delegate = collectionView.delegate as? UICollectionViewDelegateFlowLayout {
+            globalSectionHeight = delegate.collectionView!(collectionView,
+                                                     layout: self,
+                                                     referenceSizeForHeaderInSection: 0).height
+        }
+        var theSectionInset = sectionInset
+        if let delegate = collectionView.delegate as? UICollectionViewDelegateFlowLayout {
+            theSectionInset = delegate.collectionView!(collectionView,
+                                                           layout: self,
+                                                           insetForSectionAtIndex: section)
+        }
         
-        // The section should not be higher than 
-        // one header-height above (the visible portion of) the last cell
+        // Now let's establish some rules of engagement...
+        // 1. First we need to establish the boundaries
+        // The section should not be higher than the top of the first cell in section
+        let minY = attributesForFirstItemInSection.frame.minY - sectionFrame.height
+        // The section should not be lower than the bottom of the last cell
         let maxY = attributesForLastItemInSection.frame.maxY - sectionFrame.height
         
-        // Other than that, it should follow the content offset
-        let offset = collectionView.contentOffset.y + collectionView.contentInset.top
-        sectionFrame.origin.y = min(max(offset, minY), maxY)
-        
-        // Stretchy header adjustment
-        if (section == 0 && offset < 0) {
-            let deltaY = fabs(offset + collectionView.contentInset.top)
-            var sectionHeight = headerReferenceSize.height
-            if let delegate = collectionView.delegate as? UICollectionViewDelegateFlowLayout {
-                sectionHeight = delegate.collectionView!(collectionView,
-                                                         layout: self,
-                                                         referenceSizeForHeaderInSection: section).height
+        // 2. If within these boundaries, the section should follow the content offset
+        var offset = collectionView.contentOffset.y + collectionView.contentInset.top + theSectionInset.top
+
+        if (section > 0) {
+            if firstSectionIsGlobalHeader {
+                offset += globalSectionHeight
             }
-            sectionFrame.size.height = max(minY, sectionHeight + deltaY)
-            sectionFrame.origin.y -= deltaY
+            sectionFrame.origin.y = min(max(offset, minY), maxY)
+        } else {
+            // Stretchy header adjustment
+            if firstSectionIsStretchable && offset < 0 {
+                sectionFrame.size.height = globalSectionHeight - offset
+                if !firstSectionIsGlobalHeader {
+                    sectionFrame.origin.y += offset
+                }
+            }
+            if firstSectionIsGlobalHeader {
+                sectionFrame.origin.y += offset
+            } else {
+                if !(firstSectionIsStretchable && offset < 0) {
+                    sectionFrame.origin.y = min(max(offset, minY), maxY)
+                }
+            }
         }
        
-        return (sectionFrame, _zIndexForSectionHeader)
+        return (sectionFrame, section > 0 ? _zIndexForSectionHeader : _zIndexForSectionHeader + 1)
     }
 }
 

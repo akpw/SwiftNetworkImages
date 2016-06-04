@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		574E9D811CEB48C200F7FFCF /* AKPLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E9D801CEB48C200F7FFCF /* AKPLayoutAttributes.swift */; };
+		571479F11CFEE5EE00A882E5 /* AKPDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571479F01CFEE5EE00A882E5 /* AKPDataSource.swift */; };
+		572DBF681CFAC26000C497D9 /* NSObject+Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572DBF671CFAC26000C497D9 /* NSObject+Configure.swift */; };
+		574E9D811CEB48C200F7FFCF /* AKPGlobalHeaderLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E9D801CEB48C200F7FFCF /* AKPGlobalHeaderLayoutAttributes.swift */; };
 		574E9D831CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E9D821CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift */; };
 		5780C73C1CE0841800607FB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5780C7141CE0841800607FB5 /* AppDelegate.swift */; };
 		5780C73D1CE0841800607FB5 /* Animals.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5780C7161CE0841800607FB5 /* Animals.plist */; };
@@ -62,7 +64,9 @@
 		0348412150D1B292F9ED4373 /* Pods-SwiftNetworkImagesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNetworkImagesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNetworkImagesTests/Pods-SwiftNetworkImagesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		278D1F251BB5015386556F4B /* Pods-SwiftNetworkImages.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNetworkImages.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNetworkImages/Pods-SwiftNetworkImages.debug.xcconfig"; sourceTree = "<group>"; };
 		3DFBACEA12DF2F69DDD33E6E /* Pods-SwiftNetworkImages.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNetworkImages.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNetworkImages/Pods-SwiftNetworkImages.release.xcconfig"; sourceTree = "<group>"; };
-		574E9D801CEB48C200F7FFCF /* AKPLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPLayoutAttributes.swift; sourceTree = "<group>"; };
+		571479F01CFEE5EE00A882E5 /* AKPDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPDataSource.swift; sourceTree = "<group>"; };
+		572DBF671CFAC26000C497D9 /* NSObject+Configure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Configure.swift"; sourceTree = "<group>"; };
+		574E9D801CEB48C200F7FFCF /* AKPGlobalHeaderLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPGlobalHeaderLayoutAttributes.swift; sourceTree = "<group>"; };
 		574E9D821CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewGlobalHeader.swift; sourceTree = "<group>"; };
 		5780C7141CE0841800607FB5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5780C7161CE0841800607FB5 /* Animals.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Animals.plist; sourceTree = "<group>"; };
@@ -85,7 +89,7 @@
 		5780C72D1CE0841800607FB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5780C7311CE0841800607FB5 /* ImagesDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesDataSource.swift; sourceTree = "<group>"; };
 		5780C7331CE0841800607FB5 /* SampleImagesDataSourceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleImagesDataSourceDelegate.swift; sourceTree = "<group>"; };
-		5780C7351CE0841800607FB5 /* AKPStickyHeadersLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPStickyHeadersLayout.swift; sourceTree = "<group>"; };
+		5780C7351CE0841800607FB5 /* AKPStickyHeadersLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AKPStickyHeadersLayout.swift; path = SwiftNetworkImages/ViewController/Layout/AKPStickyHeadersLayout.swift; sourceTree = "<group>"; };
 		5780C7361CE0841800607FB5 /* SampleImagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleImagesViewController.swift; sourceTree = "<group>"; };
 		5780C7381CE0841800607FB5 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		5780C7391CE0841800607FB5 /* ImageCollectionViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewHeader.swift; sourceTree = "<group>"; };
@@ -128,6 +132,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		577717B31CEDF634006D9216 /* _Archive */ = {
+			isa = PBXGroup;
+			children = (
+				5780C7351CE0841800607FB5 /* AKPStickyHeadersLayout.swift */,
+			);
+			name = _Archive;
+			sourceTree = "<group>";
+		};
 		5780C7131CE083C300607FB5 /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +176,7 @@
 				5780C71E1CE0841800607FB5 /* CollectionType+BinarySearch.swift */,
 				5780C71F1CE0841800607FB5 /* UICollectionView+DefaultReuse.swift */,
 				5780C76C1CE1D2FE00607FB5 /* Array+Helpers.swift */,
+				572DBF671CFAC26000C497D9 /* NSObject+Configure.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -232,9 +245,9 @@
 		5780C7341CE0841800607FB5 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				5780C7351CE0841800607FB5 /* AKPStickyHeadersLayout.swift */,
-				574E9D801CEB48C200F7FFCF /* AKPLayoutAttributes.swift */,
+				574E9D801CEB48C200F7FFCF /* AKPGlobalHeaderLayoutAttributes.swift */,
 				57AE48BC1CEC5B41007A538E /* AKPCollectionViewFlowLayout.swift */,
+				571479F01CFEE5EE00A882E5 /* AKPDataSource.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -260,6 +273,7 @@
 		57AD50391CE0822C00EF9693 = {
 			isa = PBXGroup;
 			children = (
+				577717B31CEDF634006D9216 /* _Archive */,
 				57AD50441CE0822C00EF9693 /* SwiftNetworkImages */,
 				57AD505C1CE0835200EF9693 /* SwiftNetworkImagesTests */,
 				FD21DA43CDFEF49BBF8BB9C4 /* Frameworks */,
@@ -528,7 +542,7 @@
 				5780C74C1CE0841800607FB5 /* ImageInfo.swift in Sources */,
 				5780C76D1CE1D2FE00607FB5 /* Array+Helpers.swift in Sources */,
 				5780C7471CE0841800607FB5 /* Observable.swift in Sources */,
-				574E9D811CEB48C200F7FFCF /* AKPLayoutAttributes.swift in Sources */,
+				574E9D811CEB48C200F7FFCF /* AKPGlobalHeaderLayoutAttributes.swift in Sources */,
 				5780C7411CE0841800607FB5 /* ImageFetcher.swift in Sources */,
 				5780C73F1CE0841800607FB5 /* NetworkError.swift in Sources */,
 				57AE48BD1CEC5B41007A538E /* AKPCollectionViewFlowLayout.swift in Sources */,
@@ -545,12 +559,14 @@
 				5780C7401CE0841800607FB5 /* AlamofireNetworkImageService.swift in Sources */,
 				5780C74A1CE0841800607FB5 /* SortedDictionary.swift in Sources */,
 				5780C7491CE0841800607FB5 /* RoundedCornersView.swift in Sources */,
+				572DBF681CFAC26000C497D9 /* NSObject+Configure.swift in Sources */,
 				5780C7501CE0841800607FB5 /* ImagesDataSource.swift in Sources */,
 				5780C7551CE0841800607FB5 /* ImageCollectionViewHeader.swift in Sources */,
 				5780C7431CE0841800607FB5 /* CollectionType+BinarySearch.swift in Sources */,
 				5780C7451CE0841800607FB5 /* CustomErrorConvertible.swift in Sources */,
 				5780C73E1CE0841800607FB5 /* NetworkImageService.swift in Sources */,
 				574E9D831CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift in Sources */,
+				571479F11CFEE5EE00A882E5 /* AKPDataSource.swift in Sources */,
 				5780C74B1CE0841800607FB5 /* UICollectionReusableViews.swift in Sources */,
 				5780C7561CE0841800607FB5 /* ImageVewModel.swift in Sources */,
 				5780C7441CE0841800607FB5 /* UICollectionView+DefaultReuse.swift in Sources */,

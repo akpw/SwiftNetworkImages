@@ -34,7 +34,7 @@ class ImageCollectionViewHeader: UICollectionReusableView {
             return label
         }()
 
-        backgroundColor = UIColor.lightGrayColor()
+        backgroundColor = UIColor.magentaColor()
         setConstraints()
     }
     
