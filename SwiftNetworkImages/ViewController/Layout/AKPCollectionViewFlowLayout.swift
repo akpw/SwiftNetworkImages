@@ -99,12 +99,11 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
     
     // MARK: - 🕶Private Helpers
-    private let _zIndexForSectionHeader = 1024
-    
     // iOS9 supports sticky headers natively, so see if it should be used instead
     private var _shouldDoCustomLayout: Bool {
         return !sectionHeadersPinToVisibleBounds
     }
+    private let _zIndexForSectionHeader = 1024
 
     /// Given a rect, calculates indexes of confined section headers
     private func sectionsHeadersIDxs(forRect rect: CGRect) -> Set<Int>? {
@@ -183,7 +182,6 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
                                                                                         -> (CGFloat, CGFloat) {
             // get attributes for first and last items in section
             guard let collectionView = collectionView  else { return (0, 0) }
-
             let section = sectionHeadersLayoutAttributes.indexPath.section
             
             // Trying to use layoutAttributesForItemAtIndexPath for empty section would
@@ -203,16 +201,15 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
             let minY = attributesForFirstItemInSection.frame.minY - sectionFrame.height
             //   The section should not be lower than the bottom of its last cell
             let maxY = attributesForLastItemInSection.frame.maxY - sectionFrame.height
-            
             return (minY, maxY)
     }
     
     private func firstSectionMetrics() -> (height: CGFloat, insets: UIEdgeInsets) {
         guard let collectionView = collectionView else { return (0, UIEdgeInsetsZero) }
-        
+        // height of the first section
         var firstSectionHeight = headerReferenceSize.height
         if let delegate = collectionView.delegate as? UICollectionViewDelegateFlowLayout
-            where firstSectionHeight == 0 {
+                                                            where firstSectionHeight == 0 {
             firstSectionHeight = delegate.collectionView!(collectionView,
                                                           layout: self,
                                                           referenceSizeForHeaderInSection: 0).height
@@ -220,14 +217,13 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
         // insets of the first section
         var theSectionInset = sectionInset
         if let delegate = collectionView.delegate as? UICollectionViewDelegateFlowLayout
-            where theSectionInset == UIEdgeInsetsZero {
+                                                            where theSectionInset == UIEdgeInsetsZero {
             theSectionInset = delegate.collectionView!(collectionView,
                                                        layout: self,
                                                        insetForSectionAtIndex: 0)
         }
         return (firstSectionHeight, theSectionInset)
     }
-    
 }
 
 
