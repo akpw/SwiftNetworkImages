@@ -44,6 +44,7 @@
 		5780C76F1CE1D87600607FB5 /* NSURLSessionNetworkImageServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5780C76E1CE1D87600607FB5 /* NSURLSessionNetworkImageServiceSpec.swift */; };
 		5780C7711CE1D88200607FB5 /* AlamofireNetworkImageServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5780C7701CE1D88200607FB5 /* AlamofireNetworkImageServiceSpec.swift */; };
 		57AE48BD1CEC5B41007A538E /* AKPCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AE48BC1CEC5B41007A538E /* AKPCollectionViewFlowLayout.swift */; };
+		57B9C00B1D040C9100800CB9 /* DebugConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9C00A1D040C9100800CB9 /* DebugConfigurable.swift */; };
 		A92440BE2A161EE860EF11D9 /* Pods_SwiftNetworkImages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C27D590D1D8C4247A022E3B9 /* Pods_SwiftNetworkImages.framework */; };
 		BBA0DEF0D914D0AFC95F9825 /* Pods_SwiftNetworkImagesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDECDCE258BE428EC5463E21 /* Pods_SwiftNetworkImagesTests.framework */; };
 /* End PBXBuildFile section */
@@ -103,6 +104,7 @@
 		57AD505B1CE0835200EF9693 /* SwiftNetworkImagesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftNetworkImagesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57AD505F1CE0835200EF9693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57AE48BC1CEC5B41007A538E /* AKPCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		57B9C00A1D040C9100800CB9 /* DebugConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugConfigurable.swift; sourceTree = "<group>"; };
 		B55CE5C336134BBFDA1F9381 /* Pods-SwiftNetworkImagesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNetworkImagesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNetworkImagesTests/Pods-SwiftNetworkImagesTests.release.xcconfig"; sourceTree = "<group>"; };
 		C27D590D1D8C4247A022E3B9 /* Pods_SwiftNetworkImages.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftNetworkImages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDECDCE258BE428EC5463E21 /* Pods_SwiftNetworkImagesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftNetworkImagesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +190,7 @@
 				5780C7651CE0CD4300607FB5 /* DispatchHelpers.swift */,
 				5780C7241CE0841800607FB5 /* Result.swift */,
 				5780C7251CE0841800607FB5 /* RoundedCornersView.swift */,
+				57B9C00A1D040C9100800CB9 /* DebugConfigurable.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				5780C7531CE0841800607FB5 /* SampleImagesViewController.swift in Sources */,
 				5780C7621CE0B3BA00607FB5 /* NSURLSessionNetworkImageService.swift in Sources */,
 				5780C7541CE0841800607FB5 /* ImageCollectionViewCell.swift in Sources */,
+				57B9C00B1D040C9100800CB9 /* DebugConfigurable.swift in Sources */,
 				5780C7401CE0841800607FB5 /* AlamofireNetworkImageService.swift in Sources */,
 				5780C74A1CE0841800607FB5 /* SortedDictionary.swift in Sources */,
 				5780C7491CE0841800607FB5 /* RoundedCornersView.swift in Sources */,

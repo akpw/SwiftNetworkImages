@@ -34,7 +34,7 @@ class ImageCollectionViewHeader: UICollectionReusableView {
             return label
         }()
 
-        backgroundColor = UIColor.magentaColor()
+        backgroundColor = UIColor.lightGrayColor()
         setConstraints()
     }
     
@@ -54,6 +54,10 @@ extension ImageCollectionViewHeader {
     }
 }
 
-
+extension ImageCollectionViewHeader: DebugConfigurable {
+    func _configureForDebug() {
+        backgroundColor = UIColor.magentaColor()
+    }
+}
 
 

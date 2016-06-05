@@ -17,12 +17,7 @@ import UIKit
  with the out-of-the-box implementation
  */
 
-
-protocol AKPCollectionViewFlowLayoutDelegate: UICollectionViewDelegateFlowLayout {
-}
-
 class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
-    var delegate: AKPCollectionViewFlowLayoutDelegate?
     var firstSectionIsGlobalHeader = true
     var firstSectionIsStretchable = true
     
@@ -145,67 +140,94 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
     
     // Adjusts frames of section headers
-    private func adjustLayoutAttributes(forSectionAttributes
-        sectionHeadersLayoutAttributes: UICollectionViewLayoutAttributes) -> (CGRect, Int) {
-        
+    private func adjustLayoutAttributes(
+                    forSectionAttributes sectionHeadersLayoutAttributes: UICollectionViewLayoutAttributes)
+                                                                                            -> (CGRect, Int) {
         guard let collectionView = collectionView else { return (CGRect.zero, 0) }
         let section = sectionHeadersLayoutAttributes.indexPath.section
         var sectionFrame = sectionHeadersLayoutAttributes.frame
 
-        // get attributes for first and last items in section
-        let lastInSectionIdx = collectionView.numberOfItemsInSection(section) - 1
-        guard let attributesForFirstItemInSection = layoutAttributesForItemAtIndexPath(
-                                        NSIndexPath(forItem: 0, inSection: section)),
-              let attributesForLastItemInSection = layoutAttributesForItemAtIndexPath(
-                                        NSIndexPath(forItem: lastInSectionIdx, inSection: section))
-                                                                            else {return (CGRect.zero, 0)}
-        // height the first section
-        var firstSectionHeight = headerReferenceSize.height
-        if let delegate = collectionView.delegate as? UICollectionViewDelegateFlowLayout
-                                                            where firstSectionHeight == 0 {
-            firstSectionHeight = delegate.collectionView!(collectionView,
-                                                     layout: self,
-                                                     referenceSizeForHeaderInSection: 0).height
-        }
+        // 1. Let's establish the section boundaries:
+        let (minY, maxY) = boundaryMetrics(forSectionAttributes: sectionHeadersLayoutAttributes)
         
-        // the section insets
-        var theSectionInset = sectionInset
-        if let delegate = collectionView.delegate as? UICollectionViewDelegateFlowLayout
-                                                            where theSectionInset == UIEdgeInsetsZero {
-            theSectionInset = delegate.collectionView!(collectionView,
-                                                           layout: self,
-                                                           insetForSectionAtIndex: section)
-        }
-        
-        // 1. Let's first set the boundaries:
-        //   The section should not be higher than the top of the first cell in section
-        let minY = attributesForFirstItemInSection.frame.minY - sectionFrame.height
-        //   The section should not be lower than the bottom of the last cell
-        let maxY = attributesForLastItemInSection.frame.maxY - sectionFrame.height
-        
-        // 2. If within these boundaries, follow the content offset && adjust a few more things along the way
-        var offset = collectionView.contentOffset.y + collectionView.contentInset.top + theSectionInset.top
+        // 2. Let's also determine the height abd insets of the first section,
+        //    in case it's stretchable or serves as a global header
+        let (firstSectionHeight, firstSectionInsets) = firstSectionMetrics()
+                                                                                                
+        // 3. If within the above boundaries, the section should follow content offset
+        //   (adjusting a few more things along the way)
+        var offset = collectionView.contentOffset.y + collectionView.contentInset.top
         if (section > 0) {
-            // A global header adjustment
             if firstSectionIsGlobalHeader {
-                offset += firstSectionHeight
+                // A global header adjustment
+                offset += firstSectionHeight + firstSectionInsets.top
             }
             sectionFrame.origin.y = min(max(offset, minY), maxY)
         } else {
-            // A stretchy header adjustment
             if firstSectionIsStretchable && offset < 0 {
+                // A stretchy header adjustment
                 sectionFrame.size.height = firstSectionHeight - offset
-                sectionFrame.origin.y += offset
-            // A global header adjustment
+                sectionFrame.origin.y += offset + firstSectionInsets.top
             } else if firstSectionIsGlobalHeader {
-                sectionFrame.origin.y += offset
+                // A global header adjustment
+                sectionFrame.origin.y += offset + firstSectionInsets.top
             } else {
                 sectionFrame.origin.y = min(max(offset, minY), maxY)
             }
         }
-        
         return (sectionFrame, section > 0 ? _zIndexForSectionHeader : _zIndexForSectionHeader + 1)
     }
+    
+    private func boundaryMetrics(
+                    forSectionAttributes sectionHeadersLayoutAttributes: UICollectionViewLayoutAttributes)
+                                                                                        -> (CGFloat, CGFloat) {
+            // get attributes for first and last items in section
+            guard let collectionView = collectionView  else { return (0, 0) }
+
+            let section = sectionHeadersLayoutAttributes.indexPath.section
+            
+            // Trying to use layoutAttributesForItemAtIndexPath for empty section would
+            // cause EXC_ARITHMETIC in simulator (division by zero items)
+            let lastInSectionIdx = collectionView.numberOfItemsInSection(section) - 1
+            if lastInSectionIdx < 0 { return (0, 0) }
+                                                                                            
+            guard let attributesForFirstItemInSection = layoutAttributesForItemAtIndexPath(
+                                            NSIndexPath(forItem: 0, inSection: section)),
+                let attributesForLastItemInSection = layoutAttributesForItemAtIndexPath(
+                                            NSIndexPath(forItem: lastInSectionIdx, inSection: section))
+                else {return (0, 0)}
+            let sectionFrame = sectionHeadersLayoutAttributes.frame
+            
+            // Section Boundaries:
+            //   The section should not be higher than the top of its first cell
+            let minY = attributesForFirstItemInSection.frame.minY - sectionFrame.height
+            //   The section should not be lower than the bottom of its last cell
+            let maxY = attributesForLastItemInSection.frame.maxY - sectionFrame.height
+            
+            return (minY, maxY)
+    }
+    
+    private func firstSectionMetrics() -> (height: CGFloat, insets: UIEdgeInsets) {
+        guard let collectionView = collectionView else { return (0, UIEdgeInsetsZero) }
+        
+        var firstSectionHeight = headerReferenceSize.height
+        if let delegate = collectionView.delegate as? UICollectionViewDelegateFlowLayout
+            where firstSectionHeight == 0 {
+            firstSectionHeight = delegate.collectionView!(collectionView,
+                                                          layout: self,
+                                                          referenceSizeForHeaderInSection: 0).height
+        }
+        // insets of the first section
+        var theSectionInset = sectionInset
+        if let delegate = collectionView.delegate as? UICollectionViewDelegateFlowLayout
+            where theSectionInset == UIEdgeInsetsZero {
+            theSectionInset = delegate.collectionView!(collectionView,
+                                                       layout: self,
+                                                       insetForSectionAtIndex: 0)
+        }
+        return (firstSectionHeight, theSectionInset)
+    }
+    
 }
 
 

@@ -41,7 +41,7 @@ class ImageCollectionViewGlobalHeader: UICollectionReusableView {
             return label
         }()
         
-        backgroundColor = UIColor.cyanColor()
+        backgroundColor = UIColor.darkGrayColor()
         setConstraints()
     }
     
@@ -58,6 +58,13 @@ extension ImageCollectionViewGlobalHeader {
         sectionHeaderLabel.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor).active = true
         sectionHeaderLabel.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor).active = true
         sectionHeaderLabel.leadingAnchor.constraintEqualToAnchor(self.leadingAnchor, constant: 20).active = true
+    }
+    
+}
+
+extension ImageCollectionViewGlobalHeader: DebugConfigurable {
+    func _configureForDebug() {
+        backgroundColor = UIColor.cyanColor()
     }
 }
 

@@ -26,7 +26,7 @@ class SampleImagesViewController: UIViewController {
         }( AKPCollectionViewFlowLayout() )
         
         _collectionView = {
-            $0.backgroundColor = UIColor.greenColor()
+            $0.backgroundColor = UIColor.lightGrayColor()
             
             $0.dataSource = _dataSourceDelegate
             $0.delegate = _dataSourceDelegate
@@ -37,6 +37,8 @@ class SampleImagesViewController: UIViewController {
             $0.registerClass(ImageCollectionViewGlobalHeader.self,
                                         forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
             view.addSubview($0)
+            //_configureForDebug($0)
+            
             return $0
         }( UICollectionView(frame: .zero, collectionViewLayout: flowLayout) )
         setConstraints()
@@ -72,5 +74,11 @@ extension SampleImagesViewController {
     }
 }
 
-
+extension SampleImagesViewController: DebugConfigurable {
+    private func _configureForDebug(collectionView: UICollectionView) -> UICollectionView {
+        collectionView.backgroundColor = UIColor.greenColor()
+        collectionView.contentInset = UIEdgeInsetsMake(25, 0, 0, 0)
+        return collectionView
+    }
+}
 

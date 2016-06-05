@@ -27,11 +27,11 @@ import UIKit
             
             _loadingIndicator.startAnimating()
             _loadingIndicator.hidden = false
-            imageVewModel.image.observe { [unowned self] in
-                self.imageView?.image = $0                
+            imageVewModel.image.observe { [weak self] in
+                self?.imageView?.image = $0
                 dispatch_after(delayInSeconds: 0.7) {
-                    self._loadingIndicator.stopAnimating()
-                    self._loadingIndicator.hidden = true
+                    self?._loadingIndicator.stopAnimating()
+                    self?._loadingIndicator.hidden = true
                 }
             }
         }
@@ -64,7 +64,7 @@ import UIKit
             return label
         }()
         
-        //colorizeViews()
+        // _configureForDebug()
         setConstraints()
     }
     
@@ -80,18 +80,7 @@ import UIKit
     }()
 }
 
-
 extension ImageCollectionViewCell {
-    func colorizeViews() {
-        guard let roundedCornersView = roundedCornersView,
-            captionLabel = captionLabel, imageView = imageView else {return}
-        
-        contentView.backgroundColor = UIColor.cyanColor()
-        roundedCornersView.backgroundColor = UIColor.greenColor()
-        imageView.backgroundColor = UIColor.redColor()
-        captionLabel.backgroundColor = UIColor.yellowColor()
-    }
-    
     // MARK: - 📐Constraints
     func setConstraints() {
         guard let roundedCornersView = roundedCornersView,
@@ -133,3 +122,14 @@ extension ImageCollectionViewCell {
     }
 }
 
+extension ImageCollectionViewCell: DebugConfigurable {
+    func _configureForDebug() {
+        guard let roundedCornersView = roundedCornersView,
+            captionLabel = captionLabel, imageView = imageView else {return}
+        
+        contentView.backgroundColor = UIColor.cyanColor()
+        roundedCornersView.backgroundColor = UIColor.greenColor()
+        imageView.backgroundColor = UIColor.redColor()
+        captionLabel.backgroundColor = UIColor.yellowColor()
+    }
+}

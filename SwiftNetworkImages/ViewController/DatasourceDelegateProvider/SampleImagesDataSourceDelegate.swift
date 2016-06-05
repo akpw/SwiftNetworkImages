@@ -75,7 +75,7 @@ extension SampleImagesDataSourceDelegate: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                                referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 0 {
-            return CGSizeMake(collectionView.frame.size.width, 75)
+            return CGSizeMake(collectionView.frame.size.width, 80)
         }
         else {
             return CGSizeMake(collectionView.frame.size.width, 35)
@@ -84,28 +84,6 @@ extension SampleImagesDataSourceDelegate: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 2
-    }
-}
-
-/// AKPCollectionViewFlowLayoutDelegate
-extension SampleImagesDataSourceDelegate: AKPCollectionViewFlowLayoutDelegate {
-    func collectionView(collectionView: UICollectionView,
-                                    viewForGlobalSupplementaryElementOfKind kind: String,
-                                    atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let globalHeader: ImageCollectionViewGlobalHeader =
-            collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,
-                                                                  forIndexPath: indexPath)
-        globalHeader.sectionHeaderText = _imagesDataSource?.headerInSection(indexPath.section)
-        return globalHeader
-    }
-    
-    func collectionView(collectionView: UICollectionView,
-                        heightForGlobalSupplementaryElementOfKind kind: String,
-                                                                atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let globalHeader: ImageCollectionViewGlobalHeader =
-            collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,
-                                                                  forIndexPath: indexPath)
-        return globalHeader
     }
 }
 
