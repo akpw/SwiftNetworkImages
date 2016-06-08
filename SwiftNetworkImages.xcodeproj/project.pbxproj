@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		572078ED1D08409E00CD2BA8 /* UITableView+DefaultReuse.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572078EC1D08409E00CD2BA8 /* UITableView+DefaultReuse.swift.swift */; };
 		572DBF681CFAC26000C497D9 /* NSObject+Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572DBF671CFAC26000C497D9 /* NSObject+Configure.swift */; };
 		574E9D831CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E9D821CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift */; };
 		5780C73C1CE0841800607FB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5780C7141CE0841800607FB5 /* AppDelegate.swift */; };
@@ -64,6 +65,7 @@
 		0348412150D1B292F9ED4373 /* Pods-SwiftNetworkImagesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNetworkImagesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNetworkImagesTests/Pods-SwiftNetworkImagesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		278D1F251BB5015386556F4B /* Pods-SwiftNetworkImages.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNetworkImages.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNetworkImages/Pods-SwiftNetworkImages.debug.xcconfig"; sourceTree = "<group>"; };
 		3DFBACEA12DF2F69DDD33E6E /* Pods-SwiftNetworkImages.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNetworkImages.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNetworkImages/Pods-SwiftNetworkImages.release.xcconfig"; sourceTree = "<group>"; };
+		572078EC1D08409E00CD2BA8 /* UITableView+DefaultReuse.swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+DefaultReuse.swift.swift"; sourceTree = "<group>"; };
 		572DBF671CFAC26000C497D9 /* NSObject+Configure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Configure.swift"; sourceTree = "<group>"; };
 		574E9D821CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewGlobalHeader.swift; sourceTree = "<group>"; };
 		5780C7141CE0841800607FB5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				5780C71F1CE0841800607FB5 /* UICollectionView+DefaultReuse.swift */,
 				5780C76C1CE1D2FE00607FB5 /* Array+Helpers.swift */,
 				572DBF671CFAC26000C497D9 /* NSObject+Configure.swift */,
+				572078EC1D08409E00CD2BA8 /* UITableView+DefaultReuse.swift.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -346,12 +349,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 57AD50541CE0822C00EF9693 /* Build configuration list for PBXNativeTarget "SwiftNetworkImages" */;
 			buildPhases = (
-				FADCC46416CEBE55B8508BE1 /* Check Pods Manifest.lock */,
+				FADCC46416CEBE55B8508BE1 /* 📦 Check Pods Manifest.lock */,
 				57AD503E1CE0822C00EF9693 /* Sources */,
 				57AD503F1CE0822C00EF9693 /* Frameworks */,
 				57AD50401CE0822C00EF9693 /* Resources */,
-				6A1814FA6FE895882B0F2A28 /* Embed Pods Frameworks */,
-				E015EA1F92BAC1E792E87DD1 /* Copy Pods Resources */,
+				6A1814FA6FE895882B0F2A28 /* 📦 Embed Pods Frameworks */,
+				E015EA1F92BAC1E792E87DD1 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -366,12 +369,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 57AD50641CE0835200EF9693 /* Build configuration list for PBXNativeTarget "SwiftNetworkImagesTests" */;
 			buildPhases = (
-				E0065B274158E0FCF5AA074C /* Check Pods Manifest.lock */,
+				E0065B274158E0FCF5AA074C /* 📦 Check Pods Manifest.lock */,
 				57AD50571CE0835200EF9693 /* Sources */,
 				57AD50581CE0835200EF9693 /* Frameworks */,
 				57AD50591CE0835200EF9693 /* Resources */,
-				85F715D840C7471DF9B8EBF3 /* Embed Pods Frameworks */,
-				3EDCF5FA0BEDCA4F381FC730 /* Copy Pods Resources */,
+				85F715D840C7471DF9B8EBF3 /* 📦 Embed Pods Frameworks */,
+				3EDCF5FA0BEDCA4F381FC730 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -442,14 +445,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3EDCF5FA0BEDCA4F381FC730 /* Copy Pods Resources */ = {
+		3EDCF5FA0BEDCA4F381FC730 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,14 +460,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftNetworkImagesTests/Pods-SwiftNetworkImagesTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6A1814FA6FE895882B0F2A28 /* Embed Pods Frameworks */ = {
+		6A1814FA6FE895882B0F2A28 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,14 +475,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftNetworkImages/Pods-SwiftNetworkImages-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		85F715D840C7471DF9B8EBF3 /* Embed Pods Frameworks */ = {
+		85F715D840C7471DF9B8EBF3 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,14 +490,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftNetworkImagesTests/Pods-SwiftNetworkImagesTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E0065B274158E0FCF5AA074C /* Check Pods Manifest.lock */ = {
+		E0065B274158E0FCF5AA074C /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,14 +505,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		E015EA1F92BAC1E792E87DD1 /* Copy Pods Resources */ = {
+		E015EA1F92BAC1E792E87DD1 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,14 +520,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftNetworkImages/Pods-SwiftNetworkImages-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FADCC46416CEBE55B8508BE1 /* Check Pods Manifest.lock */ = {
+		FADCC46416CEBE55B8508BE1 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -570,6 +573,7 @@
 				5780C74B1CE0841800607FB5 /* UICollectionReusableViews.swift in Sources */,
 				5780C7561CE0841800607FB5 /* ImageVewModel.swift in Sources */,
 				5780C7441CE0841800607FB5 /* UICollectionView+DefaultReuse.swift in Sources */,
+				572078ED1D08409E00CD2BA8 /* UITableView+DefaultReuse.swift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

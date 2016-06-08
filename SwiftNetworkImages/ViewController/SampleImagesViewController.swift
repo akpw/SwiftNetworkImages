@@ -15,53 +15,38 @@ import UIKit
 
 
 class SampleImagesViewController: UIViewController, UIPopoverPresentationControllerDelegate {
-    
-   
     func showPopover(sender: UIBarButtonItem) {
-        let vc = MultipleChoiceController(style: UITableViewStyle.Grouped)
-        vc.choices = ["First Section is GLobal Header",
+        let configController = ConfigController(style: UITableViewStyle.Grouped)
+        configController.configOptions = ["First Section is Global Header",
                       "First Section is Stretchable",
                       "Sections Pin to Global Header or Visible Bounds"]
-        vc.allowMultipleSelections = true
+        configController.selectedOptions = configController.configOptions!
+        configController.modalPresentationStyle = .Popover
+        configController.preferredContentSize = CGSizeMake(380, configController.height)
         
-        vc.modalPresentationStyle = .Popover
-        vc.preferredContentSize = CGSizeMake(400, vc.height)
-        
-        if let popoverPresentationViewController = vc.popoverPresentationController {
+        if let popoverPresentationViewController = configController.popoverPresentationController {
             popoverPresentationViewController.permittedArrowDirections = .Any
             popoverPresentationViewController.delegate = self
             popoverPresentationViewController.barButtonItem = sender
-            presentViewController(vc, animated: true, completion: nil)
+            presentViewController(configController, animated: true, completion: nil)
         }
     }
 
 
-func adaptivePresentationStyleForPresentationController(controller: UIPresentationController)
-                                                                            -> UIModalPresentationStyle{
-    return .None
-}
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController)
+                                                                                -> UIModalPresentationStyle{
+            return .None
+    }
     
     func popoverPresentationControllerDidDismissPopover(popoverPresentationController:
                                                                 UIPopoverPresentationController) {
-        if let vc  = popoverPresentationController.presentedViewController as? MultipleChoiceController {
-            print(vc.selectedItems)
+        if let vc  = popoverPresentationController.presentedViewController as? ConfigController {
+            print(vc.selectedOptions)
         }
     }
 
     
-    
-    func showConfig() {
-        let vc = MultipleChoiceController(style: UITableViewStyle.Grouped)
-        vc.choices = ["Apples", "Oranges", "Bananas"] //Provide an array of choices. These must be NSObjects.
-        
-        vc.allowMultipleSelections = true
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-        
-    }
-    
-    
-    func multipleChoiceController(controller: MultipleChoiceController, didSelectItems items: [NSObject]) {
+    func multipleChoiceController(controller: ConfigController, didSelectItems items: [NSObject]) {
         //Do something with the "items" the user selected.
         print(items)
     }
