@@ -20,6 +20,7 @@ import UIKit
 class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
     var firstSectionIsGlobalHeader = true
     var firstSectionIsStretchable = true
+    var sectionsPinToGlobalHeaderOrVisibleBounds = true
     
     // MARK: - 📐Custom Layout
     /// Adds custom sticky header to the  UICollectionViewFlowLayout attributes
@@ -78,7 +79,7 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
               let invalidationContext = super.invalidationContextForBoundsChange(newBounds)
                                                 as? UICollectionViewFlowLayoutInvalidationContext,
               let oldBounds = collectionView?.bounds
-                                                else {return super.invalidationContextForBoundsChange(newBounds)}
+                                                else { return super.invalidationContextForBoundsChange(newBounds) }
         // Size changes?
         if oldBounds.size != newBounds.size {
             // re-query the collection view delegate for metrics such as size information etc.
@@ -101,15 +102,19 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
     // MARK: - 🕶Private Helpers
     // iOS9 supports sticky headers natively, so see if it should be used instead
     private var _shouldDoCustomLayout: Bool {
-        return !sectionHeadersPinToVisibleBounds
+        let requestForCustomLayout =  firstSectionIsGlobalHeader ||
+                                      firstSectionIsStretchable ||
+                                      sectionsPinToGlobalHeaderOrVisibleBounds
+        return !sectionHeadersPinToVisibleBounds && requestForCustomLayout
     }
     private let _zIndexForSectionHeader = 1024
 
-    /// Given a rect, calculates indexes of confined section headers
+    /// Given a rect, calculates indexes of confined section headers 
+    /// including the custom headers
     private func sectionsHeadersIDxs(forRect rect: CGRect) -> Set<Int>? {
         guard let layoutAttributes = super.layoutAttributesForElementsInRect(rect) else {return nil}
         var headersIdxs = layoutAttributes
-            .filter { $0.representedElementCategory == .Cell ||
+            .filter { (sectionsPinToGlobalHeaderOrVisibleBounds && $0.representedElementCategory == .Cell) ||
                 $0.representedElementKind == UICollectionElementKindSectionHeader }
             .reduce(Set<Int>()) {
                 var m = $0
@@ -123,6 +128,7 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
     
     /// Given a rect, calculates the indexes of confined custom section headers
+    /// excluding the regular headers handled by UICollectionViewFlowLayout
     private func customSectionHeadersIdxs(rect: CGRect) -> Set<Int>? {
         guard let layoutAttributes = super.layoutAttributesForElementsInRect(rect),
             sectionIdxs = sectionsHeadersIDxs(forRect: rect)  else {return nil}
@@ -157,11 +163,13 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
         //   (adjusting a few more things along the way)
         var offset = collectionView.contentOffset.y + collectionView.contentInset.top
         if (section > 0) {
-            if firstSectionIsGlobalHeader {
-                // A global header adjustment
-                offset += firstSectionHeight + firstSectionInsets.top
+            if sectionsPinToGlobalHeaderOrVisibleBounds {
+                if firstSectionIsGlobalHeader {
+                    // A global header adjustment
+                    offset += firstSectionHeight + firstSectionInsets.top
+                }
+                sectionFrame.origin.y = min(max(offset, minY), maxY)
             }
-            sectionFrame.origin.y = min(max(offset, minY), maxY)
         } else {
             if firstSectionIsStretchable && offset < 0 {
                 // A stretchy header adjustment

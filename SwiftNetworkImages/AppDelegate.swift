@@ -19,7 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         window = {
             $0.backgroundColor = UIColor.whiteColor()
-            $0.rootViewController = configureTopViewController()
+            let controller = configureTopViewController()
+            let navigationController = UINavigationController(rootViewController: controller)
+
+            $0.rootViewController = navigationController
             $0.makeKeyAndVisible()
             return $0
         }( UIWindow(frame: UIScreen.mainScreen().bounds) )

@@ -14,11 +14,66 @@ import UIKit
  */
 
 
-class SampleImagesViewController: UIViewController {
+class SampleImagesViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+    
+   
+    func showPopover(sender: UIBarButtonItem) {
+        let vc = MultipleChoiceController(style: UITableViewStyle.Grouped)
+        vc.choices = ["First Section is GLobal Header",
+                      "First Section is Stretchable",
+                      "Sections Pin to Global Header or Visible Bounds"]
+        vc.allowMultipleSelections = true
+        
+        vc.modalPresentationStyle = .Popover
+        vc.preferredContentSize = CGSizeMake(400, vc.height)
+        
+        if let popoverPresentationViewController = vc.popoverPresentationController {
+            popoverPresentationViewController.permittedArrowDirections = .Any
+            popoverPresentationViewController.delegate = self
+            popoverPresentationViewController.barButtonItem = sender
+            presentViewController(vc, animated: true, completion: nil)
+        }
+    }
+
+
+func adaptivePresentationStyleForPresentationController(controller: UIPresentationController)
+                                                                            -> UIModalPresentationStyle{
+    return .None
+}
+    
+    func popoverPresentationControllerDidDismissPopover(popoverPresentationController:
+                                                                UIPopoverPresentationController) {
+        if let vc  = popoverPresentationController.presentedViewController as? MultipleChoiceController {
+            print(vc.selectedItems)
+        }
+    }
+
+    
+    
+    func showConfig() {
+        let vc = MultipleChoiceController(style: UITableViewStyle.Grouped)
+        vc.choices = ["Apples", "Oranges", "Bananas"] //Provide an array of choices. These must be NSObjects.
+        
+        vc.allowMultipleSelections = true
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
+    
+    func multipleChoiceController(controller: MultipleChoiceController, didSelectItems items: [NSObject]) {
+        //Do something with the "items" the user selected.
+        print(items)
+    }
+
     
     // MARK: - ♻️Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action,
+                                                            target: self,
+                                                            action: #selector(showPopover(_:)))
         
         let flowLayout: AKPCollectionViewFlowLayout = {
             $0.minimumInteritemSpacing = 2
@@ -36,6 +91,10 @@ class SampleImagesViewController: UIViewController {
                                          forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
             $0.registerClass(ImageCollectionViewGlobalHeader.self,
                                         forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
+            
+            $0.allowsSelection = true
+            $0.allowsMultipleSelection = true
+            
             view.addSubview($0)
             //_configureForDebug($0)
             
@@ -65,7 +124,6 @@ extension SampleImagesViewController {
     // MARK: - 📐Constraints
     func setConstraints() {
         guard let collectionView = _collectionView else {return}
-        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.topAnchor.constraintEqualToAnchor(topLayoutGuide.topAnchor).active = true
         collectionView.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.bottomAnchor).active = true

@@ -38,7 +38,6 @@ class SampleImagesDataSourceDelegate: NSObject, UICollectionViewDataSource {
             let header: ImageCollectionViewGlobalHeader =
                 collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,
                                                                   forIndexPath: indexPath)
-            header.sectionHeaderText = _imagesDataSource?.headerInSection(indexPath.section)
             return header
         } else {
             let header: ImageCollectionViewHeader =

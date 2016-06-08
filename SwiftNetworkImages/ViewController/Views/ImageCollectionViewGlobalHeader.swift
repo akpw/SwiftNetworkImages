@@ -16,30 +16,29 @@
 
 import UIKit
 
-
 /// A custom UICollectionReusableView section header
 
 class ImageCollectionViewGlobalHeader: UICollectionReusableView {
-    var sectionHeaderLabel: UILabel?
-    var sectionHeaderText: String? {
-        didSet {
-            sectionHeaderLabel?.text = sectionHeaderText
-        }
-    }
+    var compositeStackView: UIStackView?
     
     // MARK: Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        sectionHeaderLabel = {
-            let label = UILabel()
-            label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-            label.text = "Global Section Header"
-            label.textAlignment = .Center
+        let globalHeaderStackView = configureStackView("About Cats and Dogs...",
+                                                   selector: #selector(onGLobalHeaderSwitch(_:)))
+        
+        compositeStackView = UIStackView().configure {
+            $0.axis = .Vertical
+            $0.distribution = .Fill
+            $0.alignment = .Fill
+            $0.spacing = 2.0
+            self.addSubview($0)
             
-            self.addSubview(label)
-            return label
-        }()
+            $0.addArrangedSubview(globalHeaderStackView)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
         
         backgroundColor = UIColor.darkGrayColor()
         setConstraints()
@@ -48,26 +47,60 @@ class ImageCollectionViewGlobalHeader: UICollectionReusableView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+}
+
+extension ImageCollectionViewGlobalHeader {
+    func onGLobalHeaderSwitch(on: Bool) {
+        
+    }
 }
 
 extension ImageCollectionViewGlobalHeader {
     // MARK: - 📐Constraints
     func setConstraints() {
-        guard let sectionHeaderLabel = sectionHeaderLabel else {return}
-        sectionHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
-        sectionHeaderLabel.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor).active = true
-        sectionHeaderLabel.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor).active = true
-        sectionHeaderLabel.leadingAnchor.constraintEqualToAnchor(self.leadingAnchor, constant: 20).active = true
+        guard let compositeStackView = compositeStackView else {return}
+        compositeStackView.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor).active = true
+        compositeStackView.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor).active = true
+        compositeStackView.leadingAnchor.constraintEqualToAnchor(self.leadingAnchor).active = true
+        compositeStackView.trailingAnchor.constraintEqualToAnchor(self.trailingAnchor).active = true
     }
-    
 }
+
+extension ImageCollectionViewGlobalHeader {
+    func configureStackView(labelText: String, selector: Selector) -> UIStackView {
+        let stackView = UIStackView().configure {
+            $0.axis = .Horizontal
+            $0.distribution = .Fill
+            $0.alignment = .Fill
+            $0.spacing = 2.0
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+        _ = UILabel().configure {
+            $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+            $0.textColor = UIColor.whiteColor()
+            $0.textAlignment = .Center
+            $0.text = labelText
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.setContentHuggingPriority(250.0, forAxis: .Horizontal)
+            $0.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Horizontal)
+            stackView.addArrangedSubview($0)
+        }
+        _ = UISwitch().configure {
+            $0.userInteractionEnabled = true
+            $0.on = true
+            $0.addTarget(self, action: selector, forControlEvents: .ValueChanged)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            stackView.addArrangedSubview($0)
+        }
+        return stackView
+    }
+}
+
 
 extension ImageCollectionViewGlobalHeader: DebugConfigurable {
     func _configureForDebug() {
         backgroundColor = UIColor.cyanColor()
     }
 }
-
-
-
 
