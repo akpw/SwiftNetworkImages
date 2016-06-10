@@ -8,6 +8,7 @@
 import Foundation
 
 /// Provides structured description of Sample Images data
+
 protocol ImageInfoLoadable {
     /// Load images info from a specified resource
     /// - returns: a sorted dictionary of [sections: items]    

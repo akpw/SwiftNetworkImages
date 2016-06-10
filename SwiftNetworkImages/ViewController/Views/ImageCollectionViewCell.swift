@@ -42,7 +42,7 @@ import UIKit
         
         roundedCornersView = RoundedCornersView().configure {
             $0.cornerRadius = 4.0
-            $0.backgroundColor = UIColor.lightTextColor()
+            $0.backgroundColor = .lightTextColor()
             contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -72,7 +72,7 @@ import UIKit
     // MARK: - 🕶Private
     private lazy var _loadingIndicator: UIActivityIndicatorView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.color = UIColor.darkGrayColor()
+        $0.color = .darkGrayColor()
         return $0
     }( UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge) )
 }
@@ -111,14 +111,15 @@ extension ImageCollectionViewCell {
     }
 }
 
+// MARK: - 🐞Debug configuration
 extension ImageCollectionViewCell: DebugConfigurable {
     func _configureForDebug() {
         guard let roundedCornersView = roundedCornersView,
             captionLabel = captionLabel, imageView = imageView else {return}
         
-        contentView.backgroundColor = UIColor.cyanColor()
-        roundedCornersView.backgroundColor = UIColor.greenColor()
-        imageView.backgroundColor = UIColor.redColor()
-        captionLabel.backgroundColor = UIColor.yellowColor()
+        contentView.backgroundColor = .cyanColor()
+        roundedCornersView.backgroundColor = .greenColor()
+        imageView.backgroundColor = .redColor()
+        captionLabel.backgroundColor = .yellowColor()
     }
 }

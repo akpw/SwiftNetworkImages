@@ -19,88 +19,79 @@ import UIKit
 /// A custom UICollectionReusableView section header
 
 class ImageCollectionViewGlobalHeader: UICollectionReusableView {
-    var compositeStackView: UIStackView?
+    var configStackView: UIStackView?
+    var configButton: UIButton?
+    var label: UILabel?
     
     // MARK: Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        let globalHeaderStackView = configureStackView("About Cats and Dogs...",
-                                                   selector: #selector(onGLobalHeaderSwitch(_:)))
-        
-        compositeStackView = UIStackView().configure {
-            $0.axis = .Vertical
-            $0.distribution = .Fill
-            $0.alignment = .Fill
-            $0.spacing = 2.0
-            self.addSubview($0)
-            
-            $0.addArrangedSubview(globalHeaderStackView)
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
-        
-        
-        backgroundColor = UIColor.darkGrayColor()
+
+        backgroundColor = .darkGrayColor()
+
+        configureStackView()
         setConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
 }
 
 extension ImageCollectionViewGlobalHeader {
-    func onGLobalHeaderSwitch(on: Bool) {
-        
+    func configureStackView() {
+        label = UILabel().configure {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+            $0.textColor = .whiteColor()
+            $0.textAlignment = .Center
+            $0.text = "About Cats and Dogs"
+            $0.setContentHuggingPriority(249, forAxis: .Horizontal)
+            $0.setContentCompressionResistancePriority(500, forAxis: .Horizontal)
+        }
+        configButton = UIButton(type: .Custom).configure {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.setBackgroundImage(UIImage(asset: .LayoutConfigOptions), forState: .Normal)
+            $0.showsTouchWhenHighlighted = true
+            $0.addTarget(nil, action: .showLayoutConfigOptions, forControlEvents:.TouchUpInside)
+        }
+        configStackView = UIStackView().configure {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.axis = .Horizontal
+            $0.distribution = .Fill
+            $0.alignment = .Center
+            $0.spacing = 10.0
+            $0.layoutMargins = UIEdgeInsets(top: 0, left: $0.spacing, bottom: 0, right: $0.spacing)
+            $0.layoutMarginsRelativeArrangement = true
+            $0.addArrangedSubview(label!)
+            $0.addArrangedSubview(configButton!)
+            self.addSubview($0)
+        }
     }
 }
 
 extension ImageCollectionViewGlobalHeader {
     // MARK: - 📐Constraints
     func setConstraints() {
-        guard let compositeStackView = compositeStackView else {return}
-        compositeStackView.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor).active = true
-        compositeStackView.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor).active = true
-        compositeStackView.leadingAnchor.constraintEqualToAnchor(self.leadingAnchor).active = true
-        compositeStackView.trailingAnchor.constraintEqualToAnchor(self.trailingAnchor).active = true
+        guard let configStackView = configStackView else {return}
+        
+        configStackView.topAnchor.constraintEqualToAnchor(self.topAnchor).active = true
+        configStackView.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor).active = true
+        configStackView.leadingAnchor.constraintEqualToAnchor(self.leadingAnchor).active = true
+        configStackView.trailingAnchor.constraintEqualToAnchor(self.trailingAnchor).active = true
     }
 }
 
-extension ImageCollectionViewGlobalHeader {
-    func configureStackView(labelText: String, selector: Selector) -> UIStackView {
-        let stackView = UIStackView().configure {
-            $0.axis = .Horizontal
-            $0.distribution = .Fill
-            $0.alignment = .Fill
-            $0.spacing = 2.0
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
-        _ = UILabel().configure {
-            $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-            $0.textColor = UIColor.whiteColor()
-            $0.textAlignment = .Center
-            $0.text = labelText
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.setContentHuggingPriority(250.0, forAxis: .Horizontal)
-            $0.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Horizontal)
-            stackView.addArrangedSubview($0)
-        }
-        _ = UISwitch().configure {
-            $0.userInteractionEnabled = true
-            $0.on = true
-            $0.addTarget(self, action: selector, forControlEvents: .ValueChanged)
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            stackView.addArrangedSubview($0)
-        }
-        return stackView
-    }
-}
-
-
+// MARK: - 🐞Debug configuration
 extension ImageCollectionViewGlobalHeader: DebugConfigurable {
     func _configureForDebug() {
-        backgroundColor = UIColor.cyanColor()
+        backgroundColor = .cyanColor()
     }
 }
+
+// MARK: - private Selector extension for usage with the responder chain
+private extension Selector {
+    static let showLayoutConfigOptions = #selector(SampleImagesViewController.showLayoutConfigOptions(_:))
+}
+
 

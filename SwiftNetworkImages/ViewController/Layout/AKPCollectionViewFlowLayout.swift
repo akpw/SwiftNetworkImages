@@ -9,18 +9,32 @@
 import UIKit
 
 /**
- Sticky Headers using UICollectionViewFlowLayout
- Works for both for iOS8 and iOS9.
- 
- For iOS9, since the sticky headers functionality is already built-in,
- it checks the `sectionHeadersPinToVisibleBounds` property not to interfere
- with the out-of-the-box implementation
+ Global / Sticky / Stretchy Headers using UICollectionViewFlowLayout
+ Works for both for iOS8 and iOS9
  */
 
+enum AKPCollectionViewFlowLayoutError: ErrorType {
+    case SectionHeadersPinToVisibleBoundsError
+}
+
 class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
-    var firstSectionIsGlobalHeader = true
-    var firstSectionIsStretchable = true
-    var sectionsPinToGlobalHeaderOrVisibleBounds = true
+    var layoutOptions: LayoutConfigOptions = [.FirstSectionIsGlobalHeader,
+                                              .FirstSectionStretchable,
+                                              .SectionsPinToGlobalHeaderOrVisibleBounds]
+    
+    // AKPCollectionViewFlowLayout supports sticky headers by default,
+    // and it should not interfere with the the built-in functionality
+    override var sectionHeadersPinToVisibleBounds: Bool {
+        didSet {
+            do {
+                try _checkSectionHeadersPinToVisibleBounds(sectionHeadersPinToVisibleBounds)
+            } catch {
+                print("AKPCollectionViewFlowLayout supports sticky headers by default, therefore " +
+                      "The built-in functionality via sectionHeadersPinToVisibleBounds has been disabled")
+                sectionHeadersPinToVisibleBounds = false
+            }
+        }
+    }
     
     // MARK: - 📐Custom Layout
     /// Adds custom sticky header to the  UICollectionViewFlowLayout attributes
@@ -100,12 +114,25 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
     
     // MARK: - 🕶Private Helpers
-    // iOS9 supports sticky headers natively, so see if it should be used instead
     private var _shouldDoCustomLayout: Bool {
-        let requestForCustomLayout =  firstSectionIsGlobalHeader ||
-                                      firstSectionIsStretchable ||
-                                      sectionsPinToGlobalHeaderOrVisibleBounds
-        return !sectionHeadersPinToVisibleBounds && requestForCustomLayout
+        let requestForCustomLayout = layoutOptions.contains(.FirstSectionIsGlobalHeader) ||
+                                     layoutOptions.contains(.FirstSectionStretchable) ||
+                                     layoutOptions.contains(.SectionsPinToGlobalHeaderOrVisibleBounds)
+        
+        // hope the annoying compiler warning (Radar 21324005) will get fixed at some point...
+        // http://ericasadun.com/2015/06/10/swift-is-available-the-most-irritating-new-swift-feature/
+        if #available(iOS 9.0, *) {
+            // iOS9 supports sticky headers natively, so we should not 
+            // interfere with the the built-in functionality
+            return !sectionHeadersPinToVisibleBounds && requestForCustomLayout
+        }
+        return requestForCustomLayout
+    }
+    
+    private func _checkSectionHeadersPinToVisibleBounds(value: Bool) throws {
+        if value {
+            throw AKPCollectionViewFlowLayoutError.SectionHeadersPinToVisibleBoundsError
+        }
     }
     private let _zIndexForSectionHeader = 1024
 
@@ -114,14 +141,15 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
     private func sectionsHeadersIDxs(forRect rect: CGRect) -> Set<Int>? {
         guard let layoutAttributes = super.layoutAttributesForElementsInRect(rect) else {return nil}
         var headersIdxs = layoutAttributes
-            .filter { (sectionsPinToGlobalHeaderOrVisibleBounds && $0.representedElementCategory == .Cell) ||
-                $0.representedElementKind == UICollectionElementKindSectionHeader }
+            .filter { ( layoutOptions.contains(.SectionsPinToGlobalHeaderOrVisibleBounds) &&
+                        $0.representedElementCategory == .Cell ) ||
+                            $0.representedElementKind == UICollectionElementKindSectionHeader }
             .reduce(Set<Int>()) {
                 var m = $0
                 m.insert($1.indexPath.section)
                 return m
         }
-        if firstSectionIsGlobalHeader {
+        if layoutOptions.contains(.FirstSectionIsGlobalHeader) {
             headersIdxs.insert(0)
         }
         return headersIdxs
@@ -163,19 +191,19 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
         //   (adjusting a few more things along the way)
         var offset = collectionView.contentOffset.y + collectionView.contentInset.top
         if (section > 0) {
-            if sectionsPinToGlobalHeaderOrVisibleBounds {
-                if firstSectionIsGlobalHeader {
+            if layoutOptions.contains(.SectionsPinToGlobalHeaderOrVisibleBounds) {
+                if layoutOptions.contains(.FirstSectionIsGlobalHeader) {
                     // A global header adjustment
                     offset += firstSectionHeight + firstSectionInsets.top
                 }
                 sectionFrame.origin.y = min(max(offset, minY), maxY)
             }
         } else {
-            if firstSectionIsStretchable && offset < 0 {
+            if layoutOptions.contains(.FirstSectionStretchable) && offset < 0 {
                 // A stretchy header adjustment
                 sectionFrame.size.height = firstSectionHeight - offset
                 sectionFrame.origin.y += offset + firstSectionInsets.top
-            } else if firstSectionIsGlobalHeader {
+            } else if layoutOptions.contains(.FirstSectionIsGlobalHeader) {
                 // A global header adjustment
                 sectionFrame.origin.y += offset + firstSectionInsets.top
             } else {

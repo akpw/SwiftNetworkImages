@@ -32,7 +32,7 @@ class ImageCollectionViewHeader: UICollectionReusableView {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
 
-        backgroundColor = UIColor.lightGrayColor()
+        backgroundColor = .lightGrayColor()
         setConstraints()
     }
     
@@ -51,9 +51,10 @@ extension ImageCollectionViewHeader {
     }
 }
 
+// MARK: - 🐞Debug configuration
 extension ImageCollectionViewHeader: DebugConfigurable {
     func _configureForDebug() {
-        backgroundColor = UIColor.magentaColor()
+        backgroundColor = .magentaColor()
     }
 }
 
