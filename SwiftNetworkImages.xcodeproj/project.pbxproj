@@ -33,7 +33,6 @@
 		5780C74E1CE0841800607FB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5780C72C1CE0841800607FB5 /* LaunchScreen.storyboard */; };
 		5780C7501CE0841800607FB5 /* ImagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5780C7311CE0841800607FB5 /* ImagesDataSource.swift */; };
 		5780C7511CE0841800607FB5 /* SampleImagesDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5780C7331CE0841800607FB5 /* SampleImagesDataSourceDelegate.swift */; };
-		5780C7521CE0841800607FB5 /* AKPStickyHeadersLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5780C7351CE0841800607FB5 /* AKPStickyHeadersLayout.swift */; };
 		5780C7531CE0841800607FB5 /* SampleImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5780C7361CE0841800607FB5 /* SampleImagesViewController.swift */; };
 		5780C7541CE0841800607FB5 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5780C7381CE0841800607FB5 /* ImageCollectionViewCell.swift */; };
 		5780C7551CE0841800607FB5 /* ImageCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5780C7391CE0841800607FB5 /* ImageCollectionViewHeader.swift */; };
@@ -93,14 +92,13 @@
 		5780C72D1CE0841800607FB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5780C7311CE0841800607FB5 /* ImagesDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesDataSource.swift; sourceTree = "<group>"; };
 		5780C7331CE0841800607FB5 /* SampleImagesDataSourceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleImagesDataSourceDelegate.swift; sourceTree = "<group>"; };
-		5780C7351CE0841800607FB5 /* AKPStickyHeadersLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AKPStickyHeadersLayout.swift; path = SwiftNetworkImages/ViewController/Layout/AKPStickyHeadersLayout.swift; sourceTree = "<group>"; };
 		5780C7361CE0841800607FB5 /* SampleImagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleImagesViewController.swift; sourceTree = "<group>"; };
 		5780C7381CE0841800607FB5 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		5780C7391CE0841800607FB5 /* ImageCollectionViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewHeader.swift; sourceTree = "<group>"; };
 		5780C73B1CE0841800607FB5 /* ImageVewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageVewModel.swift; sourceTree = "<group>"; };
 		5780C75A1CE0861B00607FB5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5780C75D1CE087F600607FB5 /* ImageFetcherSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFetcherSpec.swift; sourceTree = "<group>"; };
-		5780C7601CE0B2C800607FB5 /* NSURLSessionNetworkImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSURLSessionNetworkImageService.swift; path = SwiftNetworkImages/DataAccess/Networking/NSURLSessionNetworkImageService.swift; sourceTree = SOURCE_ROOT; };
+		5780C7601CE0B2C800607FB5 /* NSURLSessionNetworkImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLSessionNetworkImageService.swift; sourceTree = "<group>"; };
 		5780C7651CE0CD4300607FB5 /* DispatchHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchHelpers.swift; sourceTree = "<group>"; };
 		5780C7671CE1A6F400607FB5 /* ImageInfoLoadableSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageInfoLoadableSpec.swift; sourceTree = "<group>"; };
 		5780C76A1CE1BE0300607FB5 /* NetworkImageServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkImageServiceConfiguration.swift; sourceTree = "<group>"; };
@@ -112,7 +110,7 @@
 		57AD505F1CE0835200EF9693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57AE48BC1CEC5B41007A538E /* AKPCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		57B9C00A1D040C9100800CB9 /* DebugConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugConfigurable.swift; sourceTree = "<group>"; };
-		57B9C00E1D06EB4E00800CB9 /* LayoutConfigController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutConfigController.swift; path = ../../LayoutConfigController.swift; sourceTree = "<group>"; };
+		57B9C00E1D06EB4E00800CB9 /* LayoutConfigController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConfigController.swift; sourceTree = "<group>"; };
 		B55CE5C336134BBFDA1F9381 /* Pods-SwiftNetworkImagesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNetworkImagesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNetworkImagesTests/Pods-SwiftNetworkImagesTests.release.xcconfig"; sourceTree = "<group>"; };
 		C27D590D1D8C4247A022E3B9 /* Pods_SwiftNetworkImages.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftNetworkImages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDECDCE258BE428EC5463E21 /* Pods_SwiftNetworkImagesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftNetworkImagesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,14 +136,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		577717B31CEDF634006D9216 /* _Archive */ = {
-			isa = PBXGroup;
-			children = (
-				5780C7351CE0841800607FB5 /* AKPStickyHeadersLayout.swift */,
-			);
-			name = _Archive;
-			sourceTree = "<group>";
-		};
 		5780C7131CE083C300607FB5 /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,9 +148,9 @@
 			isa = PBXGroup;
 			children = (
 				5780C7171CE0841800607FB5 /* Networking */,
+				5780C7161CE0841800607FB5 /* Animals.plist */,
 				5780C71B1CE0841800607FB5 /* ImageFetcher.swift */,
 				5780C71C1CE0841800607FB5 /* ImageInfoLoader.swift */,
-				5780C7161CE0841800607FB5 /* Animals.plist */,
 			);
 			path = DataAccess;
 			sourceTree = "<group>";
@@ -168,10 +158,10 @@
 		5780C7171CE0841800607FB5 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				5780C7181CE0841800607FB5 /* NetworkImageService.swift */,
 				5780C71A1CE0841800607FB5 /* AlamofireNetworkImageService.swift */,
 				5780C7601CE0B2C800607FB5 /* NSURLSessionNetworkImageService.swift */,
 				5780C7191CE0841800607FB5 /* NetworkError.swift */,
+				5780C7181CE0841800607FB5 /* NetworkImageService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -179,10 +169,10 @@
 		5780C71D1CE0841800607FB5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5780C71E1CE0841800607FB5 /* CollectionType+BinarySearch.swift */,
-				5780C71F1CE0841800607FB5 /* UICollectionView+DefaultReuse.swift */,
 				5780C76C1CE1D2FE00607FB5 /* Array+Helpers.swift */,
+				5780C71E1CE0841800607FB5 /* CollectionType+BinarySearch.swift */,
 				572DBF671CFAC26000C497D9 /* NSObject+Configure.swift */,
+				5780C71F1CE0841800607FB5 /* UICollectionView+DefaultReuse.swift */,
 				572078EC1D08409E00CD2BA8 /* UITableView+DefaultReuse.swift.swift */,
 			);
 			path = Extensions;
@@ -191,15 +181,15 @@
 		5780C7201CE0841800607FB5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				5780C7221CE0841800607FB5 /* DependencyInjectable.swift */,
-				5780C7261CE0841800607FB5 /* SortedDictionary.swift */,
-				5780C7271CE0841800607FB5 /* UICollectionReusableViews.swift */,
-				5780C7231CE0841800607FB5 /* Observable.swift */,
 				5780C7211CE0841800607FB5 /* CustomErrorConvertible.swift */,
+				57B9C00A1D040C9100800CB9 /* DebugConfigurable.swift */,
+				5780C7221CE0841800607FB5 /* DependencyInjectable.swift */,
 				5780C7651CE0CD4300607FB5 /* DispatchHelpers.swift */,
+				5780C7231CE0841800607FB5 /* Observable.swift */,
 				5780C7241CE0841800607FB5 /* Result.swift */,
 				5780C7251CE0841800607FB5 /* RoundedCornersView.swift */,
-				57B9C00A1D040C9100800CB9 /* DebugConfigurable.swift */,
+				5780C7261CE0841800607FB5 /* SortedDictionary.swift */,
+				5780C7271CE0841800607FB5 /* UICollectionReusableViews.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -226,14 +216,13 @@
 		5780C72F1CE0841800607FB5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5780C7361CE0841800607FB5 /* SampleImagesViewController.swift */,
-				57B9C00E1D06EB4E00800CB9 /* LayoutConfigController.swift */,
 				5780C7301CE0841800607FB5 /* DataSource */,
 				5780C7321CE0841800607FB5 /* DatasourceDelegateProvider */,
 				5780C7371CE0841800607FB5 /* Views */,
+				57B9C00E1D06EB4E00800CB9 /* LayoutConfigController.swift */,
+				5780C7361CE0841800607FB5 /* SampleImagesViewController.swift */,
 			);
-			name = ViewControllers;
-			path = ViewController;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		5780C7301CE0841800607FB5 /* DataSource */ = {
@@ -258,16 +247,15 @@
 				57AE48BC1CEC5B41007A538E /* AKPCollectionViewFlowLayout.swift */,
 				57267E781D09382A00396CCC /* LayoutConfigOptions.swift */,
 			);
-			name = Layout;
-			path = ViewController/Layout;
+			path = Layout;
 			sourceTree = "<group>";
 		};
 		5780C7371CE0841800607FB5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				5780C7381CE0841800607FB5 /* ImageCollectionViewCell.swift */,
-				5780C7391CE0841800607FB5 /* ImageCollectionViewHeader.swift */,
 				574E9D821CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift */,
+				5780C7391CE0841800607FB5 /* ImageCollectionViewHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -283,7 +271,6 @@
 		57AD50391CE0822C00EF9693 = {
 			isa = PBXGroup;
 			children = (
-				577717B31CEDF634006D9216 /* _Archive */,
 				57AD50441CE0822C00EF9693 /* SwiftNetworkImages */,
 				57AD505C1CE0835200EF9693 /* SwiftNetworkImagesTests */,
 				FD21DA43CDFEF49BBF8BB9C4 /* Frameworks */,
@@ -304,15 +291,15 @@
 		57AD50441CE0822C00EF9693 /* SwiftNetworkImages */ = {
 			isa = PBXGroup;
 			children = (
-				5780C7141CE0841800607FB5 /* AppDelegate.swift */,
+				5780C7341CE0841800607FB5 /* Layout */,
 				5780C7151CE0841800607FB5 /* DataAccess */,
 				5780C7281CE0841800607FB5 /* Model */,
 				5780C73A1CE0841800607FB5 /* ViewModel */,
 				5780C72F1CE0841800607FB5 /* ViewControllers */,
-				5780C7341CE0841800607FB5 /* Layout */,
 				5780C71D1CE0841800607FB5 /* Extensions */,
 				5780C7201CE0841800607FB5 /* Helpers */,
 				5780C72A1CE0841800607FB5 /* Supporting Files */,
+				5780C7141CE0841800607FB5 /* AppDelegate.swift */,
 			);
 			path = SwiftNetworkImages;
 			sourceTree = "<group>";
@@ -321,11 +308,11 @@
 			isa = PBXGroup;
 			children = (
 				5780C7131CE083C300607FB5 /* Support */,
-				5780C76A1CE1BE0300607FB5 /* NetworkImageServiceConfiguration.swift */,
 				5780C7701CE1D88200607FB5 /* AlamofireNetworkImageServiceSpec.swift */,
-				5780C76E1CE1D87600607FB5 /* NSURLSessionNetworkImageServiceSpec.swift */,
 				5780C75D1CE087F600607FB5 /* ImageFetcherSpec.swift */,
 				5780C7671CE1A6F400607FB5 /* ImageInfoLoadableSpec.swift */,
+				5780C76E1CE1D87600607FB5 /* NSURLSessionNetworkImageServiceSpec.swift */,
+				5780C76A1CE1BE0300607FB5 /* NetworkImageServiceConfiguration.swift */,
 			);
 			path = SwiftNetworkImagesTests;
 			sourceTree = "<group>";
@@ -592,7 +579,6 @@
 				5780C73C1CE0841800607FB5 /* AppDelegate.swift in Sources */,
 				5780C7461CE0841800607FB5 /* DependencyInjectable.swift in Sources */,
 				5780C7421CE0841800607FB5 /* ImageInfoLoader.swift in Sources */,
-				5780C7521CE0841800607FB5 /* AKPStickyHeadersLayout.swift in Sources */,
 				5780C7481CE0841800607FB5 /* Result.swift in Sources */,
 				5780C7511CE0841800607FB5 /* SampleImagesDataSourceDelegate.swift in Sources */,
 				5780C7661CE0CD4300607FB5 /* DispatchHelpers.swift in Sources */,

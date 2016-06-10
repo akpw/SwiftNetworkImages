@@ -10,11 +10,11 @@ import UIKit
 
 /**
  Global / Sticky / Stretchy Headers using UICollectionViewFlowLayout
- Works for both for iOS8 and iOS9
+ Works for both iOS8 and iOS9
  */
 
 enum AKPCollectionViewFlowLayoutError: ErrorType {
-    case SectionHeadersPinToVisibleBoundsError
+    case SectionHeadersPinToVisibleBoundsSettingError
 }
 
 class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
@@ -27,10 +27,10 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
     override var sectionHeadersPinToVisibleBounds: Bool {
         didSet {
             do {
-                try _checkSectionHeadersPinToVisibleBounds(sectionHeadersPinToVisibleBounds)
+                try _checkSectionHeadersPinToVisibleBounds()
             } catch {
                 print("AKPCollectionViewFlowLayout supports sticky headers by default, therefore " +
-                      "The built-in functionality via sectionHeadersPinToVisibleBounds has been disabled")
+                      "the built-in functionality via sectionHeadersPinToVisibleBounds has been disabled")
                 sectionHeadersPinToVisibleBounds = false
             }
         }
@@ -129,9 +129,9 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
         return requestForCustomLayout
     }
     
-    private func _checkSectionHeadersPinToVisibleBounds(value: Bool) throws {
-        if value {
-            throw AKPCollectionViewFlowLayoutError.SectionHeadersPinToVisibleBoundsError
+    private func _checkSectionHeadersPinToVisibleBounds() throws {
+        if sectionHeadersPinToVisibleBounds {
+            throw AKPCollectionViewFlowLayoutError.SectionHeadersPinToVisibleBoundsSettingError
         }
     }
     private let _zIndexForSectionHeader = 1024
