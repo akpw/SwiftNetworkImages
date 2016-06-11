@@ -35,9 +35,7 @@ Swift Network Images is a sample iOS app developed in Swift 2.2. While primarily
 
 ## TODOs
 * UICollectionView Custom Layout examples:
- - [x] Global sections
-  - [x] pinnable
-  - [x] stretchable
+ - [x] Global sections (pinnable, stretchable)
  - [x] Sticky headers 
  - [ ] Collapsible / expandable sections
  - [ ] Drag reodering
