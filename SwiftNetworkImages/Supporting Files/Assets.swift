@@ -8,16 +8,13 @@
 
 import UIKit
 
+/// Enumed images names from the project Asset Catalog 
+
 enum Asset: String {
     case LayoutConfigOptions = "LayoutConfigOptions"
+    case LayoutConfigOptionsTouched = "LayoutConfigOptionsTouched"
     
-    var image: UIImage? {
+    var image: UIImage {
         return UIImage(asset: self)
-    }
-}
-
-extension UIImage {
-    convenience init?(asset: Asset) {
-        self.init(named: asset.rawValue)
     }
 }

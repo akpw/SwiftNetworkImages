@@ -43,7 +43,7 @@ extension SampleImagesViewController {
         
         _collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout).configure {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.backgroundColor = .lightGrayColor()
+            $0.backgroundColor = UIColor.grayColor()
             
             $0.dataSource = _dataSourceDelegate
             $0.delegate = _dataSourceDelegate

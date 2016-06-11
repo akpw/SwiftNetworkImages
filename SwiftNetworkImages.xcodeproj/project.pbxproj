@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		572078ED1D08409E00CD2BA8 /* UITableView+DefaultReuse.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572078EC1D08409E00CD2BA8 /* UITableView+DefaultReuse.swift.swift */; };
 		57267E791D09382A00396CCC /* LayoutConfigOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57267E781D09382A00396CCC /* LayoutConfigOptions.swift */; };
 		572DBF681CFAC26000C497D9 /* NSObject+Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572DBF671CFAC26000C497D9 /* NSObject+Configure.swift */; };
 		574E9D831CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E9D821CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift */; };
@@ -45,6 +44,8 @@
 		5780C76D1CE1D2FE00607FB5 /* Array+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5780C76C1CE1D2FE00607FB5 /* Array+Helpers.swift */; };
 		5780C76F1CE1D87600607FB5 /* NSURLSessionNetworkImageServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5780C76E1CE1D87600607FB5 /* NSURLSessionNetworkImageServiceSpec.swift */; };
 		5780C7711CE1D88200607FB5 /* AlamofireNetworkImageServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5780C7701CE1D88200607FB5 /* AlamofireNetworkImageServiceSpec.swift */; };
+		57A24B221D0BDF2500DAAC8D /* AKPCollectionViewFlowLayoutError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A24B211D0BDF2500DAAC8D /* AKPCollectionViewFlowLayoutError.swift */; };
+		57A24B241D0C0A1600DAAC8D /* UIImage+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A24B231D0C0A1600DAAC8D /* UIImage+Assets.swift */; };
 		57AE48BD1CEC5B41007A538E /* AKPCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AE48BC1CEC5B41007A538E /* AKPCollectionViewFlowLayout.swift */; };
 		57B9C00B1D040C9100800CB9 /* DebugConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9C00A1D040C9100800CB9 /* DebugConfigurable.swift */; };
 		57B9C00F1D06EB4E00800CB9 /* LayoutConfigController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9C00E1D06EB4E00800CB9 /* LayoutConfigController.swift */; };
@@ -66,7 +67,6 @@
 		0348412150D1B292F9ED4373 /* Pods-SwiftNetworkImagesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNetworkImagesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNetworkImagesTests/Pods-SwiftNetworkImagesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		278D1F251BB5015386556F4B /* Pods-SwiftNetworkImages.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNetworkImages.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNetworkImages/Pods-SwiftNetworkImages.debug.xcconfig"; sourceTree = "<group>"; };
 		3DFBACEA12DF2F69DDD33E6E /* Pods-SwiftNetworkImages.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftNetworkImages.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftNetworkImages/Pods-SwiftNetworkImages.release.xcconfig"; sourceTree = "<group>"; };
-		572078EC1D08409E00CD2BA8 /* UITableView+DefaultReuse.swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+DefaultReuse.swift.swift"; sourceTree = "<group>"; };
 		57267E781D09382A00396CCC /* LayoutConfigOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConfigOptions.swift; sourceTree = "<group>"; };
 		572DBF671CFAC26000C497D9 /* NSObject+Configure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Configure.swift"; sourceTree = "<group>"; };
 		574E9D821CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewGlobalHeader.swift; sourceTree = "<group>"; };
@@ -105,6 +105,8 @@
 		5780C76C1CE1D2FE00607FB5 /* Array+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Helpers.swift"; sourceTree = "<group>"; };
 		5780C76E1CE1D87600607FB5 /* NSURLSessionNetworkImageServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLSessionNetworkImageServiceSpec.swift; sourceTree = "<group>"; };
 		5780C7701CE1D88200607FB5 /* AlamofireNetworkImageServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkImageServiceSpec.swift; sourceTree = "<group>"; };
+		57A24B211D0BDF2500DAAC8D /* AKPCollectionViewFlowLayoutError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPCollectionViewFlowLayoutError.swift; sourceTree = "<group>"; };
+		57A24B231D0C0A1600DAAC8D /* UIImage+Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Assets.swift"; path = "../Helpers/UIImage+Assets.swift"; sourceTree = "<group>"; };
 		57AD50421CE0822C00EF9693 /* SwiftNetworkImages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftNetworkImages.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57AD505B1CE0835200EF9693 /* SwiftNetworkImagesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftNetworkImagesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57AD505F1CE0835200EF9693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -173,7 +175,7 @@
 				5780C71E1CE0841800607FB5 /* CollectionType+BinarySearch.swift */,
 				572DBF671CFAC26000C497D9 /* NSObject+Configure.swift */,
 				5780C71F1CE0841800607FB5 /* UICollectionView+DefaultReuse.swift */,
-				572078EC1D08409E00CD2BA8 /* UITableView+DefaultReuse.swift.swift */,
+				57A24B231D0C0A1600DAAC8D /* UIImage+Assets.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -246,6 +248,7 @@
 			children = (
 				57AE48BC1CEC5B41007A538E /* AKPCollectionViewFlowLayout.swift */,
 				57267E781D09382A00396CCC /* LayoutConfigOptions.swift */,
+				57A24B211D0BDF2500DAAC8D /* AKPCollectionViewFlowLayoutError.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -254,8 +257,8 @@
 			isa = PBXGroup;
 			children = (
 				5780C7381CE0841800607FB5 /* ImageCollectionViewCell.swift */,
-				574E9D821CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift */,
 				5780C7391CE0841800607FB5 /* ImageCollectionViewHeader.swift */,
+				574E9D821CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 		57AD50441CE0822C00EF9693 /* SwiftNetworkImages */ = {
 			isa = PBXGroup;
 			children = (
+				5780C7141CE0841800607FB5 /* AppDelegate.swift */,
 				5780C7341CE0841800607FB5 /* Layout */,
 				5780C7151CE0841800607FB5 /* DataAccess */,
 				5780C7281CE0841800607FB5 /* Model */,
@@ -299,7 +303,6 @@
 				5780C71D1CE0841800607FB5 /* Extensions */,
 				5780C7201CE0841800607FB5 /* Helpers */,
 				5780C72A1CE0841800607FB5 /* Supporting Files */,
-				5780C7141CE0841800607FB5 /* AppDelegate.swift */,
 			);
 			path = SwiftNetworkImages;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				5780C73C1CE0841800607FB5 /* AppDelegate.swift in Sources */,
 				5780C7461CE0841800607FB5 /* DependencyInjectable.swift in Sources */,
 				5780C7421CE0841800607FB5 /* ImageInfoLoader.swift in Sources */,
+				57A24B221D0BDF2500DAAC8D /* AKPCollectionViewFlowLayoutError.swift in Sources */,
 				5780C7481CE0841800607FB5 /* Result.swift in Sources */,
 				5780C7511CE0841800607FB5 /* SampleImagesDataSourceDelegate.swift in Sources */,
 				5780C7661CE0CD4300607FB5 /* DispatchHelpers.swift in Sources */,
@@ -594,6 +598,7 @@
 				5780C7551CE0841800607FB5 /* ImageCollectionViewHeader.swift in Sources */,
 				5780C7431CE0841800607FB5 /* CollectionType+BinarySearch.swift in Sources */,
 				57B9C00F1D06EB4E00800CB9 /* LayoutConfigController.swift in Sources */,
+				57A24B241D0C0A1600DAAC8D /* UIImage+Assets.swift in Sources */,
 				5780C7451CE0841800607FB5 /* CustomErrorConvertible.swift in Sources */,
 				57267E791D09382A00396CCC /* LayoutConfigOptions.swift in Sources */,
 				5780C73E1CE0841800607FB5 /* NetworkImageService.swift in Sources */,
@@ -601,7 +606,6 @@
 				5780C74B1CE0841800607FB5 /* UICollectionReusableViews.swift in Sources */,
 				5780C7561CE0841800607FB5 /* ImageVewModel.swift in Sources */,
 				5780C7441CE0841800607FB5 /* UICollectionView+DefaultReuse.swift in Sources */,
-				572078ED1D08409E00CD2BA8 /* UITableView+DefaultReuse.swift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

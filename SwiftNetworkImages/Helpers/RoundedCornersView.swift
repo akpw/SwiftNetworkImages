@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// Rounded Corners UIViews
+/// UIView with Rounded Corners 
 
 class RoundedCornersView: UIView {
     var cornerRadius: CGFloat = 0 {

@@ -9,13 +9,9 @@
 import UIKit
 
 /**
- Global / Sticky / Stretchy Headers using UICollectionViewFlowLayout
- Works for both iOS8 and iOS9
+ Global / Sticky / Stretchy Headers using UICollectionViewFlowLayout.
+ Works for iOS8, iOS9 and above.
  */
-
-enum AKPCollectionViewFlowLayoutError: ErrorType {
-    case SectionHeadersPinToVisibleBoundsSettingError
-}
 
 class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
     var layoutOptions: LayoutConfigOptions = [.FirstSectionIsGlobalHeader,
@@ -42,7 +38,7 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
         guard _shouldDoCustomLayout else { return super.layoutAttributesForElementsInRect(rect) }
         
         guard var layoutAttributes = super.layoutAttributesForElementsInRect(rect),
-            // calucalte custom headers that should be confined in the rect
+            // calculate custom headers that should be confined in the rect
               let customSectionHeadersIdxs = customSectionHeadersIdxs(rect) else { return nil }
         
         // now add our custom headers to the regular UICollectionViewFlowLayout layoutAttributes
@@ -183,7 +179,7 @@ class AKPCollectionViewFlowLayout: UICollectionViewFlowLayout {
         // 1. Let's establish the section boundaries:
         let (minY, maxY) = boundaryMetrics(forSectionAttributes: sectionHeadersLayoutAttributes)
         
-        // 2. Let's also determine the height abd insets of the first section,
+        // 2. Let's also determine the height and insets of the first section,
         //    in case it's stretchable or serves as a global header
         let (firstSectionHeight, firstSectionInsets) = firstSectionMetrics()
                                                                                                 

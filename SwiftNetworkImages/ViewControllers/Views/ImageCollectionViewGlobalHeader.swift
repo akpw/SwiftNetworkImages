@@ -16,7 +16,8 @@
 
 import UIKit
 
-/// A custom UICollectionReusableView section header
+/// Custom UICollectionReusableView section header that serves as
+/// a Global Header
 
 class ImageCollectionViewGlobalHeader: UICollectionReusableView {
     var configStackView: UIStackView?
@@ -42,16 +43,17 @@ extension ImageCollectionViewGlobalHeader {
     func configureStackView() {
         label = UILabel().configure {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
+            $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
             $0.textColor = .whiteColor()
             $0.textAlignment = .Center
-            $0.text = "About Cats and Dogs"
+            $0.text = "About Cats and Dogs..."
             $0.setContentHuggingPriority(249, forAxis: .Horizontal)
             $0.setContentCompressionResistancePriority(500, forAxis: .Horizontal)
         }
         configButton = UIButton(type: .Custom).configure {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.setBackgroundImage(UIImage(asset: .LayoutConfigOptions), forState: .Normal)
+            $0.setBackgroundImage(UIImage(asset: .LayoutConfigOptionsTouched), forState: .Selected)
             $0.showsTouchWhenHighlighted = true
             $0.addTarget(nil, action: .showLayoutConfigOptions, forControlEvents:.TouchUpInside)
         }

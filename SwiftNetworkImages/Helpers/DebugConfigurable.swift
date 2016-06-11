@@ -8,6 +8,9 @@
 
 import Foundation
 
+
+/// Support for debug configurations
+
 protocol DebugConfigurable {
     func _configureForDebug<T>(_:T)
 }

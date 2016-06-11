@@ -8,18 +8,16 @@
 
 import UIKit
 
+/// Syntactic sugar for Swift initializers,
+/// CCed from: https://github.com/devxoul/Then
+
 public protocol Configure {}
 extension Configure {
     public func configure(@noescape block: inout Self -> Void) -> Self {
-        var copy = self
-        block(&copy)
-        return copy
+        var m = self
+        block(&m)
+        return m
     }
-//    public func optionalConfigure(@noescape block: inout Self -> Void) -> Self? {
-//        var copy = self
-//        block(&copy)
-//        return copy
-//    }
 }
 
 extension UIResponder: Configure {}
