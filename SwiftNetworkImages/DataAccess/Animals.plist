@@ -4,6 +4,13 @@
 <array>
 	<dict>
 		<key>sectionName</key>
+		<string></string>
+		<key>sectionImages</key>
+		<array>
+        </array>
+	</dict>
+	<dict>
+		<key>sectionName</key>
 		<string>Dogs</string>
 		<key>sectionImages</key>
 		<array>

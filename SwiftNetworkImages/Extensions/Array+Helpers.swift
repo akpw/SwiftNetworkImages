@@ -8,6 +8,8 @@
 
 import Foundation
 
+/// Common array extensions used in this project
+
 extension Array {
     /// Returns the element at the given `index` and a new array with that element removed
     private func arrayByRemovingElementAtIndex(index: Int) -> (Element, [Element]) {
@@ -15,6 +17,7 @@ extension Array {
         let removedElement = newArray.removeAtIndex(index)
         return (removedElement, newArray)
     }
+    
     /// Returns an array of arrays, where each one is a permutation
     public var permutations: [[Element]] {
         switch self.count {

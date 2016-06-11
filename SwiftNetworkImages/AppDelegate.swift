@@ -17,19 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        window = {
-            let window = UIWindow(frame: UIScreen.mainScreen().bounds)
-            window.backgroundColor = UIColor.whiteColor()
-            window.rootViewController = configureTopViewController()
-            window.makeKeyAndVisible()
-            return window
-        }()
+        window = UIWindow(frame: UIScreen.mainScreen().bounds).configure {
+            $0.backgroundColor = .whiteColor()
+            $0.rootViewController = configureTopViewController()
+            $0.makeKeyAndVisible()
+        }
         return true
     }
 }
 
-extension AppDelegate {
-    
+extension AppDelegate {    
     /// Configures top level view controller and its dependencies
     func configureTopViewController() -> UIViewController {
         

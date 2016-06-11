@@ -24,17 +24,15 @@ class ImageCollectionViewHeader: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        sectionHeaderLabel = {
-            let label = UILabel()
-            label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-            label.text = "Section Header"
-            label.textAlignment = .Center
-            
-            self.addSubview(label)
-            return label
-        }()
+        sectionHeaderLabel = UILabel().configure {
+            $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+            $0.text = "Section Header"
+            $0.textAlignment = .Center
+            self.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
 
-        backgroundColor = UIColor.lightGrayColor()
+        backgroundColor = .lightGrayColor()
         setConstraints()
     }
     
@@ -47,13 +45,17 @@ extension ImageCollectionViewHeader {
     // MARK: - 📐Constraints
     func setConstraints() {
         guard let sectionHeaderLabel = sectionHeaderLabel else {return}
-        sectionHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
         sectionHeaderLabel.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor).active = true
         sectionHeaderLabel.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor).active = true
         sectionHeaderLabel.leadingAnchor.constraintEqualToAnchor(self.leadingAnchor, constant: 20).active = true
     }
 }
 
-
+// MARK: - 🐞Debug configuration
+extension ImageCollectionViewHeader: DebugConfigurable {
+    func _configureForDebug() {
+        backgroundColor = .magentaColor()
+    }
+}
 
 

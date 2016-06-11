@@ -9,6 +9,7 @@
 import UIKit
 
 /// Implementation of the NetworkImageService protocol using NSURLSession
+
 struct NSURLSessionNetworkImageService: NetworkImageService  {
     // MARK: - ImageService
     func requestImage(urlString: String, completion: Result<UIImage> -> Void) {
