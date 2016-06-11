@@ -35,7 +35,7 @@ class ImageInfoLoadableSpec: QuickSpec {
             }
             
             it("has valid image info items in sections") {
-                for section in sections! {
+                for (idx, section) in sections.enumerate() where idx > 0 {
                     guard let imageItems = imagesData[section] else {
                         XCTFail("no image info items in section: \(section)")
                         abort()
