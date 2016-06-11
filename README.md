@@ -29,6 +29,10 @@ Swift Network Images is a sample iOS app developed in Swift 2.2. While primarily
 * [DRY BDD tests using Quick's Shared Assertions](http://www.akpdev.com/articles/2016/05/12/Quick-Shared-Assertions.html)
 
 
+## Docs		
+ [Initial docs][docsLink], generated with [jazzy](https://github.com/realm/jazzy) and hosted by [GitHub Pages](https://pages.github.com).
+
+
 ## TODOs
 * UICollectionView Custom Layout examples:
  - [x] Global sections (pinnable, stretchable)
@@ -69,3 +73,6 @@ $ open "SwiftNetworkImages.xcworkspace"
 
 * Xcode 7.3
 * iOS 9
+
+
+[docsLink]:https://akpw.github.io//SwiftNetworkImages/index.html
