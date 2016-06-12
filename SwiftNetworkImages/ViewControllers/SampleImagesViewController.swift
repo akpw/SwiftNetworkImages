@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import AKPFlowLayout
 
 /**
     Top level view controller for the project
  */
 
 class SampleImagesViewController: UIViewController {
-    var layoutOptions: LayoutConfigOptions = [.FirstSectionIsGlobalHeader,
+    var layoutOptions: AKPLayoutConfigOptions = [.FirstSectionIsGlobalHeader,
                                               .FirstSectionStretchable,
                                               .SectionsPinToGlobalHeaderOrVisibleBounds]
     override func prefersStatusBarHidden() -> Bool { return true }

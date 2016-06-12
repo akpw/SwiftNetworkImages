@@ -11,8 +11,8 @@ import UIKit
 /// Enumed images names from the project Asset Catalog 
 
 enum Asset: String {
-    case LayoutConfigOptions = "LayoutConfigOptions"
-    case LayoutConfigOptionsTouched = "LayoutConfigOptionsTouched"
+    case LayoutConfigOptionsAsset = "LayoutConfigOptions"
+    case LayoutConfigOptionsTouchedAsset = "LayoutConfigOptionsTouched"
     
     var image: UIImage {
         return UIImage(asset: self)

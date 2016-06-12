@@ -6,12 +6,13 @@
 //  Copyright © 2016 Arseniy Kuznetsov. All rights reserved.
 //
 import UIKit
+import AKPFlowLayout
 
 /// Visual configuration of AKPCollectionViewFlowLayout's LayoutConfigOptions 
 
 class LayoutConfigController: UITableViewController {
-    var configOptions: LayoutConfigOptions?
-    var selectedOptions: LayoutConfigOptions?
+    var configOptions: AKPLayoutConfigOptions?
+    var selectedOptions: AKPLayoutConfigOptions?
 
     var height: CGFloat {
         return CGFloat(tableView.numberOfRowsInSection(0)) * tableView.rowHeight +
@@ -48,7 +49,7 @@ class LayoutConfigController: UITableViewController {
             let optionDescription = configOptions.descriptions[indexPath.row]
             cell.textLabel?.text = optionDescription
             if let selectedOptions = selectedOptions {
-                let option = LayoutConfigOptions(rawValue: 1<<(indexPath.row + 1))
+                let option = AKPLayoutConfigOptions(rawValue: 1<<(indexPath.row + 1))
                 cell.accessoryType = selectedOptions.contains(option) ?
                     UITableViewCellAccessoryType.Checkmark : UITableViewCellAccessoryType.None
             }
@@ -60,7 +61,7 @@ class LayoutConfigController: UITableViewController {
     override func tableView(tableView: UITableView,
                             didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let selectedOptions = selectedOptions {
-            let option = LayoutConfigOptions(rawValue: 1<<(indexPath.row + 1))
+            let option = AKPLayoutConfigOptions(rawValue: 1<<(indexPath.row + 1))
             if selectedOptions.contains(option) {
                 self.selectedOptions?.remove(option)
             } else {

@@ -52,8 +52,8 @@ extension ImageCollectionViewGlobalHeader {
         }
         configButton = UIButton(type: .Custom).configure {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.setBackgroundImage(UIImage(asset: .LayoutConfigOptions), forState: .Normal)
-            $0.setBackgroundImage(UIImage(asset: .LayoutConfigOptionsTouched), forState: .Selected)
+            $0.setBackgroundImage(UIImage(asset: .LayoutConfigOptionsAsset), forState: .Normal)
+            $0.setBackgroundImage(UIImage(asset: .LayoutConfigOptionsTouchedAsset), forState: .Selected)
             $0.showsTouchWhenHighlighted = true
             $0.addTarget(nil, action: .showLayoutConfigOptions, forControlEvents:.TouchUpInside)
         }
