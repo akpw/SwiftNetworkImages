@@ -18,7 +18,7 @@ Swift Network Images is a sample iOS app developed in Swift 2.2. While primarily
 
 * `MVVM`, with simple DIY bindings for mutable `ViewModel`s
 
-* Shows and easy way to build UI in code with iOS9 `NSLayoutAnchor` and `UILayoutGuide`
+* Shows and easy way to build UI in code with iOS9 `NSLayoutAnchor`, `UILayoutGuide`, and `UIStackView`
 
 * Custom UICollectionView Layouts, efficiently built on top of `UICollectionViewFlowLayout` using custom invalidation context.
 
