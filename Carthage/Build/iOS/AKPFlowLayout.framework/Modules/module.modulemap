@@ -1,0 +1,10 @@
+framework module AKPFlowLayout {
+  umbrella header "AKPFlowLayout.h"
+
+  export *
+  module * { export * }
+}
+
+module AKPFlowLayout.Swift {
+    header "AKPFlowLayout-Swift.h"
+}
