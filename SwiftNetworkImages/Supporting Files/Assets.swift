@@ -13,6 +13,7 @@ import UIKit
 enum Asset: String {
     case LayoutConfigOptionsAsset = "LayoutConfigOptions"
     case LayoutConfigOptionsTouchedAsset = "LayoutConfigOptionsTouched"
+    case GlobalHeaderBackground = "GlobalHeaderBackground"
     
     var image: UIImage {
         return UIImage(asset: self)

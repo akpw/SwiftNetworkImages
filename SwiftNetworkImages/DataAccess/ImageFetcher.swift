@@ -6,7 +6,7 @@
 //  Copyright © 2016 Arseniy Kuznetsov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import AlamofireImage
 
 /// Fetches images from network

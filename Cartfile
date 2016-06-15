@@ -1,0 +1,5 @@
+git "~/_Dev/GitHub/iOS/AKPFlowLayout"
+github "Alamofire/Alamofire"
+github "Alamofire/AlamofireImage"
+github "Quick/Quick"
+github "Quick/Nimble"

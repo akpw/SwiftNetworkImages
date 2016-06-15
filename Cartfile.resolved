@@ -1,0 +1,5 @@
+git "~/_Dev/GitHub/iOS/AKPFlowLayout" "0.1.1"
+github "Alamofire/Alamofire" "3.4.1"
+github "Quick/Nimble" "v4.0.1"
+github "Quick/Quick" "v0.9.2"
+github "Alamofire/AlamofireImage" "2.4.0"

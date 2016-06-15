@@ -10,6 +10,7 @@ import Quick
 import Nimble
 @testable import SwiftNetworkImages
 
+// Described in details in a blog: http://www.akpdev.com/articles/2016/05/12/Quick-Shared-Assertions.html
 
 class AlamofireNetworkImageServiceSpec: QuickSpec {
     override func spec() {

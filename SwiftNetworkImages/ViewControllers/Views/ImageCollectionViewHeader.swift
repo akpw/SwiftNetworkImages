@@ -45,9 +45,11 @@ extension ImageCollectionViewHeader {
     // MARK: - 📐Constraints
     func setConstraints() {
         guard let sectionHeaderLabel = sectionHeaderLabel else {return}
-        sectionHeaderLabel.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor).active = true
-        sectionHeaderLabel.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor).active = true
-        sectionHeaderLabel.leadingAnchor.constraintEqualToAnchor(self.leadingAnchor, constant: 20).active = true
+        NSLayoutConstraint.activateConstraints([
+            sectionHeaderLabel.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor),
+            sectionHeaderLabel.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor),
+            sectionHeaderLabel.leadingAnchor.constraintEqualToAnchor(self.leadingAnchor, constant: 20)
+        ])
     }
 }
 

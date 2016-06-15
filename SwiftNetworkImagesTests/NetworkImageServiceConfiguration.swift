@@ -11,6 +11,8 @@ import Nimble
 @testable import SwiftNetworkImages
 
 
+// Described in details in a blog: http://www.akpdev.com/articles/2016/05/12/Quick-Shared-Assertions.html
+
 /// NetworkImageService wrapper,
 /// needed since SharedExampleContext has a NSDictionary return type
 /// and NSDictionary values can only be object types (not Swift structs)

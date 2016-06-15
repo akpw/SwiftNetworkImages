@@ -6,6 +6,7 @@
 //  Copyright © 2016 Arseniy Kuznetsov. All rights reserved.
 //
 
+import UIKit
 import Alamofire
 import AlamofireImage
 

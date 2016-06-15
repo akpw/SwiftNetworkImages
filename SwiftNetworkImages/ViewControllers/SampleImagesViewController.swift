@@ -36,11 +36,12 @@ class SampleImagesViewController: UIViewController {
 // MARK: - 📐Layout && Constraints
 extension SampleImagesViewController {
     func configureCollectionView() {
-        let flowLayout: AKPCollectionViewFlowLayout = {
+        let flowLayout: AKPFlowLayout = {
             $0.minimumInteritemSpacing = 2
             $0.layoutOptions = layoutOptions
+            $0.firsSectionMaximumStretchHeight = view.bounds.width 
             return $0
-        }( AKPCollectionViewFlowLayout() )
+        }( AKPFlowLayout() )
         
         _collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout).configure {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -60,10 +61,12 @@ extension SampleImagesViewController {
     }
     func setConstraints() {
         guard let collectionView = _collectionView else {return}
-        collectionView.topAnchor.constraintEqualToAnchor(topLayoutGuide.topAnchor).active = true
-        collectionView.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.bottomAnchor).active = true
-        collectionView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        collectionView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
+        NSLayoutConstraint.activateConstraints([
+            collectionView.topAnchor.constraintEqualToAnchor(topLayoutGuide.topAnchor),
+            collectionView.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.bottomAnchor),
+            collectionView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor),
+            collectionView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor)
+        ])
     }
 }
 
@@ -96,7 +99,7 @@ extension SampleImagesViewController: UIPopoverPresentationControllerDelegate {
         if let configController = popoverPresentationController.presentedViewController
                                                                             as? LayoutConfigController {
             if let selectedOptions = configController.selectedOptions,
-                layout = self._collectionView?.collectionViewLayout as? AKPCollectionViewFlowLayout {
+                layout = self._collectionView?.collectionViewLayout as? AKPFlowLayout {
                 self.layoutOptions = selectedOptions
                 if layout.layoutOptions != selectedOptions {
                     layout.layoutOptions = selectedOptions

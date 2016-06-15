@@ -15,6 +15,7 @@
 //
 
 import UIKit
+import AKPFlowLayout
 
 /// Custom UICollectionReusableView section header that serves as
 /// a Global Header
@@ -23,12 +24,14 @@ class ImageCollectionViewGlobalHeader: UICollectionReusableView {
     var configStackView: UIStackView?
     var configButton: UIButton?
     var label: UILabel?
+    var backgroundImageView: UIImageView?
     
     // MARK: Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         backgroundColor = .darkGrayColor()
+        self.clipsToBounds = true
 
         configureStackView()
         setConstraints()
@@ -37,10 +40,22 @@ class ImageCollectionViewGlobalHeader: UICollectionReusableView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    private var bckgImageViewFullHeight: CGFloat = 0
+    private var bckgImageViewHeightConstraint: NSLayoutConstraint?
 }
 
 extension ImageCollectionViewGlobalHeader {
     func configureStackView() {
+        let backgImage = UIImage(asset: .GlobalHeaderBackground)
+        bckgImageViewFullHeight = backgImage.size.width *  backgImage.scale
+
+        backgroundImageView = UIImageView().configure {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.image = backgImage
+            $0.contentMode = .ScaleAspectFill
+            addSubview($0)
+        }
         label = UILabel().configure {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
@@ -67,7 +82,7 @@ extension ImageCollectionViewGlobalHeader {
             $0.layoutMarginsRelativeArrangement = true
             $0.addArrangedSubview(label!)
             $0.addArrangedSubview(configButton!)
-            self.addSubview($0)
+            addSubview($0)
         }
     }
 }
@@ -75,14 +90,35 @@ extension ImageCollectionViewGlobalHeader {
 extension ImageCollectionViewGlobalHeader {
     // MARK: - 📐Constraints
     func setConstraints() {
-        guard let configStackView = configStackView else {return}
+        guard let configStackView = configStackView,  backgroundImageView = backgroundImageView else {return}
         
-        configStackView.topAnchor.constraintEqualToAnchor(self.topAnchor).active = true
-        configStackView.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor).active = true
-        configStackView.leadingAnchor.constraintEqualToAnchor(self.leadingAnchor).active = true
-        configStackView.trailingAnchor.constraintEqualToAnchor(self.trailingAnchor).active = true
+        bckgImageViewHeightConstraint = {
+            $0.priority = UILayoutPriorityRequired
+            return $0
+        }( backgroundImageView.heightAnchor.constraintEqualToConstant(bckgImageViewFullHeight) )
+        
+        NSLayoutConstraint.activateConstraints([
+            backgroundImageView.centerXAnchor.constraintEqualToAnchor(centerXAnchor),
+            backgroundImageView.centerYAnchor.constraintEqualToAnchor(centerYAnchor),
+            bckgImageViewHeightConstraint!,
+            backgroundImageView.widthAnchor.constraintEqualToAnchor(backgroundImageView.heightAnchor),
+            
+            configStackView.topAnchor.constraintEqualToAnchor(topAnchor),
+            configStackView.bottomAnchor.constraintEqualToAnchor(bottomAnchor),
+            configStackView.leadingAnchor.constraintEqualToAnchor(leadingAnchor),
+            configStackView.trailingAnchor.constraintEqualToAnchor(trailingAnchor)
+        ])
     }
 }
+
+extension ImageCollectionViewGlobalHeader {
+    override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
+        guard let layoutAttributes = layoutAttributes as? AKPFlowLayoutAttributes,
+                  bckgImageViewHeightConstraint = bckgImageViewHeightConstraint else { return }
+        bckgImageViewHeightConstraint.constant = bckgImageViewFullHeight - layoutAttributes.stretchFactor
+    }
+}
+
 
 // MARK: - 🐞Debug configuration
 extension ImageCollectionViewGlobalHeader: DebugConfigurable {

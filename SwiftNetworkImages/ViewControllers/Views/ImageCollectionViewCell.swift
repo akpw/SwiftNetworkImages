@@ -83,31 +83,32 @@ extension ImageCollectionViewCell {
         guard let roundedCornersView = roundedCornersView,
                   captionLabel = captionLabel, imageView = imageView else {return}
         
-        roundedCornersView.topAnchor.constraintEqualToAnchor(contentView.topAnchor).active = true
-        roundedCornersView.bottomAnchor.constraintEqualToAnchor(contentView.bottomAnchor).active = true
-        roundedCornersView.leadingAnchor.constraintEqualToAnchor(contentView.leadingAnchor).active = true
-        roundedCornersView.trailingAnchor.constraintEqualToAnchor(contentView.trailingAnchor).active = true
-
-        imageView.topAnchor.constraintEqualToAnchor(roundedCornersView.topAnchor).active = true
-        imageView.leadingAnchor.constraintEqualToAnchor(roundedCornersView.leadingAnchor).active = true
-        imageView.trailingAnchor.constraintEqualToAnchor(roundedCornersView.trailingAnchor).active = true
-        imageView.heightAnchor.constraintEqualToAnchor(roundedCornersView.heightAnchor,
-                                                                                multiplier: 0.90).active = true
-        
-        _loadingIndicator.centerXAnchor.constraintEqualToAnchor(imageView.centerXAnchor).active = true
-        _loadingIndicator.centerYAnchor.constraintEqualToAnchor(imageView.centerYAnchor).active = true
-        
         let layoutGuide = UILayoutGuide()
         roundedCornersView.addLayoutGuide(layoutGuide)
-        layoutGuide.bottomAnchor.constraintEqualToAnchor(roundedCornersView.bottomAnchor).active = true
-        layoutGuide.leadingAnchor.constraintEqualToAnchor(roundedCornersView.leadingAnchor).active = true
-        layoutGuide.trailingAnchor.constraintEqualToAnchor(roundedCornersView.trailingAnchor).active = true
-        layoutGuide.heightAnchor.constraintEqualToAnchor(roundedCornersView.heightAnchor,
-                                                                                multiplier: 0.10).active = true
         
-        captionLabel.centerXAnchor.constraintEqualToAnchor(layoutGuide.centerXAnchor).active = true
-        captionLabel.centerYAnchor.constraintEqualToAnchor(layoutGuide.centerYAnchor).active = true
-        captionLabel.leadingAnchor.constraintEqualToAnchor(roundedCornersView.layoutMarginsGuide.leadingAnchor).active = true
+        NSLayoutConstraint.activateConstraints([
+            roundedCornersView.topAnchor.constraintEqualToAnchor(contentView.topAnchor),
+            roundedCornersView.bottomAnchor.constraintEqualToAnchor(contentView.bottomAnchor),
+            roundedCornersView.leadingAnchor.constraintEqualToAnchor(contentView.leadingAnchor),
+            roundedCornersView.trailingAnchor.constraintEqualToAnchor(contentView.trailingAnchor),
+
+            imageView.topAnchor.constraintEqualToAnchor(roundedCornersView.topAnchor),
+            imageView.leadingAnchor.constraintEqualToAnchor(roundedCornersView.leadingAnchor),
+            imageView.trailingAnchor.constraintEqualToAnchor(roundedCornersView.trailingAnchor),
+            imageView.heightAnchor.constraintEqualToAnchor(roundedCornersView.heightAnchor,
+                                                                                    multiplier: 0.90),
+            _loadingIndicator.centerXAnchor.constraintEqualToAnchor(imageView.centerXAnchor),
+            _loadingIndicator.centerYAnchor.constraintEqualToAnchor(imageView.centerYAnchor),
+            
+            layoutGuide.bottomAnchor.constraintEqualToAnchor(roundedCornersView.bottomAnchor),
+            layoutGuide.leadingAnchor.constraintEqualToAnchor(roundedCornersView.leadingAnchor),
+            layoutGuide.trailingAnchor.constraintEqualToAnchor(roundedCornersView.trailingAnchor),
+            layoutGuide.heightAnchor.constraintEqualToAnchor(roundedCornersView.heightAnchor,
+                                                                                    multiplier: 0.10),            
+            captionLabel.centerXAnchor.constraintEqualToAnchor(layoutGuide.centerXAnchor),
+            captionLabel.centerYAnchor.constraintEqualToAnchor(layoutGuide.centerYAnchor),
+            captionLabel.leadingAnchor.constraintEqualToAnchor(roundedCornersView.layoutMarginsGuide.leadingAnchor)
+        ])
     }
 }
 
