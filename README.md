@@ -10,6 +10,7 @@ Swift Network Images is a sample iOS app developed in Swift 2.2. While primarily
 
 
 ## Blogs
+* [Custom UICollectionView: Global Headers](http://www.akpdev.com/articles/2016/06/16/CollectionView-I.html)
 * [Making your Quick test code DRYer with Shared Assertions](http://www.akpdev.com/articles/2016/05/12/Quick-Shared-Assertions.html)
 
 
