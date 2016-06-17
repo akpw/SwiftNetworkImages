@@ -79,7 +79,7 @@ extension SampleImagesViewController: UIPopoverPresentationControllerDelegate {
                                           .SectionsPinToGlobalHeaderOrVisibleBounds]
         configController.selectedOptions = layoutOptions
         configController.modalPresentationStyle = .Popover
-        configController.preferredContentSize = CGSizeMake(355, configController.height)
+        configController.preferredContentSize = CGSizeMake(360, configController.height)
         
         if let popOver = configController.popoverPresentationController {
             popOver.backgroundColor = .darkGrayColor()
