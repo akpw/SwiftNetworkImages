@@ -12,14 +12,14 @@ import Foundation
 /// Enhancements to base ErrorType,
 /// to provide base compatibility with NSError
 
-protocol CustomErrorConvertible: ErrorType, CustomStringConvertible {
+protocol CustomErrorConvertible: Error, CustomStringConvertible {
     func errorDomain() -> String
     func errorCode() -> Int
     func userInfo() -> Dictionary<String, String>?
 }
 extension CustomErrorConvertible {
     func errorDomain() -> String {
-        return String(self.dynamicType)
+        return String(describing: type(of: self))
     }
 
     var description: String  {

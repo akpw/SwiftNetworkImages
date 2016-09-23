@@ -14,11 +14,11 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-
-    func application(application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        window = UIWindow(frame: UIScreen.mainScreen().bounds).configure {
-            $0.backgroundColor = .whiteColor()
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions
+                                     launchOptions: [UIApplicationLaunchOptionsKey: Any]? = nil) -> Bool {
+        window = UIWindow(frame: UIScreen.main.bounds).configure {
+            $0.backgroundColor = .white
             $0.rootViewController = configureTopViewController()
             $0.makeKeyAndVisible()
         }

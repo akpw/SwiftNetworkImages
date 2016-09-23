@@ -10,14 +10,14 @@ import Foundation
 
 /// A popular binary search implementation
 
-extension CollectionType where Index: RandomAccessIndexType {
-    func binarySearch(predicate: Generator.Element -> Bool) -> Index {
+extension Collection where Index: Strideable {
+    func binarySearch(predicate: (Iterator.Element) -> Bool) -> Index {
         var low = startIndex
         var high = endIndex
         while low != high {
-            let mid = low.advancedBy(low.distanceTo(high) / 2)
+            let mid = index(low, offsetBy: distance(from: low, to: high) / 2)
             if predicate(self[mid]) {
-                low = mid.advancedBy(1)
+                low = index(after: mid)
             } else {
                 high = mid
             }
@@ -25,3 +25,4 @@ extension CollectionType where Index: RandomAccessIndexType {
         return low
     }
 }
+

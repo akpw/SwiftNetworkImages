@@ -13,7 +13,7 @@ import Foundation
 
 enum Result<T> {
     case Success(T)
-    case Failure(ErrorType)
+    case Failure(Error)
 }
 extension Result {
     /// conversion to Swift2 throw model
@@ -25,7 +25,7 @@ extension Result {
     }
     
     /// conversion from Swift2 throw model
-    mutating func build(@noescape somethingThatThrows: () throws -> T) {
+    mutating func build( somethingThatThrows: () throws -> T) {
         do {
             let value = try somethingThatThrows()
             self = Result.Success(value)
@@ -35,13 +35,13 @@ extension Result {
     }
 }
 extension Result {
-    func map<U>(transform: T -> U) -> Result<U> {
+    func map<U>(transform: (T) -> U) -> Result<U> {
         switch self {
         case .Success(let value): return .Success(transform(value))
         case .Failure(let error): return .Failure(error)
         }
     }
-    func flatMap<U>(transform: T -> Result<U>) -> Result<U> {
+    func flatMap<U>(transform: (T) -> Result<U>) -> Result<U> {
         switch self {
         case .Success(let value): return transform(value)
         case .Failure(let error): return .Failure(error)

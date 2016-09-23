@@ -13,7 +13,7 @@ import UIKit
 
 public protocol Configure {}
 extension Configure {
-    public func configure(@noescape block: inout Self -> Void) -> Self {
+    public func configure( block: ((inout Self)) -> Void) -> Self {
         var m = self
         block(&m)
         return m

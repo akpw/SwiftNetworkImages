@@ -11,7 +11,7 @@ import UIKit
 /// Adds instantiation with the enum-ed name of an Asset Catalog image
 
 extension UIImage {
-    convenience init!(asset: Asset) {
+    convenience init?(asset: Asset) {
         self.init(named: asset.rawValue)
     }
 }

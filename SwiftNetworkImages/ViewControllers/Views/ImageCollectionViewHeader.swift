@@ -25,14 +25,14 @@ class ImageCollectionViewHeader: UICollectionReusableView {
         super.init(frame: frame)
         
         sectionHeaderLabel = UILabel().configure {
-            $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+            $0.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
             $0.text = "Section Header"
-            $0.textAlignment = .Center
+            $0.textAlignment = .center
             self.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
 
-        backgroundColor = .lightGrayColor()
+        backgroundColor = .lightGray
         setConstraints()
     }
     
@@ -45,10 +45,10 @@ extension ImageCollectionViewHeader {
     // MARK: - 📐Constraints
     func setConstraints() {
         guard let sectionHeaderLabel = sectionHeaderLabel else {return}
-        NSLayoutConstraint.activateConstraints([
-            sectionHeaderLabel.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor),
-            sectionHeaderLabel.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor),
-            sectionHeaderLabel.leadingAnchor.constraintEqualToAnchor(self.leadingAnchor, constant: 20)
+        NSLayoutConstraint.activate([
+            sectionHeaderLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            sectionHeaderLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            sectionHeaderLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20)
         ])
     }
 }
@@ -56,7 +56,7 @@ extension ImageCollectionViewHeader {
 // MARK: - 🐞Debug configuration
 extension ImageCollectionViewHeader: DebugConfigurable {
     func _configureForDebug() {
-        backgroundColor = .magentaColor()
+        backgroundColor = .magenta
     }
 }
 

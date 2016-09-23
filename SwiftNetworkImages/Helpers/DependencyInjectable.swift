@@ -15,7 +15,7 @@ import Foundation
     ```
     extension SampleImagesDataSourceDelegate: DependencyInjectable {
          // MARK: - 🔌Dependencies injection
-         func inject(imagesDataSource: ImagesDataSource) {
+         func inject(_ imagesDataSource: ImagesDataSource) {
          }
     }
     ``` 

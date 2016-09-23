@@ -14,10 +14,10 @@ import AKPFlowLayout
  */
 
 class SampleImagesViewController: UIViewController {
-    var layoutOptions: AKPLayoutConfigOptions = [.FirstSectionIsGlobalHeader,
-                                              .FirstSectionStretchable,
-                                              .SectionsPinToGlobalHeaderOrVisibleBounds]
-    override func prefersStatusBarHidden() -> Bool { return true }
+    var layoutOptions: AKPLayoutConfigOptions = [.firstSectionIsGlobalHeader,
+                                                 .firstSectionStretchable,
+                                                 .sectionsPinToGlobalHeaderOrVisibleBounds]
+    override var prefersStatusBarHidden: Bool { return true }
     
     // MARK: - ♻️Lifecycle
     override func viewDidLoad() {
@@ -25,12 +25,12 @@ class SampleImagesViewController: UIViewController {
         
         configureCollectionView()
         setConstraints()
-        //_configureForDebug($0)
+        _configureForDebug(_collectionView)
     }
     
     // MARK: - 🕶Private
-    private var _collectionView: UICollectionView?
-    private var _dataSourceDelegate: SampleImagesDataSourceDelegate?
+    fileprivate var _collectionView: UICollectionView?
+    fileprivate var _dataSourceDelegate: SampleImagesDataSourceDelegate?
 }
 
 // MARK: - 📐Layout && Constraints
@@ -45,7 +45,7 @@ extension SampleImagesViewController {
         
         _collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout).configure {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.backgroundColor = UIColor.grayColor()
+            $0.backgroundColor = UIColor.gray
             
             $0.dataSource = _dataSourceDelegate
             $0.delegate = _dataSourceDelegate
@@ -61,45 +61,45 @@ extension SampleImagesViewController {
     }
     func setConstraints() {
         guard let collectionView = _collectionView else {return}
-        NSLayoutConstraint.activateConstraints([
-            collectionView.topAnchor.constraintEqualToAnchor(topLayoutGuide.topAnchor),
-            collectionView.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.bottomAnchor),
-            collectionView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor),
-            collectionView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor)
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
 }
 
 // MARK: - Layout Config Options (UIPopoverPresentationControllerDelegate)
 extension SampleImagesViewController: UIPopoverPresentationControllerDelegate {
-    func showLayoutConfigOptions(sender: UIButton) {
-        let configController = LayoutConfigController(style: UITableViewStyle.Grouped)
-        configController.configOptions = [.FirstSectionIsGlobalHeader,
-                                          .FirstSectionStretchable,
-                                          .SectionsPinToGlobalHeaderOrVisibleBounds]
+    func showLayoutConfigOptions(_ sender: UIButton) {
+        let configController = LayoutConfigController(style: UITableViewStyle.grouped)
+        configController.configOptions = [.firstSectionIsGlobalHeader,
+                                          .firstSectionStretchable,
+                                          .sectionsPinToGlobalHeaderOrVisibleBounds]
         configController.selectedOptions = layoutOptions
-        configController.modalPresentationStyle = .Popover
-        configController.preferredContentSize = CGSizeMake(360, configController.height)
+        configController.modalPresentationStyle = .popover
+        configController.preferredContentSize = CGSize(width: 360, height: configController.height)
         
         if let popOver = configController.popoverPresentationController {
-            popOver.backgroundColor = .darkGrayColor()
-            popOver.permittedArrowDirections = .Any
+            popOver.backgroundColor = .darkGray
+            popOver.permittedArrowDirections = .any
             popOver.delegate = self
             popOver.sourceView = sender
             popOver.sourceRect = sender.bounds
-            presentViewController(configController, animated: true, completion: nil)
+            present(configController, animated: true, completion: nil)
         }
     }
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController)
-                                                                            -> UIModalPresentationStyle {
-            return .None
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle
+    {
+        return .none
     }
-    func popoverPresentationControllerDidDismissPopover(popoverPresentationController:
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController:
         UIPopoverPresentationController) {
         if let configController = popoverPresentationController.presentedViewController
                                                                             as? LayoutConfigController {
             if let selectedOptions = configController.selectedOptions,
-                layout = self._collectionView?.collectionViewLayout as? AKPFlowLayout {
+                let layout = self._collectionView?.collectionViewLayout as? AKPFlowLayout {
                 self.layoutOptions = selectedOptions
                 if layout.layoutOptions != selectedOptions {
                     layout.layoutOptions = selectedOptions
@@ -112,7 +112,7 @@ extension SampleImagesViewController: UIPopoverPresentationControllerDelegate {
 
 // MARK: - 🔌Dependencies injection
 extension SampleImagesViewController: DependencyInjectable {
-    func inject(dataSourceDelegate: SampleImagesDataSourceDelegate) {
+    func inject(_ dataSourceDelegate: SampleImagesDataSourceDelegate) {
         _dataSourceDelegate = dataSourceDelegate
     }
     
@@ -120,8 +120,8 @@ extension SampleImagesViewController: DependencyInjectable {
 
 // MARK: - 🐞Debug configuration
 extension SampleImagesViewController: DebugConfigurable {
-    private func _configureForDebug(collectionView: UICollectionView) -> UICollectionView {
-        collectionView.backgroundColor = .greenColor()
+    private func _configureForDebug(_ collectionView: UICollectionView) -> UICollectionView {
+        collectionView.backgroundColor = .green
         collectionView.contentInset = UIEdgeInsetsMake(25, 0, 0, 0)
         return collectionView
     }

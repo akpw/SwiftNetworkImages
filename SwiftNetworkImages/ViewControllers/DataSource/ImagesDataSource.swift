@@ -17,8 +17,8 @@ struct ImagesDataSource {
         return _sortedDictionary?.count ?? 0
     }
     
-    func numberOfImageItemsInSection(section: Int) -> Int {
-        guard let imageItems = _sortedDictionary?.valueForKeyAtIndex(section) else {return 0}
+    func numberOfImageItemsInSection(_ section: Int) -> Int {
+        guard let imageItems = _sortedDictionary?.valueForKeyAtIndex(index: section) else {return 0}
         return imageItems.count
     }
     
@@ -28,7 +28,7 @@ struct ImagesDataSource {
     }
     
     func imageViewModelForItemAtIndexPath(indexPath: NSIndexPath) -> ImageViewModel? {
-        guard let imageItems = _sortedDictionary?.valueForKeyAtIndex(indexPath.section) else {return nil}
+        guard let imageItems = _sortedDictionary?.valueForKeyAtIndex(index: indexPath.section) else {return nil}
         
         var imageViewModel = ImageViewModel(imageInfo: imageItems[indexPath.item])
         imageViewModel.imageFetcher = _imageFetcher
@@ -36,16 +36,14 @@ struct ImagesDataSource {
     }
     
     // MARK: - 🕶Private
-    private var _imageInfoLoader: ImageInfoLoadable?
-    private var _imageFetcher: ImageFetcher?
-    private var _sortedDictionary: SortedDictionary<String, [ImageInfo]>?
+    fileprivate var _imageFetcher: ImageFetcher?
+    fileprivate var _sortedDictionary: SortedDictionary<String, [ImageInfo]>?
 }
 
 extension ImagesDataSource: DependencyInjectable {
     // MARK: - 🔌Dependencies injection
     typealias ExternalDependencies = (imageInfoLoader: ImageInfoLoadable, imageFetcher: ImageFetcher)
-    mutating func inject(dependencies: ExternalDependencies) {
-        _imageInfoLoader = dependencies.imageInfoLoader
+    mutating func inject(_ dependencies: ExternalDependencies) {
         _imageFetcher = dependencies.imageFetcher
         _sortedDictionary = dependencies.imageInfoLoader.loadImagesInfo()
     }

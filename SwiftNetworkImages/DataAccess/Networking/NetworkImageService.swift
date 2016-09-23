@@ -13,5 +13,5 @@ import UIKit
 protocol NetworkImageService {
     /// given a URL string, fetch an image or an error) and
     /// provides it to the completion closure enclosed in Result
-    func requestImage(urlString: String, completion: Result<UIImage> -> Void)
+    func requestImage(urlString: String, completion: @escaping (Result<UIImage>) -> Void)
 }

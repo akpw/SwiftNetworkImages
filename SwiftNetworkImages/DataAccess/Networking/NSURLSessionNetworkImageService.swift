@@ -12,18 +12,18 @@ import UIKit
 
 struct NSURLSessionNetworkImageService: NetworkImageService  {
     // MARK: - ImageService
-    func requestImage(urlString: String, completion: Result<UIImage> -> Void) {
-        guard let url = NSURL(string: urlString) else {
+    func requestImage(urlString: String, completion: @escaping (Result<UIImage>) -> Void) {
+        guard let url = URL(string: urlString) else {
             return completion( Result.Failure( NetworkError.CannotConnectToServer ) )
         }
         
-        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        session.dataTaskWithURL(url) { data, response, error in            
-            dispatch_async(dispatch_get_main_queue()) {
-                if let error = error {
-                    return completion( Result.Failure( NetworkError(error: error) ) )
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+        session.dataTask(with: url) { data, response, error in
+            DispatchQueue.main.async {
+                if error != nil {
+                    return completion( Result.Failure( NetworkError.NetworkRequestFailed ) )
                 }
-                guard let data = data, image = UIImage(data: data) else {
+                guard let data = data, let image = UIImage(data: data) else {
                     return completion( Result.Failure( NetworkError.ContentValidationFailed ) )
                 }
                 completion(Result.Success(image))

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5722CD981D8D86AE00CCF3CD /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5722CD941D8D827F00CCF3CD /* AlamofireImage.framework */; };
 		572DBF681CFAC26000C497D9 /* NSObject+Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572DBF671CFAC26000C497D9 /* NSObject+Configure.swift */; };
 		574E9D831CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E9D821CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift */; };
 		577CFE601D0AC67B00ADAA78 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577CFE5F1D0AC67B00ADAA78 /* Assets.swift */; };
@@ -61,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5722CD931D8D827F00CCF3CD /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftNetworkImages-gqhrtxgpxnnqmvcjehbcvwpdsiku/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		5722CD941D8D827F00CCF3CD /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftNetworkImages-gqhrtxgpxnnqmvcjehbcvwpdsiku/Build/Products/Debug-iphoneos/AlamofireImage/AlamofireImage.framework"; sourceTree = "<group>"; };
 		572DBF671CFAC26000C497D9 /* NSObject+Configure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Configure.swift"; sourceTree = "<group>"; };
 		574E9D821CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewGlobalHeader.swift; sourceTree = "<group>"; };
 		577CFE5F1D0AC67B00ADAA78 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
@@ -117,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5722CD981D8D86AE00CCF3CD /* AlamofireImage.framework in Frameworks */,
 				5C659411BB606670BAE32C7B /* Pods_SwiftNetworkImages.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,6 +321,8 @@
 		FD21DA43CDFEF49BBF8BB9C4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5722CD931D8D827F00CCF3CD /* Alamofire.framework */,
+				5722CD941D8D827F00CCF3CD /* AlamofireImage.framework */,
 				D4CCD64A9239828D5189E28F /* Pods_SwiftNetworkImages.framework */,
 				686D647499D76C2655FF0F1E /* Pods_SwiftNetworkImagesTests.framework */,
 			);
@@ -330,12 +336,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 57AD50541CE0822C00EF9693 /* Build configuration list for PBXNativeTarget "SwiftNetworkImages" */;
 			buildPhases = (
-				EDB3375959641EF06F2DDFA2 /* Check Pods Manifest.lock */,
+				EDB3375959641EF06F2DDFA2 /* [CP] Check Pods Manifest.lock */,
 				57AD503E1CE0822C00EF9693 /* Sources */,
 				57AD503F1CE0822C00EF9693 /* Frameworks */,
 				57AD50401CE0822C00EF9693 /* Resources */,
-				D3282403CF73AF71776C89B0 /* Embed Pods Frameworks */,
-				8B8F222E61CD6A96D3F12F6C /* Copy Pods Resources */,
+				D3282403CF73AF71776C89B0 /* [CP] Embed Pods Frameworks */,
+				8B8F222E61CD6A96D3F12F6C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -350,12 +356,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 57AD50641CE0835200EF9693 /* Build configuration list for PBXNativeTarget "SwiftNetworkImagesTests" */;
 			buildPhases = (
-				509518F33E1F57622AC3DB9D /* Check Pods Manifest.lock */,
+				509518F33E1F57622AC3DB9D /* [CP] Check Pods Manifest.lock */,
 				57AD50571CE0835200EF9693 /* Sources */,
 				57AD50581CE0835200EF9693 /* Frameworks */,
 				57AD50591CE0835200EF9693 /* Resources */,
-				863AFFA2D73AC692386177D2 /* Embed Pods Frameworks */,
-				B6D2A245DEE53DC5D9053C8B /* Copy Pods Resources */,
+				863AFFA2D73AC692386177D2 /* [CP] Embed Pods Frameworks */,
+				B6D2A245DEE53DC5D9053C8B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -374,14 +380,20 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Arseniy Kuznetsov";
 				TargetAttributes = {
 					57AD50411CE0822C00EF9693 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 73TM6WSTY5;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					57AD505A1CE0835200EF9693 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 73TM6WSTY5;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 57AD50411CE0822C00EF9693;
 					};
 				};
@@ -426,29 +438,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		509518F33E1F57622AC3DB9D /* Check Pods Manifest.lock */ = {
+		509518F33E1F57622AC3DB9D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		863AFFA2D73AC692386177D2 /* Embed Pods Frameworks */ = {
+		863AFFA2D73AC692386177D2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,14 +468,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftNetworkImagesTests/Pods-SwiftNetworkImagesTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8B8F222E61CD6A96D3F12F6C /* Copy Pods Resources */ = {
+		8B8F222E61CD6A96D3F12F6C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,14 +483,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftNetworkImages/Pods-SwiftNetworkImages-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B6D2A245DEE53DC5D9053C8B /* Copy Pods Resources */ = {
+		B6D2A245DEE53DC5D9053C8B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,14 +498,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftNetworkImagesTests/Pods-SwiftNetworkImagesTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D3282403CF73AF71776C89B0 /* Embed Pods Frameworks */ = {
+		D3282403CF73AF71776C89B0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,19 +513,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftNetworkImages/Pods-SwiftNetworkImages-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EDB3375959641EF06F2DDFA2 /* Check Pods Manifest.lock */ = {
+		EDB3375959641EF06F2DDFA2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -595,6 +607,7 @@
 		57AD50521CE0822C00EF9693 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -606,8 +619,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -615,6 +630,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -641,6 +657,7 @@
 		57AD50531CE0822C00EF9693 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -652,8 +669,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -661,6 +680,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -672,6 +692,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -681,14 +702,18 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5901514E5A6440DF0BF88AA5 /* Pods-SwiftNetworkImages.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 73TM6WSTY5;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/SwiftNetworkImages/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.akpw.SwiftNetworkImages;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -696,13 +721,17 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 692A67B928D505C5D32DBA8F /* Pods-SwiftNetworkImages.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 73TM6WSTY5;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/SwiftNetworkImages/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.akpw.SwiftNetworkImages;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -712,11 +741,14 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 73TM6WSTY5;
 				INFOPLIST_FILE = SwiftNetworkImagesTests/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.akpw.SwiftNetworkImagesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftNetworkImages.app/SwiftNetworkImages";
 			};
 			name = Debug;
@@ -727,10 +759,13 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 73TM6WSTY5;
 				INFOPLIST_FILE = SwiftNetworkImagesTests/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.akpw.SwiftNetworkImagesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftNetworkImages.app/SwiftNetworkImages";
 			};
 			name = Release;

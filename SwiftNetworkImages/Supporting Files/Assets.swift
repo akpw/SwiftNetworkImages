@@ -16,6 +16,6 @@ enum Asset: String {
     case GlobalHeaderBackground = "GlobalHeaderBackground"
     
     var image: UIImage {
-        return UIImage(asset: self)
+        return UIImage(asset: self)!
     }
 }

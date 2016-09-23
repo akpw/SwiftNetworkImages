@@ -25,9 +25,9 @@ struct ImageViewModel {
         didSet {
             guard !self.imageURLString.value.isEqual(EmptyString),
                                         let fetcher = imageFetcher else {return}
-            fetcher.fetchImage(self.imageURLString.value) { image in
-                if let image = image {
-                    self.image.value = image
+            fetcher.fetchImage(urlString: self.imageURLString.value) { [s = self] img in
+                if let img = img {
+                    s.image.value = img
                 }
             }
         }

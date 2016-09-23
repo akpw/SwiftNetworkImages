@@ -13,11 +13,13 @@ import AlamofireImage
 /// Implementation of the NetworkImageService protocol using Alamofire
 
 struct AlamofireNetworkImageService: NetworkImageService  {
+    /// given a URL string, fetch an image or an error) and
+    /// provides it to the completion closure enclosed in Result
     // MARK: - ImageService
-    func requestImage(urlString: String, completion: Result<UIImage> -> Void) {
-        Alamofire.request(.GET, urlString).responseImage {            
-            if let error = $0.result.error {
-                return completion( Result.Failure( NetworkError(error: error) ) )
+    func requestImage(urlString: String, completion: @escaping (Result<UIImage>) -> Void) {
+        Alamofire.request(urlString).responseImage {
+            if $0.result.error != nil {
+                return completion( Result.Failure( NetworkError.NetworkRequestFailed ) )
             }
             guard let image: UIImage = $0.result.value else {
                 return completion( Result.Failure( NetworkError.ContentValidationFailed ) )

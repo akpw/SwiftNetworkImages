@@ -17,14 +17,14 @@ struct ImageFetcher {
     /// Looks to provide an image from internal cache
     /// If not there, uses an image service to fetch it from network and,
     /// if successfull, caches the image
-    func fetchImage(urlString: String, completion: UIImage? -> ()) {
-        if let image = cachedImage(urlString) {
+    func fetchImage(urlString: String, completion: @escaping (UIImage?) -> Void) {
+        if let image = cachedImage(imageURLString: urlString) {
             completion(image)
         } else {
-            _imageService?.requestImage(urlString) { result in
+            _imageService?.requestImage(urlString: urlString) { result in
                 do {
                     let image = try result.resolve()
-                    self.cacheImage(urlString, image: image)
+                    self.cacheImage(imageURLString: urlString, image: image)
                     completion(image)
                 } catch {
                     completion(nil)
@@ -34,13 +34,13 @@ struct ImageFetcher {
     }    
     
     // MARK: - 🕶Private
-    private var _imageService: NetworkImageService?
+    fileprivate var _imageService: NetworkImageService?
 
     private func cacheImage(imageURLString: String, image: Image) {
-        _imageCache.addImage(image, withIdentifier: imageURLString)
+        _imageCache.add(image, withIdentifier: imageURLString)
     }
     private func cachedImage(imageURLString: String) -> Image? {
-        return _imageCache.imageWithIdentifier(imageURLString)
+        return _imageCache.image(withIdentifier: imageURLString)
     }
     private let _imageCache = AutoPurgingImageCache(
         //The total memory capacity of the cache in bytes.
@@ -53,7 +53,7 @@ struct ImageFetcher {
 
 extension ImageFetcher: DependencyInjectable {
     // MARK: - 🔌Dependencies injection
-    mutating func inject(imageService: NetworkImageService) {
+    mutating func inject(_ imageService: NetworkImageService) {
         self._imageService = imageService
     }
 }

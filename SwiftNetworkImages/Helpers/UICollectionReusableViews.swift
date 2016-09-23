@@ -17,7 +17,7 @@ protocol ReusableViewWithDefaultIdentifier {
 /// Generates static `defaultReuseIdentifier` property based on class name
 extension ReusableViewWithDefaultIdentifier where Self: UIView {
     static var defaultReuseIdentifier: String {
-        let className = String(self)
+        let className = String(describing: self)
         return "\(className)DefaultReuseIdentifier"
     }
 }
@@ -29,7 +29,7 @@ protocol ReusableViewWithDefaultIdentifierAndKind: ReusableViewWithDefaultIdenti
 /// Generates static `defaultElementKind` property based on class name
 extension ReusableViewWithDefaultIdentifierAndKind where Self: UIView {
     static var defaultElementKind: String {
-        let className = String(self)
+        let className = String(describing: self)
         return "\(className)DefaultElementKind"
     }
 }
@@ -41,7 +41,7 @@ protocol NibLoadableView {
 /// Generates static `nibName` property based on class name
 extension NibLoadableView where Self: UIView {
     static var nibName: String {
-        return String(self)
+        return String(describing: self)
     }
 }
 

@@ -14,7 +14,7 @@ extension Array {
     /// Returns the element at the given `index` and a new array with that element removed
     private func arrayByRemovingElementAtIndex(index: Int) -> (Element, [Element]) {
         var newArray = self
-        let removedElement = newArray.removeAtIndex(index)
+        let removedElement = newArray.remove(at: index)
         return (removedElement, newArray)
     }
     
@@ -29,7 +29,7 @@ extension Array {
             precondition(self.count > 1)
             var permutations: [[Element]] = []
             for idx in 0..<self.count {
-                let (currentElement, remainingElements) = self.arrayByRemovingElementAtIndex(idx)
+                let (currentElement, remainingElements) = self.arrayByRemovingElementAtIndex(index: idx)
                 
                 permutations += remainingElements.permutations.map { [currentElement] + $0 }
             }

@@ -25,12 +25,12 @@ import UIKit
                 self?.captionLabel?.text = $0
             }
             _loadingIndicator.startAnimating()
-            _loadingIndicator.hidden = false
+            _loadingIndicator.isHidden = false
             imageVewModel.image.observe { [weak self] in
                 self?.imageView?.image = $0
-                dispatch_after(delayInSeconds: 0.7) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
                     self?._loadingIndicator.stopAnimating()
-                    self?._loadingIndicator.hidden = true
+                    self?._loadingIndicator.isHidden = true
                 }
             }
         }
@@ -42,24 +42,24 @@ import UIKit
         
         roundedCornersView = RoundedCornersView().configure {
             $0.cornerRadius = 4.0
-            $0.backgroundColor = .lightTextColor()
+            $0.backgroundColor = .lightText
             contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         imageView = UIImageView().configure {
-            $0.contentMode = .ScaleAspectFill
+            $0.contentMode = .scaleAspectFill
             $0.addSubview(_loadingIndicator)
             roundedCornersView?.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         captionLabel = UILabel().configure {
-            $0.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
+            $0.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.footnote)
             $0.text = "Image Caption"
-            $0.textAlignment = .Center
+            $0.textAlignment = .center
             roundedCornersView?.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.setContentHuggingPriority(UILayoutPriorityRequired, forAxis: .Vertical)
-            $0.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Vertical)
+            $0.setContentHuggingPriority(UILayoutPriorityRequired, for: .vertical)
+            $0.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
         }
         // _configureForDebug()
         setConstraints()
@@ -70,44 +70,44 @@ import UIKit
     }
     
     // MARK: - 🕶Private
-    private lazy var _loadingIndicator: UIActivityIndicatorView = {
+    fileprivate lazy var _loadingIndicator: UIActivityIndicatorView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.color = .darkGrayColor()
+        $0.color = .darkGray
         return $0
-    }( UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge) )
+    }( UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge) )
 }
 
 extension ImageCollectionViewCell {
     // MARK: - 📐Constraints
     func setConstraints() {
         guard let roundedCornersView = roundedCornersView,
-                  captionLabel = captionLabel, imageView = imageView else {return}
+                  let captionLabel = captionLabel, let imageView = imageView else {return}
         
         let layoutGuide = UILayoutGuide()
         roundedCornersView.addLayoutGuide(layoutGuide)
         
-        NSLayoutConstraint.activateConstraints([
-            roundedCornersView.topAnchor.constraintEqualToAnchor(contentView.topAnchor),
-            roundedCornersView.bottomAnchor.constraintEqualToAnchor(contentView.bottomAnchor),
-            roundedCornersView.leadingAnchor.constraintEqualToAnchor(contentView.leadingAnchor),
-            roundedCornersView.trailingAnchor.constraintEqualToAnchor(contentView.trailingAnchor),
+        NSLayoutConstraint.activate([
+            roundedCornersView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            roundedCornersView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            roundedCornersView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            roundedCornersView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
-            imageView.topAnchor.constraintEqualToAnchor(roundedCornersView.topAnchor),
-            imageView.leadingAnchor.constraintEqualToAnchor(roundedCornersView.leadingAnchor),
-            imageView.trailingAnchor.constraintEqualToAnchor(roundedCornersView.trailingAnchor),
-            imageView.heightAnchor.constraintEqualToAnchor(roundedCornersView.heightAnchor,
+            imageView.topAnchor.constraint(equalTo: roundedCornersView.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: roundedCornersView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: roundedCornersView.trailingAnchor),
+            imageView.heightAnchor.constraint(equalTo: roundedCornersView.heightAnchor,
                                                                                     multiplier: 0.90),
-            _loadingIndicator.centerXAnchor.constraintEqualToAnchor(imageView.centerXAnchor),
-            _loadingIndicator.centerYAnchor.constraintEqualToAnchor(imageView.centerYAnchor),
+            _loadingIndicator.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+            _loadingIndicator.centerYAnchor.constraint(equalTo: imageView.centerYAnchor),
             
-            layoutGuide.bottomAnchor.constraintEqualToAnchor(roundedCornersView.bottomAnchor),
-            layoutGuide.leadingAnchor.constraintEqualToAnchor(roundedCornersView.leadingAnchor),
-            layoutGuide.trailingAnchor.constraintEqualToAnchor(roundedCornersView.trailingAnchor),
-            layoutGuide.heightAnchor.constraintEqualToAnchor(roundedCornersView.heightAnchor,
+            layoutGuide.bottomAnchor.constraint(equalTo: roundedCornersView.bottomAnchor),
+            layoutGuide.leadingAnchor.constraint(equalTo: roundedCornersView.leadingAnchor),
+            layoutGuide.trailingAnchor.constraint(equalTo: roundedCornersView.trailingAnchor),
+            layoutGuide.heightAnchor.constraint(equalTo: roundedCornersView.heightAnchor,
                                                                                     multiplier: 0.10),            
-            captionLabel.centerXAnchor.constraintEqualToAnchor(layoutGuide.centerXAnchor),
-            captionLabel.centerYAnchor.constraintEqualToAnchor(layoutGuide.centerYAnchor),
-            captionLabel.leadingAnchor.constraintEqualToAnchor(roundedCornersView.layoutMarginsGuide.leadingAnchor)
+            captionLabel.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor),
+            captionLabel.centerYAnchor.constraint(equalTo: layoutGuide.centerYAnchor),
+            captionLabel.leadingAnchor.constraint(equalTo: roundedCornersView.layoutMarginsGuide.leadingAnchor)
         ])
     }
 }
@@ -116,11 +116,11 @@ extension ImageCollectionViewCell {
 extension ImageCollectionViewCell: DebugConfigurable {
     func _configureForDebug() {
         guard let roundedCornersView = roundedCornersView,
-            captionLabel = captionLabel, imageView = imageView else {return}
+            let captionLabel = captionLabel, let imageView = imageView else {return}
         
-        contentView.backgroundColor = .cyanColor()
-        roundedCornersView.backgroundColor = .greenColor()
-        imageView.backgroundColor = .redColor()
-        captionLabel.backgroundColor = .yellowColor()
+        contentView.backgroundColor = .cyan
+        roundedCornersView.backgroundColor = .green
+        imageView.backgroundColor = .red
+        captionLabel.backgroundColor = .yellow
     }
 }

@@ -14,81 +14,81 @@ import UIKit
 
 class SampleImagesDataSourceDelegate: NSObject, UICollectionViewDataSource {
     // MARK: - UICollectionViewDataSource
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return _imagesDataSource?.numberOfSections ?? 0
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return _imagesDataSource?.numberOfImageItemsInSection(section) ?? 0
     }
     
-    func collectionView(collectionView: UICollectionView,
-                        cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-        if let imageViewModel = _imagesDataSource?.imageViewModelForItemAtIndexPath(indexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        if let imageViewModel = _imagesDataSource?.imageViewModelForItemAtIndexPath(indexPath: indexPath as NSIndexPath) {
             cell.imageVewModel = imageViewModel
         }
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView,
+    func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
-                                      atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+                                      at indexPath: IndexPath) -> UICollectionReusableView {
         if indexPath.section == 0 {
             let header: ImageCollectionViewGlobalHeader =
-                collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,
-                                                                  forIndexPath: indexPath)
+                collectionView.dequeueReusableSupplementaryViewOfKind(elementKind: UICollectionElementKindSectionHeader,
+                                                                  for: indexPath)
             return header
         } else {
             let header: ImageCollectionViewHeader =
-                collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,
-                                                                      forIndexPath: indexPath)
-            header.sectionHeaderText = _imagesDataSource?.headerInSection(indexPath.section)
+                collectionView.dequeueReusableSupplementaryViewOfKind(elementKind: UICollectionElementKindSectionHeader,
+                                                                      for: indexPath)
+            header.sectionHeaderText = _imagesDataSource?.headerInSection(section: indexPath.section)
             return header
         }
     }
     
     // MARK: - 🕶Private
-    private var _imagesDataSource: ImagesDataSource?
+    fileprivate var _imagesDataSource: ImagesDataSource?
 }
 
 extension SampleImagesDataSourceDelegate: UICollectionViewDelegateFlowLayout {
     // MARK: - UICollectionViewDelegateFlowLayout
-    func collectionView(collectionView: UICollectionView,
+    func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
-                               sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        guard let layout = collectionViewLayout as? UICollectionViewFlowLayout else {return CGSizeZero}
+                               sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let layout = collectionViewLayout as? UICollectionViewFlowLayout else {return CGSize.zero }
         let sectionInsetWidth = self.collectionView(collectionView, layout: layout,
-                                                    insetForSectionAtIndex: indexPath.section).left
+                                                    insetForSectionAt: indexPath.section).left
         let width = collectionView.bounds.width / 2 - layout.minimumInteritemSpacing / 2 - sectionInsetWidth
         return CGSize(width: width, height: width)
     }
     
-    func collectionView(collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                               insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView,
+                          layout collectionViewLayout: UICollectionViewLayout,
+                          insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 2)
     }
     
-    func collectionView(collectionView: UICollectionView,
+    func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                                referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 0 {
-            return CGSizeMake(collectionView.frame.size.width, 80)
+            return CGSize(width: collectionView.frame.size.width, height: 80)
         }
         else {
-            return CGSizeMake(collectionView.frame.size.width, 35)
+            return CGSize(width: collectionView.frame.size.width, height: 35)
         }
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 2
     }
 }
 
 extension SampleImagesDataSourceDelegate: DependencyInjectable {
     // MARK: - 🔌Dependencies injection
-    func inject(imagesDataSource: ImagesDataSource) {
+    func inject(_ imagesDataSource: ImagesDataSource) {
         self._imagesDataSource = imagesDataSource
     }
 }

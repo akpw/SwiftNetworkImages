@@ -15,13 +15,15 @@ class LayoutConfigController: UITableViewController {
     var selectedOptions: AKPLayoutConfigOptions?
 
     var height: CGFloat {
-        return CGFloat(tableView.numberOfRowsInSection(0)) * tableView.rowHeight +
-                                    tableView(tableView, heightForHeaderInSection: 0) +
-                                    tableView(tableView, heightForFooterInSection: 0)
+        let numRows = tableView(tableView, numberOfRowsInSection: 0)
+        let headerHeight = tableView(tableView, heightForHeaderInSection: 0)
+        let footerHeight = tableView(tableView, heightForFooterInSection: 0)
+        
+        return CGFloat(numRows) * tableView.rowHeight + CGFloat(headerHeight + footerHeight)
     }
     
     override init(style: UITableViewStyle) {
-        super.init(style: UITableViewStyle.Grouped)
+        super.init(style: UITableViewStyle.grouped)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,50 +34,48 @@ class LayoutConfigController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 40
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "CellReuseID")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CellReuseID")
     }
     
-    override func tableView(tableView: UITableView,
+    override func tableView(_ tableView: UITableView,
                         numberOfRowsInSection section: Int) -> Int {
         return configOptions?.descriptions.count ?? 0
     }
     
-    override func tableView(tableView: UITableView,
-                        cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("CellReuseID",
-                                           forIndexPath: indexPath) as UITableViewCell
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CellReuseID",
+                                                 for: indexPath) as UITableViewCell
         if let configOptions = configOptions
-                                    where configOptions.descriptions.count > indexPath.row {
+                                    , configOptions.descriptions.count > indexPath.row {
             let optionDescription = configOptions.descriptions[indexPath.row]
             cell.textLabel?.text = optionDescription
             if let selectedOptions = selectedOptions {
-                let option = AKPLayoutConfigOptions(rawValue: 1<<(indexPath.row + 1))
+                let option = AKPLayoutConfigOptions(rawValue: 1 << indexPath.row)
                 cell.accessoryType = selectedOptions.contains(option) ?
-                    UITableViewCellAccessoryType.Checkmark : UITableViewCellAccessoryType.None
+                    UITableViewCellAccessoryType.checkmark : UITableViewCellAccessoryType.none
             }
         }
-        cell.textLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)
+        cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.footnote)
         return cell
     }
     
-    override func tableView(tableView: UITableView,
-                            didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let selectedOptions = selectedOptions {
-            let option = AKPLayoutConfigOptions(rawValue: 1<<(indexPath.row + 1))
+            let option = AKPLayoutConfigOptions(rawValue: 1 << indexPath.row )
             if selectedOptions.contains(option) {
-                self.selectedOptions?.remove(option)
+                _ = self.selectedOptions?.remove(option)
             } else {
                 self.selectedOptions?.insert(option)
             }
         }
-        tableView.reloadRowsAtIndexPaths([indexPath],
-                                     withRowAnimation: UITableViewRowAnimation.Automatic)
+        tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.1
     }
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.1
     }
     

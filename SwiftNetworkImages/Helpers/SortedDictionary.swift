@@ -9,7 +9,7 @@
 /// Sorted Dictionary implemetation
 /// Uses binary search for inserting keys in sorted order
 
-struct SortedDictionary<K, V where K: Hashable, K: Comparable> {
+struct SortedDictionary<K, V> where K: Hashable, K: Comparable {
     private var _dict: Dictionary<K, V> = [:]
     private var _sortedKeys: [K] = []
     
@@ -28,7 +28,7 @@ struct SortedDictionary<K, V where K: Hashable, K: Comparable> {
         set(newValue) {
             if !_sortedKeys.contains(key) {
                 let idx = _sortedKeys.binarySearch{ $0 < key }
-                _sortedKeys.insert(key, atIndex: idx)
+                _sortedKeys.insert(key, at: idx)
             }
             _dict[key] = newValue
         }
