@@ -5,7 +5,7 @@ Swift Network Images
 ![License](https://img.shields.io/badge/License-MIT%20License-blue.svg)
 
 
-Swift Network Images is a sample iOS app developed in Swift 2.2. While primarily intended for [a series of blogs](#blogs), the app demonstrates best practices and latest features of iOS and Swift language.
+Swift Network Images is a sample iOS app developed in Swift3. While primarily intended for [a series of blogs](#blogs), the app demonstrates best practices and latest features of iOS and Swift language.
 
 
 
@@ -15,8 +15,6 @@ Swift Network Images is a sample iOS app developed in Swift 2.2. While primarily
 
 
 ## Features
-* Written in Swift 2.2 and Xcode 7.3
-
 * `MVVM`, with simple DIY bindings for mutable `ViewModel`s
 
 * Shows and easy way to build UI in code with iOS9 `NSLayoutAnchor`, `UILayoutGuide`, and `UIStackView`
@@ -72,7 +70,8 @@ $ open "SwiftNetworkImages.xcworkspace"
 
 # Requirements
 
-* Xcode 7.3
+* Swift 3
+* Xcode 8
 * iOS 9
 
 
