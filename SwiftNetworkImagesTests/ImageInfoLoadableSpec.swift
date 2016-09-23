@@ -6,6 +6,12 @@
 //  Copyright © 2016 Arseniy Kuznetsov. All rights reserved.
 //
 
+
+// Disabled till Quick / Nimble are converted to Swift 3
+
+
+/*
+
 import Quick
 import Nimble
 @testable import SwiftNetworkImages
@@ -51,3 +57,4 @@ class ImageInfoLoadableSpec: QuickSpec {
         }
     }
 }
+*/
