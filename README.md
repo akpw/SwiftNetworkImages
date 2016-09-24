@@ -5,7 +5,7 @@ Swift Network Images
 ![License](https://img.shields.io/badge/License-MIT%20License-blue.svg)
 
 
-Swift Network Images is a sample iOS app developed in Swift3. While primarily intended for [a series of blogs](#blogs), the app demonstrates best practices and latest features of iOS and Swift language.
+Swift Network Images is a sample iOS app / Swift3 app for [AKPFlowLayout](https://github.com/akpw/AKPFlowLayout). 
 
 
 
@@ -15,11 +15,12 @@ Swift Network Images is a sample iOS app developed in Swift3. While primarily in
 
 
 ## Features
-* `MVVM`, with simple DIY bindings for mutable `ViewModel`s
 
-* Shows and easy way to build UI in code with iOS9 `NSLayoutAnchor`, `UILayoutGuide`, and `UIStackView`
+* Demonstrates practical usage of the [AKPFlowLayout framework](https://github.com/akpw/AKPFlowLayout)
 
-* Custom UICollectionView Layouts, efficiently built on top of `UICollectionViewFlowLayout` using custom invalidation context.
+* Shows an easy way to build UI in code with `NSLayoutAnchor`, `UILayoutGuide`, and `UIStackView`
+
+* Shows pragmatic approach to `MVVM`, with simple DIY bindings for mutable `ViewModel`s
 
 * Protocol-Oriented and Value-Based Programming
  
@@ -40,8 +41,6 @@ Swift Network Images is a sample iOS app developed in Swift3. While primarily in
  - [ ] Drag reodering
  - [ ] Swipe to edit
 * UICollectionView transitions / animations
-* UI Tests
-* Snapshot Tests
 
 
 ## Building the project
