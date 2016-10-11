@@ -44,10 +44,11 @@ extension AppDelegate {
         
         // Delegate / Data Source for the collection view
         let dataSourceDelegate = SampleImagesDataSourceDelegate()
-        dataSourceDelegate.inject(imagesDataSource)
         
         // Top-level view controller
         let viewController = SampleImagesViewController()
+        dataSourceDelegate.inject((imagesDataSource, viewController))
+        
         viewController.inject(dataSourceDelegate)
         return viewController
     }

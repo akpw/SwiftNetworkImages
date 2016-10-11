@@ -20,14 +20,17 @@ import UIKit
 
     var imageVewModel: ImageViewModel? {
         didSet {
-            guard let imageVewModel = imageVewModel else {return}
-            imageVewModel.imageCaption.observe { [weak self] in
-                self?.captionLabel?.text = $0
-            }
+            guard let imageVewModel = imageVewModel else { return }
+
             _loadingIndicator.startAnimating()
             _loadingIndicator.isHidden = false
-            imageVewModel.image.observe { [weak self] in
-                self?.imageView?.image = $0
+            
+            imageVewModel.imageCaption.observe { [weak self] text in
+                DispatchQueue.main.async { self?.captionLabel?.text = text }
+            }
+            
+            imageVewModel.image.observe { [weak self] image in
+                DispatchQueue.main.async { self?.imageView?.image = image }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
                     self?._loadingIndicator.stopAnimating()
                     self?._loadingIndicator.isHidden = true

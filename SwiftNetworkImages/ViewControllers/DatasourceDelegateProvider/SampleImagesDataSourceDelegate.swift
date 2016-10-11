@@ -36,13 +36,15 @@ class SampleImagesDataSourceDelegate: NSObject, UICollectionViewDataSource {
                                       at indexPath: IndexPath) -> UICollectionReusableView {
         if indexPath.section == 0 {
             let header: ImageCollectionViewGlobalHeader =
-                collectionView.dequeueReusableSupplementaryViewOfKind(elementKind: UICollectionElementKindSectionHeader,
-                                                                  for: indexPath)
+                collectionView.dequeueReusableSupplementaryViewOfKind(
+                                                            elementKind: UICollectionElementKindSectionHeader,
+                                                            for: indexPath)
             return header
         } else {
             let header: ImageCollectionViewHeader =
-                collectionView.dequeueReusableSupplementaryViewOfKind(elementKind: UICollectionElementKindSectionHeader,
-                                                                      for: indexPath)
+                collectionView.dequeueReusableSupplementaryViewOfKind(
+                                                            elementKind: UICollectionElementKindSectionHeader,
+                                                            for: indexPath)
             header.sectionHeaderText = _imagesDataSource?.headerInSection(section: indexPath.section)
             return header
         }
@@ -50,9 +52,45 @@ class SampleImagesDataSourceDelegate: NSObject, UICollectionViewDataSource {
     
     // MARK: - 🕶Private
     fileprivate var _imagesDataSource: ImagesDataSource?
+    fileprivate var _parentVC: UIViewController?
+    fileprivate var _selectedFrame = CGRect.zero
+}
+
+extension SampleImagesDataSourceDelegate: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController,
+                                presenting: UIViewController?,
+                                source: UIViewController) -> UIPresentationController? {
+        return ImageDetailPresentationController(presentedViewController: presented, presenting: source)
+    }
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return ImageDetailDismissAnimator()
+    }
+    
+    func animationController(forPresented presented: UIViewController,
+                             presenting: UIViewController,
+                             source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let animator = ImageDetailPresentAnimator()
+        animator.sourceFrame = _selectedFrame
+        return animator
+    }    
 }
 
 extension SampleImagesDataSourceDelegate: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailImageVC = SampleImageDetailVC()
+        detailImageVC.transitioningDelegate = self
+        detailImageVC.modalPresentationStyle = .custom
+        if let imageViewModel = _imagesDataSource?.imageViewModelForItemAtIndexPath(indexPath: indexPath as NSIndexPath) {
+            detailImageVC.imageVewModel = imageViewModel
+        }
+        
+        guard let cellAttributes = collectionView.layoutAttributesForItem(at: indexPath) else { return }
+        let attributesFrame = cellAttributes.frame
+        _selectedFrame = collectionView.convert(attributesFrame, to: nil)
+        _parentVC?.present(detailImageVC, animated: true, completion: nil)
+    }
+    
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -88,8 +126,10 @@ extension SampleImagesDataSourceDelegate: UICollectionViewDelegateFlowLayout {
 
 extension SampleImagesDataSourceDelegate: DependencyInjectable {
     // MARK: - 🔌Dependencies injection
-    func inject(_ imagesDataSource: ImagesDataSource) {
-        self._imagesDataSource = imagesDataSource
+    typealias ExternalDependencies = (imagesDataSource: ImagesDataSource, parentVC: UIViewController)
+    func inject(_ dependencies: ExternalDependencies) {
+        self._imagesDataSource = dependencies.imagesDataSource
+        self._parentVC = dependencies.parentVC
     }
 }
 

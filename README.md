@@ -5,7 +5,7 @@ Swift Network Images
 ![License](https://img.shields.io/badge/License-MIT%20License-blue.svg)
 
 
-Swift Network Images is a sample iOS app / Swift3 app for [AKPFlowLayout](https://github.com/akpw/AKPFlowLayout). 
+Swift Network Images is a sample iOS app / Swift3 app for [AKPFlowLayout](https://github.com/akpw/AKPFlowLayout).
 
 
 
@@ -22,21 +22,23 @@ Swift Network Images is a sample iOS app / Swift3 app for [AKPFlowLayout](https:
 
 * Shows pragmatic approach to `MVVM`, with simple DIY bindings for mutable `ViewModel`s
 
+* Advanced UIPresentationController-based transitions
+
 * Protocol-Oriented and Value-Based Programming
- 
+
 * Testable design via Dependency Injections
 
 * [DRY BDD tests using Quick's Shared Assertions](http://www.akpdev.com/articles/2016/05/12/Quick-Shared-Assertions.html)
 
 
-## Docs		
+## Docs
  [Initial docs][docsLink], generated with [jazzy](https://github.com/realm/jazzy) and hosted by [GitHub Pages](https://pages.github.com).
 
 
 ## TODOs
 * UICollectionView Custom Layout examples:
  - [x] Global section header (pinnable, stretchable)
- - [x] Sticky section headers 
+ - [x] Sticky section headers
  - [ ] Collapsible / expandable sections
  - [ ] Drag reodering
  - [ ] Swipe to edit

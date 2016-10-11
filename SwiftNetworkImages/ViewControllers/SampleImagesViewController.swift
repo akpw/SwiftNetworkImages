@@ -27,7 +27,7 @@ class SampleImagesViewController: UIViewController {
         setConstraints()
         _configureForDebug(_collectionView)
     }
-    
+        
     // MARK: - 🕶Private
     fileprivate var _collectionView: UICollectionView?
     fileprivate var _dataSourceDelegate: SampleImagesDataSourceDelegate?
@@ -90,8 +90,8 @@ extension SampleImagesViewController: UIPopoverPresentationControllerDelegate {
             present(configController, animated: true, completion: nil)
         }
     }
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle
-    {
+    func adaptivePresentationStyle(for controller: UIPresentationController,
+                                   traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController:

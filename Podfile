@@ -2,7 +2,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'SwiftNetworkImages' do
-    pod 'AKPFlowLayout', :git => 'https://github.com/akpw/AKPFlowLayout'
+    pod 'AKPFlowLayout'
     pod 'Alamofire', '~> 4.0'
     pod 'AlamofireImage', '~> 3.0'
 end
