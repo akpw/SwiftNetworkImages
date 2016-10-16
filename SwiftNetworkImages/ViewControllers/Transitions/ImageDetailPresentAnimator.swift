@@ -25,6 +25,7 @@ class ImageDetailPresentAnimator: NSObject, UIViewControllerAnimatedTransitionin
         let yScaleFactor = sourceFrame.height / finalFrame.height
         let scaleTransform = CGAffineTransform(scaleX: xScaleFactor, y: yScaleFactor)
         
+        toView.alpha = 0.0
         toView.frame = finalFrame
         toView.transform = scaleTransform
         toView.center = CGPoint(
@@ -38,6 +39,7 @@ class ImageDetailPresentAnimator: NSObject, UIViewControllerAnimatedTransitionin
                        delay: 0.0,
                        usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0,
                        options: [], animations: {
+            toView.alpha = 1.0
             toView.transform = CGAffineTransform.identity
             toView.center = CGPoint(
                 x: finalFrame.midX,

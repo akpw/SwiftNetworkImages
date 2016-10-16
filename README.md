@@ -22,7 +22,7 @@ Swift Network Images is a sample iOS app / Swift3 app for [AKPFlowLayout](https:
 
 * Shows pragmatic approach to `MVVM`, with simple DIY bindings for mutable `ViewModel`s
 
-* Advanced UIPresentationController-based transitions
+* UIPresentationController-based animated transitions
 
 * Protocol-Oriented and Value-Based Programming
 

@@ -151,7 +151,7 @@
 			children = (
 				573F65A21DA52F1800D1A101 /* ImageDetailTransitionsOptions.swift */,
 			);
-			name = Options;
+			path = Options;
 			sourceTree = "<group>";
 		};
 		5780C7131CE083C300607FB5 /* Support */ = {
@@ -234,12 +234,12 @@
 		5780C72F1CE0841800607FB5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				578394E51DA3AA7100342986 /* Transitions */,
-				578394E41DA382F300342986 /* Detail */,
 				578394E31DA382E300342986 /* Config */,
 				5780C7301CE0841800607FB5 /* DataSource */,
 				5780C7321CE0841800607FB5 /* DatasourceDelegateProvider */,
+				578394E41DA382F300342986 /* Detail */,
 				5780C7371CE0841800607FB5 /* Views */,
+				578394E51DA3AA7100342986 /* Transitions */,
 				5780C7361CE0841800607FB5 /* SampleImagesViewController.swift */,
 			);
 			path = ViewControllers;
@@ -265,8 +265,8 @@
 			isa = PBXGroup;
 			children = (
 				5780C7381CE0841800607FB5 /* ImageCollectionViewCell.swift */,
-				5780C7391CE0841800607FB5 /* ImageCollectionViewHeader.swift */,
 				574E9D821CEB4E6E00F7FFCF /* ImageCollectionViewGlobalHeader.swift */,
+				5780C7391CE0841800607FB5 /* ImageCollectionViewHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -284,7 +284,7 @@
 			children = (
 				57B9C00E1D06EB4E00800CB9 /* LayoutConfigController.swift */,
 			);
-			name = Config;
+			path = Config;
 			sourceTree = "<group>";
 		};
 		578394E41DA382F300342986 /* Detail */ = {
@@ -292,18 +292,18 @@
 			children = (
 				578394E11DA37D4F00342986 /* SampleImageDetailVC.swift */,
 			);
-			name = Detail;
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		578394E51DA3AA7100342986 /* Transitions */ = {
 			isa = PBXGroup;
 			children = (
 				573F65A41DA52F5700D1A101 /* Options */,
-				573F65A01DA527F100D1A101 /* ImageDetailPresentAnimator.swift */,
 				578394E61DA3AA8F00342986 /* ImageDetailDismissAnimator.swift */,
+				573F65A01DA527F100D1A101 /* ImageDetailPresentAnimator.swift */,
 				573F65A71DAA5EFF00D1A101 /* ImageDetailPresentationController.swift */,
 			);
-			name = Transitions;
+			path = Transitions;
 			sourceTree = "<group>";
 		};
 		57AD50391CE0822C00EF9693 = {
@@ -312,8 +312,8 @@
 				57AD50441CE0822C00EF9693 /* SwiftNetworkImages */,
 				57AD505C1CE0835200EF9693 /* SwiftNetworkImagesTests */,
 				FD21DA43CDFEF49BBF8BB9C4 /* Frameworks */,
-				57AD50431CE0822C00EF9693 /* Products */,
 				8A0AA8833C4D5D3B772E6C76 /* Pods */,
+				57AD50431CE0822C00EF9693 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -345,11 +345,11 @@
 			isa = PBXGroup;
 			children = (
 				5780C7131CE083C300607FB5 /* Support */,
-				5780C76A1CE1BE0300607FB5 /* NetworkImageServiceConfiguration.swift */,
 				5780C7701CE1D88200607FB5 /* AlamofireNetworkImageServiceSpec.swift */,
-				5780C76E1CE1D87600607FB5 /* NSURLSessionNetworkImageServiceSpec.swift */,
 				5780C75D1CE087F600607FB5 /* ImageFetcherSpec.swift */,
 				5780C7671CE1A6F400607FB5 /* ImageInfoLoadableSpec.swift */,
+				5780C76E1CE1D87600607FB5 /* NSURLSessionNetworkImageServiceSpec.swift */,
+				5780C76A1CE1BE0300607FB5 /* NetworkImageServiceConfiguration.swift */,
 			);
 			path = SwiftNetworkImagesTests;
 			sourceTree = "<group>";

@@ -11,7 +11,10 @@ import UIKit
 
 class ImageDetailPresentationController: UIPresentationController {
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
-        dimmerView =  UIView(frame: CGRect.zero)  // UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
+        dimmerView =  UIView(frame: CGRect.zero)
+        dimmerView.backgroundColor = UIColor(white: 0.0, alpha: 0.8)
+        dimmerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
     }
     
@@ -29,12 +32,8 @@ class ImageDetailPresentationController: UIPresentationController {
     override func presentationTransitionWillBegin() {
         guard let containerView = containerView,
               let transitionCoordinator = presentedViewController.transitionCoordinator else { return }
-        
         dimmerView.frame = containerView.bounds
-        dimmerView.backgroundColor = UIColor(white: 0.0, alpha: 0.8)
-        dimmerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         dimmerView.alpha = 0.0
-        
         containerView.insertSubview(dimmerView, at: 0)
         transitionCoordinator.animate(alongsideTransition: { _ in
             self.dimmerView.alpha = 1.0
