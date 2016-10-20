@@ -8,6 +8,6 @@ target 'SwiftNetworkImages' do
 end
 
 target 'SwiftNetworkImagesTests' do
-    #pod 'Quick'
-    #pod 'Nimble'
+    pod 'Quick'
+    pod 'Nimble'
 end

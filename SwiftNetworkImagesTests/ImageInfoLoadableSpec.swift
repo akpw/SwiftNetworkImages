@@ -7,18 +7,13 @@
 //
 
 
-// Disabled till Quick / Nimble are converted to Swift 3
-
-
-/*
-
 import Quick
 import Nimble
 @testable import SwiftNetworkImages
 
 struct  TestImagesInfoLoader: ImageInfoLoadable {
     var dataPath: String? {
-        return  NSBundle.mainBundle().pathForResource("Animals", ofType: "plist")
+        return  Bundle.main.path(forResource: "Animals", ofType: "plist")
     }
 }
 
@@ -41,7 +36,7 @@ class ImageInfoLoadableSpec: QuickSpec {
             }
             
             it("has valid image info items in sections") {
-                for (idx, section) in sections.enumerate() where idx > 0 {
+                for (idx, section) in sections.enumerated() where idx > 0 {
                     guard let imageItems = imagesData[section] else {
                         XCTFail("no image info items in section: \(section)")
                         abort()
@@ -57,4 +52,3 @@ class ImageInfoLoadableSpec: QuickSpec {
         }
     }
 }
-*/

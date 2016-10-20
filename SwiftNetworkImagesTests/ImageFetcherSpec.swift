@@ -8,8 +8,6 @@
 
 // Disabled till Quick / Nimble are converted to Swift 3
 
-/*
-
 import Quick
 import Nimble
 @testable import SwiftNetworkImages
@@ -26,24 +24,23 @@ extension UIImage {
 
 class ImageFetcherSpec: QuickSpec {
     struct GoodMockImageService: NetworkImageService {
-        func requestImage(urlString: String, completion: Result<UIImage> -> ()) {
-            dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0)) {
+        func requestImage(urlString: String, completion: @escaping (Result<UIImage>) -> ()) {
+            DispatchQueue.global(qos: .utility).async {
                 sleep(1)
                 guard let image = UIImage(asset: .TestCat) else {
-                    XCTFail("Coudl not load a test image from bundle!!")
-                    abort()
+                    return XCTFail("Coudl not load a test image from bundle!!")
                 }
-                dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.main.async {
                     completion( Result.Success(image))
                 }
             }
         }
     }
     struct BadMockImageService: NetworkImageService {
-        func requestImage(urlString: String, completion: Result<UIImage> -> ()) {
-            dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0)) {
+        func requestImage(urlString: String, completion: @escaping (Result<UIImage>) -> ()) {
+            DispatchQueue.global(qos: .utility).async {
                 sleep(1)
-                dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.main.async {
                     completion( Result.Failure(NetworkError.NetworkRequestFailed) )
                 }
             }
@@ -60,7 +57,7 @@ class ImageFetcherSpec: QuickSpec {
             }
             it("retrives and caches a Image from a good image service") {
                 imageFetcher.inject(GoodMockImageService())
-                imageFetcher.fetchImage("https://httpbin.org/image/jpeg") { image in
+                imageFetcher.fetchImage(urlString: "https://httpbin.org/image/jpeg") { image in
                     testImage = image
                 }
                 expect(testImage).toEventuallyNot(beNil(), timeout: 5)
@@ -68,7 +65,7 @@ class ImageFetcherSpec: QuickSpec {
             it("can live through a request to a bad image service") {
                 var imageFetcher = ImageFetcher()
                 imageFetcher.inject(BadMockImageService())
-                imageFetcher.fetchImage("https://httpbin.org/image/jpeg") { image in
+                imageFetcher.fetchImage(urlString: "https://httpbin.org/image/jpeg") { image in
                     if let image = image { testImage = image }
                 }
                 expect(testImage).toEventually(beNil(), timeout: 5)
@@ -76,10 +73,3 @@ class ImageFetcherSpec: QuickSpec {
         }        
     }    
 }
-
-
-*/
-
-
-
-

@@ -6,9 +6,6 @@
 //  Copyright © 2016 Arseniy Kuznetsov. All rights reserved.
 //
 
-// Disabled till Quick / Nimble are converted to Swift 3
-
-/*
 import Quick
 import Nimble
 @testable import SwiftNetworkImages
@@ -29,9 +26,9 @@ class NetworkImageServiceWrapper {
 
 /// Shared Examples Configuration for the NetworkImageService tests
 class NetworkImageServiceConfiguration: QuickConfiguration {
-    override class func configure(configuration: Configuration) {
+    override class func configure(_ configuration: Configuration) {
         var networkImageService: NetworkImageService!
-        sharedExamples("a NetworkImageService") { (sharedExampleContext: SharedExampleContext) in
+        sharedExamples("a NetworkImageService") { (sharedExampleContext: @escaping SharedExampleContext) in
             beforeEach {
                 guard let networkImageServiceWrapper =
                         sharedExampleContext()["networkImageService"] as? NetworkImageServiceWrapper else {
@@ -42,8 +39,8 @@ class NetworkImageServiceConfiguration: QuickConfiguration {
             }
             it("eventually retrives an image") {
                 var image: UIImage?
-                networkImageService.requestImage("https://httpbin.org/image/jpeg") { result in
-                    expect(NSThread.currentThread().isMainThread).to(beTrue())
+                networkImageService.requestImage(urlString: "https://httpbin.org/image/jpeg") { result in
+                    expect(Thread.current.isMainThread).to(beTrue())
                     do {
                         image = try result.resolve()
                     } catch {}
@@ -53,21 +50,21 @@ class NetworkImageServiceConfiguration: QuickConfiguration {
             
             it("eventually gets an expected error if there are problems with connection") {
                 var error: NetworkError?
-                networkImageService.requestImage("https://some.broken.server.com/content/image/png") { result in
-                    expect(NSThread.currentThread().isMainThread).to(beTrue())
+                networkImageService.requestImage(urlString: "https://some.broken.server.com/content/image/png") { result in
+                    expect(Thread.current.isMainThread).to(beTrue())
                     do {
                         _ = try result.resolve()
                     } catch let networkError as NetworkError {
                         error = networkError
                     } catch {}
                 }
-                expect(error).toEventually(equal(NetworkError.CannotConnectToServer), timeout: 10)
+                expect(error).toEventually(equal(NetworkError.NetworkRequestFailed), timeout: 10)
             }
             
             it("eventually gets an expected error for handling wrong content type") {
                 var error: NetworkError?
-                networkImageService.requestImage("https://httpbin.org/get") { result in
-                    expect(NSThread.currentThread().isMainThread).to(beTrue())
+                networkImageService.requestImage(urlString: "https://httpbin.org/get") { result in
+                    expect(Thread.current.isMainThread).to(beTrue())
                     do {
                         _ = try result.resolve()
                     } catch let networkError as NetworkError {
@@ -81,5 +78,3 @@ class NetworkImageServiceConfiguration: QuickConfiguration {
         }
     }
 }
-*/
-

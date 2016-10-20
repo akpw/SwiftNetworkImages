@@ -345,11 +345,11 @@
 			isa = PBXGroup;
 			children = (
 				5780C7131CE083C300607FB5 /* Support */,
-				5780C7701CE1D88200607FB5 /* AlamofireNetworkImageServiceSpec.swift */,
 				5780C75D1CE087F600607FB5 /* ImageFetcherSpec.swift */,
 				5780C7671CE1A6F400607FB5 /* ImageInfoLoadableSpec.swift */,
-				5780C76E1CE1D87600607FB5 /* NSURLSessionNetworkImageServiceSpec.swift */,
 				5780C76A1CE1BE0300607FB5 /* NetworkImageServiceConfiguration.swift */,
+				5780C76E1CE1D87600607FB5 /* NSURLSessionNetworkImageServiceSpec.swift */,
+				5780C7701CE1D88200607FB5 /* AlamofireNetworkImageServiceSpec.swift */,
 			);
 			path = SwiftNetworkImagesTests;
 			sourceTree = "<group>";
