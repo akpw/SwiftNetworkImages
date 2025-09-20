@@ -10,8 +10,8 @@ Swift Network Images is a sample iOS app / Swift3 app for [AKPFlowLayout](https:
 
 
 ## Blogs
-* [Custom UICollectionView: Global Headers](http://www.akpdev.com/articles/2016/06/16/CollectionView-I.html)
-* [Making your Quick test code DRYer with Shared Assertions](http://www.akpdev.com/articles/2016/05/12/Quick-Shared-Assertions.html)
+* [Custom UICollectionView: Global Headers](https://akpw.github.io/articles/2016/06/16/CollectionView-I.html)
+* [Making your Quick test code DRYer with Shared Assertions](https://akpw.github.io/articles/2016/05/12/Quick-Shared-Assertions.html)
 
 
 ## Features
@@ -28,7 +28,7 @@ Swift Network Images is a sample iOS app / Swift3 app for [AKPFlowLayout](https:
 
 * Testable design via Dependency Injections
 
-* [DRY BDD tests using Quick's Shared Assertions](http://www.akpdev.com/articles/2016/05/12/Quick-Shared-Assertions.html)
+* [DRY BDD tests using Quick's Shared Assertions](https://akpw.github.io/articles/2016/05/12/Quick-Shared-Assertions.html)
 
 
 ## Dev Docs
